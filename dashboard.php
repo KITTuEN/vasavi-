@@ -280,8 +280,6 @@
                                 <div class="actions">
                                     <button type="button" id="addPaperBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Paper</button>
-                                    <button id="savePapersBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -300,8 +298,6 @@
                                 <div class="actions">
                                     <button type="button" id="addInterBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Event</button>
-                                    <button id="saveInterBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -321,8 +317,6 @@
                                 <div class="actions">
                                     <button type="button" id="addIntraDeptBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Event</button>
-                                    <button id="saveIntraDeptBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -341,8 +335,6 @@
                                 <div class="actions">
                                     <button type="button" id="addSeminarBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Seminar</button>
-                                    <button id="saveSeminarsBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -360,8 +352,6 @@
                                 <div class="actions">
                                     <button type="button" id="addRepBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Semester</button>
-                                    <button id="saveRepBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -381,8 +371,6 @@
                                 <div class="actions">
                                     <button type="button" id="addMembershipBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Membership</button>
-                                    <button id="saveMembershipBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -400,8 +388,6 @@
                                 <div class="actions">
                                     <button type="button" id="addMoocsBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Certification</button>
-                                    <button id="saveMoocsBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -421,8 +407,6 @@
                                 <div class="actions">
                                     <button type="button" id="addInternshipBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Internship</button>
-                                    <button id="saveInternshipBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -440,11 +424,14 @@
                                 <div class="actions">
                                     <button type="button" id="addAwardsBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Contribution</button>
-                                    <button id="saveAwardsBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Master Save Button for Co-Curricular -->
+                        <button type="button" id="saveCoCurricularMasterBtn" class="btn-primary" style="margin-top: 2rem; width: 100%; font-size: 1.1rem; padding: 1rem;">
+                            <i class="fas fa-save"></i> Save Co-Curricular Activities
+                        </button>
                     </div>
                 </div>
             </div>
@@ -505,8 +492,6 @@
                                 <div class="actions">
                                     <button type="button" id="addUniTeamBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Selection</button>
-                                    <button id="saveUniTeamBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -525,8 +510,6 @@
                                 <div class="actions">
                                     <button type="button" id="addOutsideBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Event</button>
-                                    <button id="saveOutsideBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -544,8 +527,6 @@
                                 <div class="actions">
                                     <button type="button" id="addWithinBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Event</button>
-                                    <button id="saveWithinBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -563,8 +544,6 @@
                                 <div class="actions">
                                     <button type="button" id="addTechBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Role</button>
-                                    <button id="saveTechBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -584,8 +563,6 @@
                                 <div class="actions">
                                     <button type="button" id="addOtherCoordBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Role</button>
-                                    <button id="saveOtherCoordBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -605,8 +582,6 @@
                                 <div class="actions">
                                     <button type="button" id="addCommitteeBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Committee</button>
-                                    <button id="saveCommitteeBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -624,8 +599,6 @@
                                 <div class="actions">
                                     <button type="button" id="addNssBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Activity</button>
-                                    <button id="saveNssBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
@@ -645,11 +618,14 @@
                                 <div class="actions">
                                     <button type="button" id="addExtAwardsBtn" class="btn-secondary"><i
                                             class="fas fa-plus"></i> Add Contribution</button>
-                                    <button id="saveExtAwardsBtn" class="btn-primary"><i class="fas fa-save"></i>
-                                        Save</button>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Master Save Button for Extracurricular -->
+                        <button type="button" id="saveExtracurricularMasterBtn" class="btn-primary" style="margin-top: 2rem; width: 100%; font-size: 1.1rem; padding: 1rem;">
+                            <i class="fas fa-save"></i> Save Extracurricular Activities
+                        </button>
 
                         <!-- Declaration Section -->
                         <div id="declarationSection" class="card" style="margin-top: 2rem; padding: 2rem; border-left: 5px solid var(--primary-color);">

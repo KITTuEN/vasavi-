@@ -196,7 +196,7 @@
 
     <!-- Scripts -->
     <script src="js/responsive.js"></script>
-    <script src="js/evaluate.js?v=6"></script>
+    <script src="js/evaluate.js?v=7"></script>
 </body>
 
 </html>

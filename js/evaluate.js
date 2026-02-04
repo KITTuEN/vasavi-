@@ -217,15 +217,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCategoryTotals() {
         let coTotal = 0;
         document.querySelectorAll('.co-score').forEach(i => coTotal += parseFloat(i.value) || 0);
-        document.getElementById('scCo').value = coTotal;
-        document.getElementById('valCo').innerText = coTotal.toFixed(1);
+
+        // Show sum of individual items
         document.getElementById('valCoSum').innerText = coTotal.toFixed(1);
+
+        // Cap total at 15
+        const cappedCoTotal = Math.min(coTotal, 15);
+        document.getElementById('scCo').value = cappedCoTotal;
+        document.getElementById('valCo').innerText = cappedCoTotal.toFixed(1);
+
 
         let extraTotal = 0;
         document.querySelectorAll('.extra-score').forEach(i => extraTotal += parseFloat(i.value) || 0);
-        document.getElementById('scExtra').value = extraTotal;
-        document.getElementById('valExtra').innerText = extraTotal.toFixed(1);
+
+        // Show sum of individual items
         document.getElementById('valExtraSum').innerText = extraTotal.toFixed(1);
+
+        // Cap total at 15
+        const cappedExtraTotal = Math.min(extraTotal, 15);
+        document.getElementById('scExtra').value = cappedExtraTotal;
+        document.getElementById('valExtra').innerText = cappedExtraTotal.toFixed(1);
     }
 
     function prefillScores(data) {

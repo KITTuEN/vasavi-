@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- HELPERS FOR BULK SAVE & PREFILL ---
-    async function saveBulkActivities(url, activityType, items) {
+    async function saveBulkActivities(url, activityType, items, silent = false) {
         try {
             const fd = new FormData();
             fd.append('activity_type', activityType);
@@ -272,8 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Separate files from data
             const cleanItems = items.map(item => {
                 const { fileInput, ...rest } = item;
-                // If we want to preserve existing path, we might need it in 'rest'
-                // But for now, just send the text data
                 return rest;
             });
 
@@ -288,12 +286,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const res = await fetch(url, {
                 method: 'POST',
-                // No Content-Type header for FormData, browser sets it with boundary
+                // No Content-Type header for FormData
                 body: fd
             });
 
             if (res.ok) {
-                alert(`${activityType} saved successfully!`);
+                if (!silent) alert(`${activityType} saved successfully!`);
+                return true;
             } else {
                 let errMsg = 'Unknown error';
                 const text = await res.text();
@@ -304,11 +303,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     errMsg = `Server returned non-JSON: ${text.substring(0, 200)}`;
                     console.error('Server Raw Response:', text);
                 }
-                alert(`Error saving: ${errMsg}`);
+                alert(`Error saving ${activityType}: ${errMsg}`);
+                return false;
             }
         } catch (error) {
             console.error(error);
-            alert(`Network error saving data: ${error.message}`);
+            alert(`Network error saving ${activityType}: ${error.message}`);
+            return false;
         }
     }
 
@@ -505,6 +506,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="internship-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                    `;
+                    return div;
+                });
+
+                // Awards / Significant Contributions
+                prefillSection(coData, 'Award/Contribution', 'awardsYes', 'awardsNo', 'awardsListContainer', (item) => {
+                    const div = document.createElement('div');
+                    div.className = 'awards-entry dynamic-entry dynamic-entry-grid';
+                    div.innerHTML = `
+                        <div>
+                             <label class="form-label">Award/Contribution</label>
+                            <input type="text" class="awards-name input-full" value="${item.name || item.title || ''}">
+                        </div>
+                        <div style="grid-column: 1 / -1;">
+                             <input type="file" class="awards-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                             <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
+                             ${getCertHtml(item.certificate_path)}
+                        </div>
                     `;
                     return div;
                 });
@@ -950,6 +969,299 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Co-Curricular & Extracurricular Add/Save Logic ---
 
+    // Master Save: Co-Curricular
+    const saveCoCurricularMasterBtn = document.getElementById('saveCoCurricularMasterBtn');
+    if (saveCoCurricularMasterBtn) {
+        saveCoCurricularMasterBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const btn = saveCoCurricularMasterBtn;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+            btn.disabled = true;
+
+            try {
+                const promises = [];
+
+                // 1. Papers
+                const papers = [];
+                document.querySelectorAll('.paper-entry').forEach(div => {
+                    const journal = div.querySelector('.paper-journal')?.value.trim() || '';
+                    const title = div.querySelector('.paper-title')?.value.trim() || '';
+                    const fileInput = div.querySelector('.paper-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (journal || title) papers.push({ name: title, description: journal, score: 3, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Paper Publications', papers, true));
+
+                // 2. Inter-College (Fixed Selectors)
+                const inter = [];
+                document.querySelectorAll('.inter-entry').forEach(div => {
+                    const college = div.querySelector('.inter-college')?.value.trim() || '';
+                    const desc = div.querySelector('.inter-desc')?.value.trim() || '';
+                    const fileInput = div.querySelector('.inter-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (college || desc) inter.push({ name: college, description: desc, score: 3, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Inter-College Activity', inter, true));
+
+                // 3. Intra-Dept
+                const intra = [];
+                document.querySelectorAll('.intra-dept-entry').forEach(div => {
+                    const event = div.querySelector('.dept-event')?.value.trim() || '';
+                    const desc = div.querySelector('.dept-desc')?.value.trim() || '';
+                    const fileInput = div.querySelector('.dept-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (event || desc) intra.push({ name: event, description: desc, score: 1, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Intra-Department Winner', intra, true));
+
+                // 4. Seminars
+                const seminars = [];
+                document.querySelectorAll('.seminar-entry').forEach(div => {
+                    const topic = div.querySelector('.seminar-topic')?.value.trim() || '';
+                    const fileInput = div.querySelector('.seminar-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (topic) seminars.push({ name: topic, description: 'Seminar', score: 2, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Seminars Delivered', seminars, true));
+
+                // 5. Class Rep
+                const rep = [];
+                document.querySelectorAll('.rep-entry').forEach(div => {
+                    const sem = div.querySelector('.rep-semester')?.value.trim() || '';
+                    const fileInput = div.querySelector('.rep-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (sem) rep.push({ name: `Semester ${sem}`, description: 'Class Representative', score: 2, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Class Representative', rep, true));
+
+                // 6. Membership
+                const mem = [];
+                document.querySelectorAll('.membership-entry').forEach(div => {
+                    const name = div.querySelector('.membership-name')?.value.trim() || '';
+                    const fileInput = div.querySelector('.membership-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) mem.push({ name: name, description: 'Member of Professional Body', score: 1, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Professional Body Membership', mem, true));
+
+                // 7. MOOCs
+                const moocs = [];
+                document.querySelectorAll('.moocs-entry').forEach(div => {
+                    const name = div.querySelector('.moocs-name')?.value.trim() || '';
+                    const fileInput = div.querySelector('.moocs-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) moocs.push({ name: name, description: 'MOOCs Certification', score: 2, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'MOOCs Certification', moocs, true));
+
+                // 8. Internship
+                const intern = [];
+                document.querySelectorAll('.internship-entry').forEach(div => {
+                    const name = div.querySelector('.internship-name')?.value.trim() || '';
+                    const duration = div.querySelector('.internship-duration')?.value.trim() || '';
+                    const fileInput = div.querySelector('.internship-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) intern.push({ name: name, description: `Duration: ${duration}`, score: 2, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Internship/Consultancy', intern, true));
+
+                // 9. Awards
+                const awards = [];
+                document.querySelectorAll('.awards-entry').forEach(div => {
+                    const name = div.querySelector('.awards-name')?.value.trim() || '';
+                    const fileInput = div.querySelector('.awards-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) awards.push({ name: name, description: 'Significant Contribution', score: 2, fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/co-curricular/bulk', 'Award/Contribution', awards, true));
+
+                const results = await Promise.all(promises);
+                if (results.every(r => r === true)) {
+                    alert('All Co-Curricular Activities Saved Successfully!');
+                } else {
+                    alert('Completed with errors. Some activities may not have saved. Please check the alerts.');
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert('Error saving some activities. Please check data and try again.');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Master Save: Extracurricular
+    const saveExtracurricularMasterBtn = document.getElementById('saveExtracurricularMasterBtn');
+    if (saveExtracurricularMasterBtn) {
+        saveExtracurricularMasterBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const btn = saveExtracurricularMasterBtn;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+            btn.disabled = true;
+
+            try {
+                const promises = [];
+
+                // 1. Uni Team
+                const uni = [];
+                document.querySelectorAll('.uni-team-entry').forEach(div => {
+                    const name = div.querySelector('.uni-team-name')?.value.trim() || '';
+                    const type = div.querySelector('.uni-team-type')?.value;
+                    const fileInput = div.querySelector('.uni-team-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) {
+                        uni.push({
+                            name: name,
+                            description: `Selection Type: ${type}`,
+                            level: type === 'individual' ? 'Individual' : 'Group',
+                            score: type === 'individual' ? 3 : 2,
+                            fileInput: fileInput,
+                            existing_path: existingPath
+                        });
+                    }
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'University Team Selection', uni, true));
+
+                // 2. Outside
+                const outside = [];
+                document.querySelectorAll('.outside-entry').forEach(div => {
+                    const name = div.querySelector('.outside-name')?.value.trim() || '';
+                    const type = div.querySelector('.outside-type')?.value;
+                    const fileInput = div.querySelector('.outside-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) {
+                        outside.push({
+                            name,
+                            description: `Achievement: ${type}`,
+                            level: type === 'prize' ? 'Winner' : 'Participant',
+                            score: type === 'prize' ? 5 : 1,
+                            fileInput: fileInput,
+                            existing_path: existingPath
+                        });
+                    }
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'Outside College Activity', outside, true));
+
+                // 3. Within
+                const within = [];
+                document.querySelectorAll('.within-entry').forEach(div => {
+                    const name = div.querySelector('.within-name')?.value.trim() || '';
+                    const type = div.querySelector('.within-type')?.value;
+                    const fileInput = div.querySelector('.within-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) {
+                        within.push({
+                            name,
+                            description: `Achievement: ${type}`,
+                            level: type === 'prize' ? 'Winner' : 'Participant',
+                            score: type === 'prize' ? 2 : 1,
+                            fileInput: fileInput,
+                            existing_path: existingPath
+                        });
+                    }
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'Within College Activity', within, true));
+
+                // 4. Tech Fest
+                const tech = [];
+                document.querySelectorAll('.tech-entry').forEach(div => {
+                    const name = div.querySelector('.tech-name')?.value.trim() || '';
+                    const type = div.querySelector('.tech-type')?.value;
+                    const fileInput = div.querySelector('.tech-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) {
+                        tech.push({
+                            name: name,
+                            description: `Level: ${type}`,
+                            level: type === 'college' ? 'College' : 'Department',
+                            score: type === 'college' ? 2 : 1,
+                            fileInput: fileInput,
+                            existing_path: existingPath
+                        });
+                    }
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'Tech Fest Coordinator', tech, true));
+
+                // 5. Other Coord
+                const other = [];
+                document.querySelectorAll('.other-coord-entry').forEach(div => {
+                    const name = div.querySelector('.other-coord-name')?.value.trim() || '';
+                    const type = div.querySelector('.other-coord-type')?.value;
+                    const fileInput = div.querySelector('.other-coord-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) {
+                        other.push({
+                            name: name,
+                            description: `Level: ${type}`,
+                            level: type === 'college' ? 'College' : 'Department',
+                            score: type === 'college' ? 2 : 1,
+                            fileInput: fileInput,
+                            existing_path: existingPath
+                        });
+                    }
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'Other Coordinator', other, true));
+
+                // 6. Committee
+                const comm = [];
+                document.querySelectorAll('.committee-entry').forEach(div => {
+                    const name = div.querySelector('.committee-name')?.value.trim() || '';
+                    const fileInput = div.querySelector('.committee-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) {
+                        comm.push({
+                            name: name,
+                            description: 'Committee Member',
+                            level: 'Member',
+                            score: 1,
+                            fileInput: fileInput,
+                            existing_path: existingPath
+                        });
+                    }
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'Committee Member', comm, true));
+
+                // 7. NSS
+                const nss = [];
+                document.querySelectorAll('.nss-entry').forEach(div => {
+                    const name = div.querySelector('.nss-name')?.value.trim() || '';
+                    const fileInput = div.querySelector('.nss-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) nss.push({ name: name, description: 'Social Service Activity', level: 'Participant', score: 1, fileInput: fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'NSS/Social Service', nss, true));
+
+                // 8. Ext Awards
+                const extAwards = [];
+                document.querySelectorAll('.ext-awards-entry').forEach(div => {
+                    const name = div.querySelector('.ext-awards-name')?.value.trim() || '';
+                    const fileInput = div.querySelector('.ext-awards-file');
+                    const existingPath = div.querySelector('.existing-path')?.value || null;
+                    if (name) extAwards.push({ name: name, description: 'Contribution', level: 'Recipient', score: 2, fileInput: fileInput, existing_path: existingPath });
+                });
+                promises.push(saveBulkActivities('student/extracurricular/bulk', 'Extracurricular Award', extAwards, true));
+
+                const results = await Promise.all(promises);
+                if (results.every(r => r === true)) {
+                    alert('All Extracurricular Activities Saved Successfully!');
+                } else {
+                    alert('Completed with errors. Some activities may not have saved. Please check the alerts.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error saving some activities. Please check data.');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+    }
+
+
     // Papers
     const papersYes = document.getElementById('papersYes');
     const papersNo = document.getElementById('papersNo');
@@ -985,22 +1297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (savePapersBtn) {
-        savePapersBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.paper-entry');
-            const items = [];
-            entries.forEach(div => {
-                const journal = div.querySelector('.paper-journal').value.trim();
-                const title = div.querySelector('.paper-title').value.trim();
-                const fileInput = div.querySelector('.paper-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                // Logic preserved
-                if (journal || title) items.push({ name: title, description: journal, score: 3, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Paper Publications', items);
-        });
-    }
+
 
     // Inter-College
     const interYes = document.getElementById('interYes');
@@ -1035,21 +1332,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveInterBtn) {
-        saveInterBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.inter-entry');
-            const items = [];
-            entries.forEach(div => {
-                const college = div.querySelector('.inter-college').value.trim();
-                const desc = div.querySelector('.inter-desc').value.trim();
-                const fileInput = div.querySelector('.inter-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (college || desc) items.push({ name: college, description: desc, score: 3, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Inter-College Activity', items);
-        });
-    }
+    // Removed individual saveInterBtn listener
 
     // Intra-Dept
     const intraDeptYes = document.getElementById('intraDeptYes');
@@ -1074,7 +1357,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label class="form-label">Event Name</label>
                         <input type="text" class="dept-event input-full" placeholder="Event Name">
                     </div>
-                    <div>
+                    <div style="grid-column: 1 / -1;">
                         <label class="form-label">Description / Prize</label>
                         <input type="text" class="dept-desc input-full" placeholder="Description">
                          <input type="file" class="dept-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
@@ -1084,21 +1367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveIntraDeptBtn) {
-        saveIntraDeptBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.intra-dept-entry');
-            const items = [];
-            entries.forEach(div => {
-                const event = div.querySelector('.dept-event').value.trim();
-                const desc = div.querySelector('.dept-desc').value.trim();
-                const fileInput = div.querySelector('.dept-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (event || desc) items.push({ name: event, description: desc, score: 1, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Intra-Department Winner', items);
-        });
-    }
+
 
     // Seminars
     const seminarsYes = document.getElementById('seminarsYes');
@@ -1127,20 +1396,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveSeminarsBtn) {
-        saveSeminarsBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.seminar-entry');
-            const items = [];
-            entries.forEach(div => {
-                const topic = div.querySelector('.seminar-topic').value.trim();
-                const fileInput = div.querySelector('.seminar-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (topic) items.push({ name: topic, description: 'Seminar', score: 2, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Seminars Delivered', items);
-        });
-    }
+
 
     // Class Rep
     const repYes = document.getElementById('repYes');
@@ -1169,20 +1425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveRepBtn) {
-        saveRepBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.rep-entry');
-            const items = [];
-            entries.forEach(div => {
-                const sem = div.querySelector('.rep-semester').value.trim();
-                const fileInput = div.querySelector('.rep-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (sem) items.push({ name: `Semester ${sem}`, description: 'Class Representative', score: 2, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Class Representative', items);
-        });
-    }
+
 
     // Membership
     const membershipYes = document.getElementById('membershipYes');
@@ -1211,21 +1454,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveMembershipBtn) {
-        saveMembershipBtn.replaceWith(saveMembershipBtn.cloneNode(true));
-        document.getElementById('saveMembershipBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.membership-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.membership-name').value.trim();
-                const fileInput = div.querySelector('.membership-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({ name: name, description: 'Member of Professional Body', score: 1, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Professional Body Membership', items);
-        });
-    }
+
 
     // MOOCs
     const moocsYes = document.getElementById('moocsYes');
@@ -1254,21 +1483,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveMoocsBtn) {
-        saveMoocsBtn.replaceWith(saveMoocsBtn.cloneNode(true));
-        document.getElementById('saveMoocsBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.moocs-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.moocs-name').value.trim();
-                const fileInput = div.querySelector('.moocs-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({ name: name, description: 'MOOCs Certification', score: 2, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'MOOCs Certification', items);
-        });
-    }
+
 
     // Internship
     const internshipYes = document.getElementById('internshipYes');
@@ -1305,22 +1520,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveInternshipBtn) {
-        saveInternshipBtn.replaceWith(saveInternshipBtn.cloneNode(true));
-        document.getElementById('saveInternshipBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.internship-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.internship-name').value.trim();
-                const duration = div.querySelector('.internship-duration').value.trim();
-                const fileInput = div.querySelector('.internship-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({ name: name, description: `Duration: ${duration}`, score: 2, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Internship/Consultancy', items);
-        });
-    }
+
 
     // Awards
     const awardsYes = document.getElementById('awardsYes');
@@ -1349,21 +1549,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveAwardsBtn) {
-        saveAwardsBtn.replaceWith(saveAwardsBtn.cloneNode(true));
-        document.getElementById('saveAwardsBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.awards-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.awards-name').value.trim();
-                const fileInput = div.querySelector('.awards-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({ name: name, description: 'Significant Contribution', score: 2, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/co-curricular/bulk', 'Award/Contribution', items);
-        });
-    }
+
 
     // --- Extracurricular UI Logic ---
     // University Team
@@ -1396,7 +1582,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <option value="group">Group (2 Marks)</option>
                     </select>
                 </div>
-                 <div style="grid-column: 1 / -1;">
+                <div style="grid-column: 1 / -1;">
                     <input type="file" class="uni-team-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
             `;
@@ -1404,30 +1590,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveUniTeamBtn) {
-        saveUniTeamBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.uni-team-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.uni-team-name').value.trim();
-                const type = div.querySelector('.uni-team-type').value;
-                const fileInput = div.querySelector('.uni-team-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) {
-                    items.push({
-                        name: name,
-                        description: `Selection Type: ${type}`,
-                        level: type === 'individual' ? 'Individual' : 'Group',
-                        score: type === 'individual' ? 3 : 2,
-                        fileInput: fileInput,
-                        existing_path: existingPath
-                    });
-                }
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'University Team Selection', items);
-        });
-    }
+
 
     // Outside College
     const outsideYes = document.getElementById('outsideYes');
@@ -1459,7 +1622,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <option value="prize">I/II Prize Won (5 Marks)</option>
                     </select>
                 </div>
-                 <div style="grid-column: 1 / -1;">
+                <div style="grid-column: 1 / -1;">
                     <input type="file" class="outside-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
             `;
@@ -1467,29 +1630,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveOutsideBtn) {
-        saveOutsideBtn.replaceWith(saveOutsideBtn.cloneNode(true));
-        document.getElementById('saveOutsideBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.outside-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.outside-name').value.trim();
-                const type = div.querySelector('.outside-type').value;
-                const fileInput = div.querySelector('.outside-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({
-                    name,
-                    description: `Achievement: ${type}`,
-                    level: type === 'prize' ? 'Winner' : 'Participant',
-                    score: type === 'prize' ? 5 : 1,
-                    fileInput: fileInput,
-                    existing_path: existingPath
-                });
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'Outside College Activity', items);
-        });
-    }
+
 
     // Within College
     const withinYes = document.getElementById('withinYes');
@@ -1521,7 +1662,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <option value="prize">I/II Prize Won (2 Marks)</option>
                     </select>
                 </div>
-                 <div style="grid-column: 1 / -1;">
+                <div style="grid-column: 1 / -1;">
                     <input type="file" class="within-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
             `;
@@ -1529,29 +1670,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveWithinBtn) {
-        saveWithinBtn.replaceWith(saveWithinBtn.cloneNode(true));
-        document.getElementById('saveWithinBtn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.within-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.within-name').value.trim();
-                const type = div.querySelector('.within-type').value;
-                const fileInput = div.querySelector('.within-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({
-                    name,
-                    description: `Achievement: ${type}`,
-                    level: type === 'prize' ? 'Winner' : 'Participant',
-                    score: type === 'prize' ? 2 : 1,
-                    fileInput: fileInput,
-                    existing_path: existingPath
-                });
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'Within College Activity', items);
-        });
-    }
+
 
     // Tech Fest 
     const techYes = document.getElementById('techYes');
@@ -1583,7 +1702,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <option value="college">College Level (2 Marks)</option>
                     </select>
                 </div>
-                 <div style="grid-column: 1 / -1;">
+                <div style="grid-column: 1 / -1;">
                     <input type="file" class="tech-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
             `;
@@ -1591,30 +1710,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveTechBtn) {
-        saveTechBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.tech-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.tech-name').value.trim();
-                const type = div.querySelector('.tech-type').value;
-                const fileInput = div.querySelector('.tech-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) {
-                    items.push({
-                        name: name,
-                        description: `Level: ${type}`,
-                        level: type === 'college' ? 'College' : 'Department',
-                        score: type === 'college' ? 2 : 1,
-                        fileInput: fileInput,
-                        existing_path: existingPath
-                    });
-                }
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'Tech Fest Coordinator', items);
-        });
-    }
+
 
     // Other Coordinator
     const otherCoordYes = document.getElementById('otherCoordYes');
@@ -1646,7 +1742,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <option value="college">College Level (2 Marks)</option>
                     </select>
                 </div>
-                 <div style="grid-column: 1 / -1;">
+                <div style="grid-column: 1 / -1;">
                     <input type="file" class="other-coord-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
             `;
@@ -1654,30 +1750,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveOtherCoordBtn) {
-        saveOtherCoordBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.other-coord-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.other-coord-name').value.trim();
-                const type = div.querySelector('.other-coord-type').value;
-                const fileInput = div.querySelector('.other-coord-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) {
-                    items.push({
-                        name: name,
-                        description: `Level: ${type}`,
-                        level: type === 'college' ? 'College' : 'Department',
-                        score: type === 'college' ? 2 : 1,
-                        fileInput: fileInput,
-                        existing_path: existingPath
-                    });
-                }
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'Other Coordinator', items);
-        });
-    }
+
 
     // Committee
     const committeeYes = document.getElementById('committeeYes');
@@ -1706,29 +1779,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveCommitteeBtn) {
-        saveCommitteeBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.committee-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.committee-name').value.trim();
-                const fileInput = div.querySelector('.committee-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) {
-                    items.push({
-                        name: name,
-                        description: 'Committee Member',
-                        level: 'Member',
-                        score: 1,
-                        fileInput: fileInput,
-                        existing_path: existingPath
-                    });
-                }
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'Committee Member', items);
-        });
-    }
+
 
     // NSS
     const nssYes = document.getElementById('nssYes');
@@ -1757,20 +1808,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveNssBtn) {
-        saveNssBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.nss-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.nss-name').value.trim();
-                const fileInput = div.querySelector('.nss-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({ name: name, description: 'Social Service Activity', level: 'Participant', score: 1, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'NSS/Social Service', items);
-        });
-    }
+
 
     // Ext Awards
     const extAwardsYes = document.getElementById('extAwardsYes');
@@ -1799,20 +1837,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (saveExtAwardsBtn) {
-        saveExtAwardsBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const entries = document.querySelectorAll('.ext-awards-entry');
-            const items = [];
-            entries.forEach(div => {
-                const name = div.querySelector('.ext-awards-name').value.trim();
-                const fileInput = div.querySelector('.ext-awards-file');
-                const existingPath = div.querySelector('.existing-path')?.value || null;
-                if (name) items.push({ name: name, description: 'Contribution', level: 'Recipient', score: 2, fileInput: fileInput, existing_path: existingPath });
-            });
-            await saveBulkActivities('student/extracurricular/bulk', 'Extracurricular Award', items);
-        });
-    }
+
 
     // Final Submit
     // --- DECLARATION LOGIC ---
