@@ -1,0 +1,6395 @@
+2026-02-04 06:52:45 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 06:52:48 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 06:52:48 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 06:52:49 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 06:52:52 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 06:52:52 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 06:52:53 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:52:54 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 06:52:55 - Router Hit
+URI: /Best%20outgoing/admin/students/3
+Base: /Best outgoing
+Computed Path: admin/students/3
+----------------
+2026-02-04 06:52:55 - Router Hit
+URI: /Best%20outgoing/files/31
+Base: /Best outgoing
+Computed Path: files/31
+----------------
+2026-02-04 06:52:58 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 06:52:58 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:53:00 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 06:53:01 - Router Hit
+URI: /Best%20outgoing/admin/students/1
+Base: /Best outgoing
+Computed Path: admin/students/1
+----------------
+2026-02-04 06:53:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:53:01 - Router Hit
+URI: /Best%20outgoing/files/30
+Base: /Best outgoing
+Computed Path: files/30
+----------------
+2026-02-04 06:53:03 - Router Hit
+URI: /Best%20outgoing/admin/evaluate
+Base: /Best outgoing
+Computed Path: admin/evaluate
+----------------
+2026-02-04 06:53:05 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 06:53:05 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:53:07 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:53:09 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 06:53:12 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 06:53:12 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 06:53:12 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:53:14 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:55:46 - Router Hit
+URI: /Best%20outgoing/panel/evaluate/interview
+Base: /Best outgoing
+Computed Path: panel/evaluate/interview
+----------------
+2026-02-04 06:55:48 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:55:51 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 06:55:55 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 06:55:55 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 06:55:55 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:55:59 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:56:01 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 06:56:03 - Router Hit
+URI: /Best%20outgoing/admin/students/1
+Base: /Best outgoing
+Computed Path: admin/students/1
+----------------
+2026-02-04 06:56:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:56:03 - Router Hit
+URI: /Best%20outgoing/files/30
+Base: /Best outgoing
+Computed Path: files/30
+----------------
+2026-02-04 06:56:07 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 06:56:07 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 06:56:19 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 06:56:42 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 06:56:45 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 06:56:46 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 06:56:46 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:56:47 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:57:08 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 06:57:08 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:57:09 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:58:54 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 06:58:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:58:55 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:58:57 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 06:58:57 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 06:59:09 - Router Hit
+URI: /Best%20outgoing/files/15
+Base: /Best outgoing
+Computed Path: files/15
+----------------
+2026-02-04 06:59:17 - Router Hit
+URI: /Best%20outgoing/files/28
+Base: /Best outgoing
+Computed Path: files/28
+----------------
+2026-02-04 06:59:25 - Router Hit
+URI: /Best%20outgoing/files/23
+Base: /Best outgoing
+Computed Path: files/23
+----------------
+2026-02-04 06:59:28 - Router Hit
+URI: /Best%20outgoing/files/23
+Base: /Best outgoing
+Computed Path: files/23
+----------------
+2026-02-04 06:59:37 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:02:47 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:02:48 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:02:48 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:02:49 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:02:52 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:02:52 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:02:52 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:02:54 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:02:59 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:02:59 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:02:59 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:05:38 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:05:41 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:05:41 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:05:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:05:45 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:09:16 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:09:16 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:09:17 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:09:17 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:09:23 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:09:23 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:09:24 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:09:24 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:09:38 - Router Hit
+URI: /Best%20outgoing/panel/evaluate/interview
+Base: /Best outgoing
+Computed Path: panel/evaluate/interview
+----------------
+2026-02-04 07:09:39 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:09:39 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:09:41 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:09:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:09:46 - Router Hit
+URI: /Best%20outgoing/files/15
+Base: /Best outgoing
+Computed Path: files/15
+----------------
+2026-02-04 07:12:51 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:12:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:12:53 - Router Hit
+URI: /Best%20outgoing/files/17
+Base: /Best outgoing
+Computed Path: files/17
+----------------
+2026-02-04 07:12:54 - Router Hit
+URI: /Best%20outgoing/files/17
+Base: /Best outgoing
+Computed Path: files/17
+----------------
+2026-02-04 07:12:55 - Router Hit
+URI: /Best%20outgoing/files/17
+Base: /Best outgoing
+Computed Path: files/17
+----------------
+2026-02-04 07:12:55 - Router Hit
+URI: /Best%20outgoing/files/17
+Base: /Best outgoing
+Computed Path: files/17
+----------------
+2026-02-04 07:12:55 - Router Hit
+URI: /Best%20outgoing/files/17
+Base: /Best outgoing
+Computed Path: files/17
+----------------
+2026-02-04 07:12:56 - Router Hit
+URI: /Best%20outgoing/files/19
+Base: /Best outgoing
+Computed Path: files/19
+----------------
+2026-02-04 07:13:03 - Router Hit
+URI: /Best%20outgoing/files/15
+Base: /Best outgoing
+Computed Path: files/15
+----------------
+2026-02-04 07:14:17 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:14:17 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:14:19 - Router Hit
+URI: /Best%20outgoing/files/15
+Base: /Best outgoing
+Computed Path: files/15
+----------------
+2026-02-04 07:16:35 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:16:35 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:16:42 - Router Hit
+URI: /Best%20outgoing/files/18
+Base: /Best outgoing
+Computed Path: files/18
+----------------
+2026-02-04 07:16:53 - Router Hit
+URI: /Best%20outgoing/panel/evaluate/interview
+Base: /Best outgoing
+Computed Path: panel/evaluate/interview
+----------------
+2026-02-04 07:16:54 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:16:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:05 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:05 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:07 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:08 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:08 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:09 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:09 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:10 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:10 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:10 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:11 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:11 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:12 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:12 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:12 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:12 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:12 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:13 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:17:22 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:17:25 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:17:25 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:17:25 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:17:26 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:17:35 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:17:38 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:17:40 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:18:09 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:18:09 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:18:11 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:18:11 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:18:12 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:18:16 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:18:16 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:18:42 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:18:45 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:18:45 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:18:53 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:18:53 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:19:08 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:19:09 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:19:10 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:19:12 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:19:34 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:19:37 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:19:37 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:19:38 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:19:39 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:19:39 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:19:39 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:19:40 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:20:04 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:20:04 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:20:05 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:20:06 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:20:08 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:20:11 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:20:15 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:20:17 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:20:18 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:21:14 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:21:18 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:21:18 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:21:18 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:21:19 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:21:36 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:21:36 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:23:21 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:23:21 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:23:22 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:23:45 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:23:45 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:23:46 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:23:46 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:23:46 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:24:29 - Router Hit
+URI: /Best%20outgoing/admin/students/3
+Base: /Best outgoing
+Computed Path: admin/students/3
+----------------
+2026-02-04 07:24:29 - Router Hit
+URI: /Best%20outgoing/files/31
+Base: /Best outgoing
+Computed Path: files/31
+----------------
+2026-02-04 07:24:31 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:24:31 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:24:32 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 07:24:33 - Router Hit
+URI: /Best%20outgoing/admin/students/1
+Base: /Best outgoing
+Computed Path: admin/students/1
+----------------
+2026-02-04 07:24:33 - Router Hit
+URI: /Best%20outgoing/files/30
+Base: /Best outgoing
+Computed Path: files/30
+----------------
+2026-02-04 07:24:33 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:24:35 - Router Hit
+URI: /Best%20outgoing/files/13
+Base: /Best outgoing
+Computed Path: files/13
+----------------
+2026-02-04 07:24:44 - Router Hit
+URI: /Best%20outgoing/files/23
+Base: /Best outgoing
+Computed Path: files/23
+----------------
+2026-02-04 07:24:50 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 07:24:50 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 07:24:52 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:24:54 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:24:54 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:24:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:24:56 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:24:56 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:26:40 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:26:40 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:27:08 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:27:08 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:27:27 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:27:27 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:27:30 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:27:30 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:27:33 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:27:33 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:27:35 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:27:35 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:27:39 - Router Hit
+URI: /Best%20outgoing/files/12
+Base: /Best outgoing
+Computed Path: files/12
+----------------
+2026-02-04 07:27:43 - Router Hit
+URI: /Best%20outgoing/files/13
+Base: /Best outgoing
+Computed Path: files/13
+----------------
+2026-02-04 07:27:46 - Router Hit
+URI: /Best%20outgoing/files/11
+Base: /Best outgoing
+Computed Path: files/11
+----------------
+2026-02-04 07:27:53 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:28:21 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:28:21 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:28:21 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:28:23 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:28:23 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:28:25 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:28:25 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:28:44 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:28:44 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:28:45 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:28:45 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:28:50 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:28:50 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:28:51 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:28:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:29:32 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:29:32 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:29:32 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:29:34 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:29:34 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:31:27 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:31:27 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:31:33 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:31:38 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:31:38 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:31:38 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:31:41 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:31:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:31:45 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:31:45 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:32:51 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:32:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:02 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:33:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:04 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:33:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:07 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:33:07 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:09 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:33:09 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:15 - Router Hit
+URI: /Best%20outgoing/panel/evaluate/interview
+Base: /Best outgoing
+Computed Path: panel/evaluate/interview
+----------------
+2026-02-04 07:33:16 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:33:16 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:36 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:33:36 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:33:48 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:37:58 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:37:58 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:37:58 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:38:08 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 07:38:08 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:38:22 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:38:38 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:38:50 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:39:02 - Router Hit
+URI: /Best%20outgoing/files/12
+Base: /Best outgoing
+Computed Path: files/12
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:41:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:41:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:41:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:41:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:41:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:41:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:04 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:05 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:27 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:42:28 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:43:31 - Router Hit
+URI: /Best%20outgoing/files/11
+Base: /Best outgoing
+Computed Path: files/11
+----------------
+2026-02-04 07:43:42 - Router Hit
+URI: /Best%20outgoing/files/11
+Base: /Best outgoing
+Computed Path: files/11
+----------------
+2026-02-04 07:43:50 - Router Hit
+URI: /Best%20outgoing/files/12
+Base: /Best outgoing
+Computed Path: files/12
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:44:03 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:45:41 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:45:42 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:58 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:46:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:48:51 - Router Hit
+URI: /Best%20outgoing/files/29
+Base: /Best outgoing
+Computed Path: files/29
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:50:36 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:40 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:53 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:51:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:52:10 - Router Hit
+URI: /Best%20outgoing/files/11
+Base: /Best outgoing
+Computed Path: files/11
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:53:38 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:53:57 - Router Hit
+URI: /Best%20outgoing/files/11
+Base: /Best outgoing
+Computed Path: files/11
+----------------
+2026-02-04 07:54:45 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:55:13 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:55:14 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:49 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:50 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:51 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:52 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:55 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:56 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:56:57 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:56:58 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:57:30 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 07:57:30 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:57:32 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:57:37 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:58:18 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 07:58:18 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:58:18 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:58:18 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:58:18 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:58:19 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:58:19 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:58:19 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:58:19 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:58:19 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:58:19 - Router Hit
+URI: /Best%20outgoing/downloads/generate
+Base: /Best outgoing
+Computed Path: downloads/generate
+----------------
+2026-02-04 07:59:38 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:38 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:38 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:38 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:39 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:40 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:41 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 07:59:42 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:32 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:33 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:58 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:00:59 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:00 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:01 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 08:01:02 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 08:01:29 - Router Hit
+URI: /Best%20outgoing/files/23
+Base: /Best outgoing
+Computed Path: files/23
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 09:28:30 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 09:28:32 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 09:28:42 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 09:28:45 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 09:28:52 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 09:28:53 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:28:53 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:28:55 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 09:28:57 - Router Hit
+URI: /Best%20outgoing/files/6
+Base: /Best outgoing
+Computed Path: files/6
+----------------
+2026-02-04 09:28:59 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:28:59 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:29:02 - Router Hit
+URI: /Best%20outgoing/admin/students/1
+Base: /Best outgoing
+Computed Path: admin/students/1
+----------------
+2026-02-04 09:29:02 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:29:02 - Router Hit
+URI: /Best%20outgoing/files/30
+Base: /Best outgoing
+Computed Path: files/30
+----------------
+2026-02-04 09:29:03 - Router Hit
+URI: /Best%20outgoing/files/6
+Base: /Best outgoing
+Computed Path: files/6
+----------------
+2026-02-04 09:29:03 - Router Hit
+URI: /Best%20outgoing/files/4
+Base: /Best outgoing
+Computed Path: files/4
+----------------
+2026-02-04 09:29:24 - Router Hit
+URI: /Best%20outgoing/files/29
+Base: /Best outgoing
+Computed Path: files/29
+----------------
+2026-02-04 09:29:29 - Router Hit
+URI: /Best%20outgoing/files/28
+Base: /Best outgoing
+Computed Path: files/28
+----------------
+2026-02-04 09:31:22 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:31:22 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:31:23 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 09:31:53 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/profile
+Base: /Best outgoing
+Computed Path: student/profile
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/co-curricular
+Base: /Best outgoing
+Computed Path: student/co-curricular
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/academic
+Base: /Best outgoing
+Computed Path: student/academic
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 09:31:54 - Router Hit
+URI: /Best%20outgoing/student/extracurricular
+Base: /Best outgoing
+Computed Path: student/extracurricular
+----------------
+2026-02-04 09:32:02 - Router Hit
+URI: /Best%20outgoing/files/12
+Base: /Best outgoing
+Computed Path: files/12
+----------------
+2026-02-04 09:32:21 - Router Hit
+URI: /Best%20outgoing/files/28
+Base: /Best outgoing
+Computed Path: files/28
+----------------
+2026-02-04 09:32:26 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 09:32:30 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 09:32:30 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:32:30 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:32:57 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 09:32:59 - Router Hit
+URI: /Best%20outgoing/admin/students/1
+Base: /Best outgoing
+Computed Path: admin/students/1
+----------------
+2026-02-04 09:32:59 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:32:59 - Router Hit
+URI: /Best%20outgoing/files/30
+Base: /Best outgoing
+Computed Path: files/30
+----------------
+2026-02-04 09:33:06 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:33:06 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:33:07 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:33:11 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 09:33:13 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 09:33:14 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 09:33:14 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:33:24 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 09:33:24 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:33:28 - Router Hit
+URI: /Best%20outgoing/panel/evaluate/interview
+Base: /Best outgoing
+Computed Path: panel/evaluate/interview
+----------------
+2026-02-04 09:33:29 - Router Hit
+URI: /Best%20outgoing/panel/students/top20
+Base: /Best outgoing
+Computed Path: panel/students/top20
+----------------
+2026-02-04 09:33:29 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:33:37 - Router Hit
+URI: /Best%20outgoing/panel/students/details?id=1
+Base: /Best outgoing
+Computed Path: panel/students/details
+----------------
+2026-02-04 09:33:37 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:33:40 - Router Hit
+URI: /Best%20outgoing/files/13
+Base: /Best outgoing
+Computed Path: files/13
+----------------
+2026-02-04 09:33:43 - Router Hit
+URI: /Best%20outgoing/files/22
+Base: /Best outgoing
+Computed Path: files/22
+----------------
+2026-02-04 09:33:57 - Router Hit
+URI: /Best%20outgoing/files/11
+Base: /Best outgoing
+Computed Path: files/11
+----------------
+2026-02-04 09:34:02 - Router Hit
+URI: /Best%20outgoing/files/12
+Base: /Best outgoing
+Computed Path: files/12
+----------------
+2026-02-04 09:34:05 - Router Hit
+URI: /Best%20outgoing/files/23
+Base: /Best outgoing
+Computed Path: files/23
+----------------
+2026-02-04 09:34:09 - Router Hit
+URI: /Best%20outgoing/files/28
+Base: /Best outgoing
+Computed Path: files/28
+----------------
+2026-02-04 09:34:12 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------
+2026-02-04 09:34:15 - Router Hit
+URI: /Best%20outgoing/auth/login
+Base: /Best outgoing
+Computed Path: auth/login
+----------------
+2026-02-04 09:34:16 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:34:16 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:34:18 - Router Hit
+URI: /Best%20outgoing/admin/students
+Base: /Best outgoing
+Computed Path: admin/students
+----------------
+2026-02-04 09:34:19 - Router Hit
+URI: /Best%20outgoing/admin/students/1
+Base: /Best outgoing
+Computed Path: admin/students/1
+----------------
+2026-02-04 09:34:19 - Router Hit
+URI: /Best%20outgoing/files/1
+Base: /Best outgoing
+Computed Path: files/1
+----------------
+2026-02-04 09:34:19 - Router Hit
+URI: /Best%20outgoing/files/30
+Base: /Best outgoing
+Computed Path: files/30
+----------------
+2026-02-04 09:34:22 - Router Hit
+URI: /Best%20outgoing/files/18
+Base: /Best outgoing
+Computed Path: files/18
+----------------
+2026-02-04 09:34:26 - Router Hit
+URI: /Best%20outgoing/admin/stats
+Base: /Best outgoing
+Computed Path: admin/stats
+----------------
+2026-02-04 09:34:26 - Router Hit
+URI: /Best%20outgoing/admin/leaderboard
+Base: /Best outgoing
+Computed Path: admin/leaderboard
+----------------
+2026-02-04 09:34:28 - Router Hit
+URI: /Best%20outgoing/auth/logout
+Base: /Best outgoing
+Computed Path: auth/logout
+----------------

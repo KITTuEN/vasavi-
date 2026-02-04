@@ -1,0 +1,40 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase "/Best outgoing/"
+
+    # API routes
+    RewriteRule ^(auth|student|admin|panel|files|downloads)(/.*)?$ src/router.php [L,QSA]
+
+    # Redirect .html to .php for legacy links
+    RewriteRule ^(.*)\.html$ $1.php [R=301,L]
+
+    # Pretty URLs for pages
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^dashboard/?$ dashboard.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^admin-dashboard/?$ admin-dashboard.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^panel-dashboard/?$ panel-dashboard.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^panel-evaluate/?$ panel-evaluate.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^register/?$ register.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^login/?$ index.php [L]
+
+    # Fallback for root
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^$ index.php [L]
+</IfModule>
