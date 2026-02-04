@@ -9,7 +9,7 @@ ini_set('display_errors', 0);
 
 // DEBUG LOGGING
 function log_debug($msg) {
-    file_put_contents(__DIR__ . '/../../debug_pdf.log', date('[Y-m-d H:i:s] ') . $msg . PHP_EOL, FILE_APPEND);
+    // file_put_contents(__DIR__ . '/../../debug_pdf.log', date('[Y-m-d H:i:s] ') . $msg . PHP_EOL, FILE_APPEND);
 }
 
 log_debug("Starting PDF generation script.");

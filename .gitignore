@@ -1,0 +1,5 @@
+
+*.log
+*.tmp
+debug_output.txt
+debug_stats.json

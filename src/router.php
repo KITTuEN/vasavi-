@@ -15,13 +15,14 @@ $base_path = dirname(dirname($_SERVER['SCRIPT_NAME'])); // Level up from src/rou
 $path = str_replace($base_path, '', rawurldecode(parse_url($request_uri, PHP_URL_PATH)));
 $path = trim($path, '/');
 
-file_put_contents('c:/xampp/htdocs/Best outgoing/debug_router.log', 
-    date('Y-m-d H:i:s') . " - Router Hit\n" .
-    "URI: $request_uri\n" .
-    "Base: $base_path\n" .
-    "Computed Path: $path\n----------------\n", 
-    FILE_APPEND
-);
+// Debug logging disabled
+// file_put_contents('c:/xampp/htdocs/Best outgoing/debug_router.log', 
+//     date('Y-m-d H:i:s') . " - Router Hit\n" .
+//     "URI: $request_uri\n" .
+//     "Base: $base_path\n" .
+//     "Computed Path: $path\n----------------\n", 
+//     FILE_APPEND
+// );
 
 // Set JSON header by default for API routes
 if (strpos($path, 'auth') === 0 || strpos($path, 'student') === 0 || strpos($path, 'admin') === 0) {
