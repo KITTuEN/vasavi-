@@ -928,15 +928,21 @@ body.admin-body {
         left: 0;
         width: 100%;
         height: auto;
+        min-height: 60px;
         z-index: 1000;
         background: #ffffff;
         border-top: 1px solid var(--border-color);
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+        /* Softer shadow */
+
         display: flex !important;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
+        flex-direction: row !important;
+        align-items: stretch;
+        gap: 6px;
+        /* Space between all buttons */
+        padding: 6px 8px !important;
+        /* Floating effect padding */
+
         transform: none;
         border-right: none;
         border-bottom: none;
@@ -944,91 +950,141 @@ body.admin-body {
 
     /* Hide Sidebar Header completely in Bottom Nav mode */
     .sidebar.mobile-mode .sidebar-header {
-        display: none;
+        display: none !important;
     }
 
-    /* Nav Links Container */
-    .sidebar.mobile-mode .nav-links {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-        overflow: visible;
+    /* Flatten the structure so all buttons share the same parent context */
+    .sidebar.mobile-mode .nav-links,
+    .sidebar.mobile-mode .sidebar-footer {
+        display: contents !important;
     }
 
     /* Nav Items (Tabs) */
     .sidebar.mobile-mode .nav-item {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 4px;
-        padding: 0.5rem;
+        gap: 2px;
+        padding: 4px 2px;
         background: transparent;
         border: none;
         color: var(--text-muted);
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         height: auto;
-        min-width: auto;
+        min-height: 44px;
+        width: auto;
+        min-width: 0;
+        flex: 1;
+        /* Share space equally */
+        border-radius: 8px;
+        /* Rounded corners */
+        transition: all 0.2s ease;
     }
 
     .sidebar.mobile-mode .nav-item i {
         font-size: 1.2rem;
         margin-bottom: 2px;
+        transition: transform 0.2s;
     }
 
     .sidebar.mobile-mode .nav-item span {
         display: block;
         font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        font-size: 0.55rem;
+        /* Slightly smaller to fit */
     }
 
-    /* Active State */
+    /* Active State Polish */
     .sidebar.mobile-mode .nav-item.active {
         color: var(--primary-color);
-        background: transparent;
+        background: rgba(79, 70, 229, 0.1);
+        /* Subtle background */
         border: none;
-        border-top: 2px solid var(--primary-color);
-        border-radius: 0;
-        border-left: none;
+        border-radius: 8px;
     }
 
-    /* Sidebar Footer */
-    .sidebar.mobile-mode .sidebar-footer {
-        display: flex;
-        gap: 0;
-        padding: 0;
-        margin: 0;
-        border-top: none;
-        margin-left: 0.5rem;
+    .sidebar.mobile-mode .nav-item.active i {
+        transform: translateY(-2px);
     }
 
-    /* Hide Download on mobile bottom bar */
+    /* Download Button Polish for Mobile */
     .sidebar.mobile-mode .sidebar-footer .btn-primary {
-        display: none;
+        display: flex !important;
+        background: transparent !important;
+        color: var(--text-muted) !important;
+        box-shadow: none !important;
+        border: none !important;
+        width: auto !important;
+        height: auto;
+        min-height: 44px;
+        padding: 4px 2px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        font-size: 0.65rem;
+        border-radius: 8px;
+        flex: 1;
+        /* Share space equally */
     }
 
+    .sidebar.mobile-mode .sidebar-footer .btn-primary i {
+        font-size: 1.2rem;
+        margin-right: 0;
+        /* Remove existing margin */
+        margin-bottom: 2px;
+    }
+
+    .sidebar.mobile-mode .sidebar-footer .btn-primary span {
+        display: block;
+        font-size: 0.55rem;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .sidebar.mobile-mode .sidebar-footer .btn-primary:active {
+        background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    /* Logout Button Polish */
     .sidebar.mobile-mode .sidebar-footer .logout-btn {
         width: auto !important;
         height: auto;
-        padding: 0.5rem;
+        min-height: 44px;
+        padding: 4px 2px;
         background: transparent;
         color: var(--error-color);
         border: none;
+        /* Remove border */
+        display: flex;
         flex-direction: column;
-        gap: 4px;
-        font-size: 0.7rem;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        font-size: 0.65rem;
+        border-radius: 8px;
+        flex: 1;
+        /* Share space equally */
+    }
+
+    .sidebar.mobile-mode .sidebar-footer .logout-btn:active {
+        background: rgba(239, 68, 68, 0.1);
     }
 
     .sidebar.mobile-mode .sidebar-footer .logout-btn i {
         font-size: 1.2rem;
         margin: 0;
+        margin-bottom: 2px;
     }
 
     .sidebar.mobile-mode .sidebar-footer .logout-btn span {
         display: block !important;
-        font-size: 0.7rem !important;
+        font-size: 0.55rem !important;
     }
 
     /* Hide hamburger */
@@ -2115,6 +2171,34 @@ body.landing-page .input-group input:focus {
     border-color: #4f46e5;
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
+
+/* File Link Button */
+.file-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: #e0e7ff;
+    color: var(--primary-color);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.file-link-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.file-link-btn i {
+    font-size: 0.9rem;
+}
+
 
 body.landing-page .subtitle {
     color: #64748b;

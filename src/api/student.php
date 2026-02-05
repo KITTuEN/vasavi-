@@ -29,7 +29,7 @@ isAuthenticated();
 
 if ($method === 'GET') {
     if ($action === 'profile') {
-        $user = db_get("SELECT name, email, department, roll_number, contact_number, bio, is_submitted, profile_photo, recommendation_letter_path FROM users WHERE id = ?", [$_SESSION['user']['id']]);
+        $user = db_get("SELECT name, email, department, roll_number, contact_number, bio, is_submitted, profile_photo, recommendation_letter_path, declaration_place, declaration_date, signature_path FROM users WHERE id = ?", [$_SESSION['user']['id']]);
         echo json_encode($user);
     } elseif ($action === 'academic') {
         $row = db_get("SELECT * FROM academic_records WHERE user_id = ?", [$_SESSION['user']['id']]);

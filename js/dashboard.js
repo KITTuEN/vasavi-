@@ -124,6 +124,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            // Declaration Details
+            setVal('declPlace', data.declaration_place);
+            if (data.declaration_date) setVal('declDate', data.declaration_date);
+
+            if (data.is_submitted === 1) {
+                const declCheck = document.getElementById('declCheck');
+                if (declCheck) declCheck.checked = true;
+            }
+
+            if (data.signature_path) {
+                const sigPreview = document.getElementById('signaturePreview');
+                const sigImg = sigPreview.querySelector('img');
+                if (sigPreview && sigImg) {
+                    sigImg.src = 'files/' + data.signature_path.replace('FILE:', '');
+                    sigPreview.style.display = 'block';
+                }
+            }
+
         } catch (e) {
             console.error('Error loading profile', e);
             let debugEl = document.getElementById('debug-info');
@@ -158,7 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 'addCommitteeBtn', 'saveCommitteeBtn',
                 'addNssBtn', 'saveNssBtn',
                 'addExtAwardsBtn', 'saveExtAwardsBtn',
-                'saveAcademicBtn'
+                'saveAcademicBtn',
+                'saveCoCurricularMasterBtn', 'saveExtracurricularMasterBtn',
+                'saveRecBtn'
             ];
 
             buttonsToHide.forEach(id => {
@@ -344,15 +364,46 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             url = path.startsWith('/') ? path.substring(1) : 'uploads/' + path;
         }
-        return `<small><a href="#" onclick="openCertModal('${url}'); return false;" style="color:var(--primary-color);">View Certificate</a></small>`;
+        return `<a href="#" onclick="openCertModal('${url}'); return false;" class="file-link-btn"><i class="fas fa-eye"></i> View Certificate</a>`;
     };
 
     // Make global so it can be called from onclick
     window.openCertModal = (url) => {
         const modal = document.getElementById('certModal');
         const iframe = document.getElementById('certIframe');
-        if (modal && iframe) {
-            iframe.src = url;
+        const img = document.getElementById('certImage');
+
+        if (modal) {
+            // Reset state
+            if (iframe) {
+                iframe.style.display = 'none';
+                iframe.src = '';
+            }
+            if (img) {
+                img.style.display = 'none';
+                img.src = ''; // Clear previous
+
+                // Try loading as image first
+                img.onload = () => {
+                    img.style.display = 'block';
+                    if (iframe) iframe.style.display = 'none';
+                };
+
+                img.onerror = () => {
+                    img.style.display = 'none';
+                    if (iframe) {
+                        iframe.style.display = 'block';
+                        iframe.src = url;
+                    }
+                };
+
+                img.src = url;
+            } else if (iframe) {
+                // Fallback if no img tag
+                iframe.src = url;
+                iframe.style.display = 'block';
+            }
+
             modal.style.display = 'flex';
         }
     };

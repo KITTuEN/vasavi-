@@ -42,7 +42,7 @@
                 </button>
                 <button class="nav-item tab-btn" data-tab="recommendation">
                     <i class="fas fa-envelope-open-text"></i>
-                    <span>Recommendation Letter</span>
+                    <span>Letter</span>
                 </button>
                 <button class="nav-item tab-btn" data-tab="extracurricular">
                     <i class="fas fa-running"></i>
@@ -697,8 +697,9 @@
                 <button onclick="document.getElementById('certModal').style.display='none'"
                     class="close-modal">&times;</button>
             </div>
-            <div class="modal-body" style="flex:1; overflow:hidden; position:relative;">
-                <iframe id="certIframe" style="width:100%; height:100%; border:none;"></iframe>
+            <div class="modal-body" style="flex:1; overflow:hidden; position:relative; display:flex; justify-content:center; align-items:center;">
+                <iframe id="certIframe" style="width:100%; height:100%; border:none; display:none;"></iframe>
+                <img id="certImage" style="max-width:100%; max-height:100%; object-fit:contain; display:none;" alt="Certificate Preview">
             </div>
         </div>
     </div>
