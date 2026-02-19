@@ -148,37 +148,206 @@ document.addEventListener('DOMContentLoaded', () => {
             list.innerHTML = '<p style="padding:1rem; color:var(--text-muted); text-align:center;">No students found.</p>';
             return;
         }
-        list.innerHTML = students.map(s => `
-            <div class="student-item" onclick="viewStudent(${s.id})">
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
+
+        // Table-style rendering (since previous view was table, we adapt to list view but keeping logic)
+        // Check if container is table or list. Based on file content, it seems to be using list-items.
+        // We will stick to the existing div structure but add the new badge.
+
+        list.innerHTML = students.map(s => {
+            const isEvaluated = s.is_evaluated > 0;
+            const isHodSubmitted = s.is_hod_submitted == 1;
+
+            let badge = '';
+            if (isEvaluated) {
+                badge = '<span style="background: #10b981; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;">Evaluated</span>';
+            } else if (isHodSubmitted) {
+                badge = '<span style="background: #3b82f6; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;">HOD Submitted</span>';
+            } else if (s.has_academic_comments == 1) {
+                badge = '<span style="background: #f59e0b; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;">HOD Draft</span>';
+            } else {
+                badge = '<span class="status-badge status-pending">Pending</span>';
+            }
+
+            return `
+            <div class="student-item">
+                <div style="display: flex; align-items: center; gap: 0.75rem; cursor:pointer;" onclick="viewStudent(${s.id})">
                     <span>${s.name} (${s.roll_number})</span>
-                    ${s.is_evaluated ? '<span style="background: #10b981; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;">Evaluated</span>' : ''}
+                    ${badge}
                 </div>
-                <small>${s.department}</small>
+                <div style="display:flex; align-items:center; gap: 1rem;">
+                    <small>${s.department}</small>
+                    ${window.isSuperAdmin ? (
+                    s.is_sent_to_panel == 1
+                        ? `<span style="color: #6366f1; font-size: 0.8rem; font-weight: 500;"><i class="fa-solid fa-circle-check"></i> Sent to Panel</span>`
+                        : `<button class="btn btn-sm btn-outline-primary" style="padding: 2px 8px; font-size: 0.8rem;" onclick="sendToPanel(${s.id}, event)">
+                             <i class="fa-solid fa-paper-plane"></i> Send to Panel
+                        </button>`
+                ) : ''}
+                </div>
             </div>
-        `).join('');
+        `}).join('');
     }
 
     // Performance Page Logic
-    async function loadLeaderboardTable() {
-        const res = await fetch('admin/leaderboard');
-        const data = await res.json();
-        const tbody = document.getElementById('leaderboardBody');
-        if (tbody) {
-            tbody.innerHTML = data.map((s, i) => `
-                <tr>
-                    <td>${i + 1}</td>
-                    <td>${s.name}</td>
-                    <td>${s.department}</td>
-                    <td>${s.roll_number}</td>
-                    <td><strong>${s.total_score}</strong></td>
-                </tr>
-            `).join('');
+    // Performance Page Logic
+    async function loadLeaderboardTable(viewType = null) {
+        if (!viewType) {
+            viewType = window.isSuperAdmin ? 'before' : 'after';
         }
+
+        const res = await fetch(`admin/leaderboard?type=${viewType}`);
+        const data = await res.json();
+
+        const tabs = document.querySelectorAll('.l-tab');
+        if (tabs.length > 0) {
+            // Re-setup listeners
+            tabs.forEach(tab => {
+                const newTab = tab.cloneNode(true);
+                tab.replaceWith(newTab);
+                if (newTab.dataset.type === viewType) newTab.classList.add('active');
+                else newTab.classList.remove('active');
+
+                newTab.addEventListener('click', () => {
+                    loadLeaderboardTable(newTab.dataset.type);
+                });
+            });
+        }
+        renderLeaderboard(data);
+    }
+
+    function renderLeaderboard(data) {
+        const tbody = document.getElementById('leaderboardBody');
+        if (!tbody) return;
+
+        tbody.innerHTML = data.map((s, i) => `
+            <tr>
+                <td>${i + 1}</td>
+                <td>${s.name}</td>
+                <td>${s.department}</td>
+                <td>${s.roll_number}</td>
+                <td><strong>${parseFloat(s.score || 0).toFixed(2)}</strong></td>
+            </tr>
+        `).join('');
+    }
+
+    // PDF Export
+    const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+    if (downloadPdfBtn) {
+        downloadPdfBtn.addEventListener('click', () => {
+            try {
+                const jsPDFObj = window.jspdf ? window.jspdf.jsPDF : null;
+                if (!jsPDFObj) {
+                    alert("PDF library not loaded yet. Please refresh the page.");
+                    return;
+                }
+
+                const doc = new jsPDFObj('p', 'mm', 'a4');
+                const activeTab = document.querySelector('.l-tab.active').innerText.trim();
+                const tableRows = document.querySelectorAll('#leaderboardBody tr');
+
+                if (tableRows.length === 0) {
+                    alert("No data available to export.");
+                    return;
+                }
+
+                // Prepare data manually
+                const headers = [["Rank", "Student Name", "Department", "Roll Number", "Score"]];
+                const data = Array.from(tableRows).map(row => {
+                    return Array.from(row.cells).map(cell => cell.innerText.trim());
+                });
+
+                // PDF Style & Header
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(22);
+                doc.setTextColor(99, 102, 241); // Indigo
+                doc.text("Best Outgoing Student Evaluation", 105, 20, { align: "center" });
+
+                doc.setFontSize(16);
+                doc.setTextColor(30, 41, 59); // Slate 800
+                doc.text(`${activeTab} Leaderboard`, 105, 30, { align: "center" });
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(10);
+                doc.setTextColor(100, 116, 139); // Slate 500
+                doc.text(`Generated on: ${new Date().toLocaleString()}`, 105, 38, { align: "center" });
+
+                doc.setDrawColor(99, 102, 241);
+                doc.line(15, 45, 195, 45);
+
+                // AutoTable with manual data
+                doc.autoTable({
+                    head: headers,
+                    body: data,
+                    startY: 55,
+                    theme: 'striped',
+                    headStyles: {
+                        fillColor: [99, 102, 241],
+                        textColor: [255, 255, 255],
+                        fontStyle: 'bold',
+                        fontSize: 11
+                    },
+                    bodyStyles: { fontSize: 10, textColor: [30, 41, 59] },
+                    alternateRowStyles: { fillColor: [248, 250, 252] },
+                    margin: { left: 15, right: 15 },
+                    styles: { font: 'helvetica', cellPadding: 4 },
+                    columnStyles: {
+                        4: { halign: 'right', fontStyle: 'bold' } // Score column
+                    }
+                });
+
+                // Pagination
+                const pageCount = doc.internal.getNumberOfPages();
+                for (let i = 1; i <= pageCount; i++) {
+                    doc.setPage(i);
+                    doc.setFontSize(9);
+                    doc.setTextColor(150);
+                    doc.text(`Page ${i} of ${pageCount} | Best Outgoing Student Awards`, 105, 285, { align: "center" });
+                }
+
+                doc.save(`Leaderboard_${activeTab.replace(/\s+/g, '_')}.pdf`);
+            } catch (err) {
+                console.error("PDF Export Error:", err);
+                alert("An error occurred while generating the PDF. Please contact support.");
+            }
+        });
     }
 
     // Global helpers
-    window.viewStudent = (id) => { window.location.href = `evaluate-student.php?id=${id}`; };
+    window.viewStudent = (id) => {
+        if (window.userRole === 'panel') {
+            window.location.href = `panel-evaluate.php?id=${id}`;
+        } else {
+            window.location.href = `evaluate-student.php?id=${id}`;
+        }
+    };
+
+    window.sendToPanel = async (id, event) => {
+        event.stopPropagation();
+        if (window.userRole === 'panel') return;
+        if (!confirm('Are you sure you want to send this student to the panel?')) return;
+
+        try {
+            const res = await fetch('admin/send_to_panel', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: id })
+            });
+            const data = await res.json();
+            if (res.ok) {
+                // Update local state and re-render
+                const student = allStudents.find(s => s.id == id);
+                if (student) student.is_sent_to_panel = 1;
+                renderStudentList(allStudents);
+
+                alert('Student sent to panel successfully');
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Failed to send to panel');
+        }
+    };
 
     // Search
     const searchInput = document.getElementById('studentSearch');

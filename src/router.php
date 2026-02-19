@@ -25,7 +25,7 @@ $path = trim($path, '/');
 // );
 
 // Set JSON header by default for API routes
-if (strpos($path, 'auth') === 0 || strpos($path, 'student') === 0 || strpos($path, 'admin') === 0) {
+if (strpos($path, 'auth') === 0 || strpos($path, 'student') === 0 || strpos($path, 'admin') === 0 || strpos($path, 'panel') === 0) {
     header('Content-Type: application/json');
     ini_set('display_errors', 0);
     error_reporting(E_ALL); // Log errors, don't display them
@@ -44,6 +44,8 @@ if (strpos($path, 'auth/') === 0) {
     require_once __DIR__ . '/api/files.php';
 } elseif (strpos($path, 'downloads/') === 0) {
     require_once __DIR__ . '/api/pdf.php';
+} elseif ($path === 'panel-dashboard') {
+    require_once __DIR__ . '/../panel-dashboard.php';
 } else {
     // Fallback or static file serving handle (though .htaccess normally handles this)
     http_response_code(404);

@@ -1,3 +1,11 @@
+const getCertHtml = (path) => {
+    if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
+    const url = `files/${path.replace('FILE:', '')}`;
+    return `<a href="#" onclick="openDocModal('${url}'); return false;" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
+        <i class="fa-solid fa-eye"></i> View
+    </a>`;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // URL Params
     const urlParams = new URLSearchParams(window.location.search);
@@ -28,8 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Invalid data: User record missing');
             }
 
+            // Global Locked Status
+            window.IS_LOCKED = data.academic && data.academic.is_hod_submitted == 1;
+
             // Populate Header
             document.getElementById('studentName').innerText = data.user.name || 'Unknown';
+
             document.getElementById('studentMeta').innerText = `${data.user.roll_number || '-'} | ${data.user.department || '-'}`;
             document.getElementById('evalUserId').value = data.user.id;
 
@@ -55,19 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('submissionDetails').innerHTML = `<div class="alert alert-danger">Error rendering details: ${renderErr.message}</div>`;
             }
 
-            // Pre-fill Scores (Right Column)
+            // Pre-fill Scores (Right Column) & Comments
             try {
-                prefillScores(data);
+                prefillData(data);
             } catch (scoreErr) {
                 console.error(scoreErr);
             }
 
-            // Recalculate totals
-            updateCategoryTotals();
+            // Recalculate totals (Only for Super Admin)
+            if (IS_SUPER_ADMIN) {
+                updateCategoryTotals();
+            }
 
         } catch (error) {
             console.error("Load Error:", error);
-            // Show error in the main container so user sees it
             const errorHtml = `<div style="text-align:center; padding:2rem; color:#dc2626;">
                 <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
                 <h3>Failed to load student</h3>
@@ -78,102 +91,167 @@ document.addEventListener('DOMContentLoaded', () => {
             const detailsEl = document.getElementById('submissionDetails');
             if (detailsEl) detailsEl.innerHTML = errorHtml;
 
-            // Also update header
             document.getElementById('studentName').innerText = "Error";
             document.getElementById('studentMeta').innerText = "Failed to load";
         }
     }
 
     function renderSubmissions(data) {
-        // Defensive checks
         const academic = data.academic || {};
         const getSGPA = (i) => academic[`sgpa_sem${i}`] || '-';
         const safeArr = (arr) => Array.isArray(arr) ? arr : [];
 
-        let content = `<h4>Academic Performance</h4>
-            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px;">
+        let content = `<h4 style="margin-bottom:1rem;">Academic Details</h4>`;
+
+        // 1. Overall Performance (SGPA Grid & CGPA) - No Comments
+        content += `<div class="list-item-card" style="margin-bottom: 1rem;">
+            <p style="margin:0; font-weight:bold; margin-bottom:10px;">Semester Performance (SGPA)</p>
+            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px;">
                 ${[1, 2, 3, 4, 5, 6, 7, 8].map(i => `
-                    <div class="list-item-card">
-                        <small>Sem ${i}</small>
-                        <p style="margin:0; font-weight:bold;">${getSGPA(i)}</p>
+                    <div style="background:#f1f5f9; padding:8px; border-radius:6px; text-align:center;">
+                        <small style="color:#64748b; font-size:0.75rem; display:block;">Sem ${i}</small>
+                        <span style="font-weight:bold; color:#334155;">${getSGPA(i)}</span>
                     </div>
                 `).join('')}
-            </div>`;
-
-        content += `<div class="list-item-card mb-4">
-            <p><strong>Overall CGPA:</strong> ${academic.cgpa || 'N/A'}</p>
-            <p><strong>Projects:</strong> ${academic.projects || 'N/A'}</p>
-             <div>
-                <strong>Honours/Minors:</strong> 
-                ${(() => {
-                const raw = academic.honours_minors;
-                if (!raw || raw === 'No') return 'N/A';
-                try {
-                    if (raw.trim().startsWith('{')) {
-                        const parsed = JSON.parse(raw);
-                        if (parsed.courses && Array.isArray(parsed.courses)) {
-                            return `<strong>${parsed.type || 'Honours'}:</strong><br>` + parsed.courses.map(c => {
-                                let link = '';
-                                if (c.certificate_path) {
-                                    const path = c.certificate_path.startsWith('FILE:') ? `files/${c.certificate_path.split(':')[1]}` : (c.certificate_path.startsWith('/') ? c.certificate_path.substring(1) : `uploads/${c.certificate_path}`);
-                                    link = `<a href="#" onclick="window.openDocModal('${path}'); return false;" class="text-primary"><i class="fa-solid fa-eye"></i></a>`;
-                                }
-                                return `- ${c.name || 'Course'} ${link}`;
-                            }).join('<br>');
-                        }
-                    }
-                } catch (e) { return raw; }
-                return raw;
-            })()}
             </div>
-            <p><strong>Competitive Exams:</strong> ${academic.competitive_exams || 'N/A'}</p>
+            <div style="background:#e0e7ff; padding:10px; border-radius:6px; border:1px solid #c7d2fe; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:bold; color:#3730a3;">Overall CGPA</span>
+                <span style="font-weight:bold; font-size:1.1rem; color:#312e81;">${academic.cgpa || 'N/A'}</span>
+            </div>
+            <!-- Projects Removed -->
         </div>`;
 
-        // Co-Curricular
-        const coItems = safeArr(data.coCurricular);
-        content += `<h4 class="mt-4">Co-Curricular Activities (${coItems.length})</h4>`;
-        if (coItems.length > 0) {
-            coItems.forEach(c => {
-                const certLink = c.certificate_path
-                    ? (c.certificate_path.startsWith('FILE:') ? `files/${c.certificate_path.split(':')[1]}` : `files/${c.certificate_path}`)
-                    : null;
-                content += `<div class="list-item-card" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <p style="margin:0; font-weight:bold;">${c.title || 'Untitled'} <span class="text-muted" style="font-weight:normal;">(${c.activity_type || 'Activity'})</span></p>
-                        ${certLink ? `<a href="#" onclick="window.openDocModal('${certLink}'); return false;" class="text-primary" style="font-size:0.85rem;"><i class="fa-solid fa-eye"></i> View Certificate</a>` : '<span class="text-muted" style="font-size:0.85rem;">No Certificate</span>'}
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <label style="font-size: 0.8rem;">Marks:</label>
-                        <input type="number" step="0.1" class="item-score co-score" data-id="${c.id}" value="${c.score || 0}" style="width: 70px; padding: 5px; border-radius:5px; border:1px solid #ddd;">
-                    </div>
-                </div>`;
-            });
-        } else {
-            content += `<p class="text-muted">No co-curricular records.</p>`;
-        }
+        // 2. Honours/Minors
+        const honourText = (() => {
+            const raw = academic.honours_minors;
+            if (!raw || raw === 'No') return 'None';
+            try {
+                if (raw.trim().startsWith('{')) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed.courses && Array.isArray(parsed.courses)) {
+                        return `<strong>${parsed.type || 'Honours'}:</strong><br>` + parsed.courses.map(c => {
+                            return `<div style="margin-bottom:5px; display:flex; align-items:center;">
+                                <span style="flex:1">• ${c.name || 'Course'}</span>
+                                ${getCertHtml(c.certificate_path)}
+                            </div>`;
+                        }).join('');
+                    }
+                }
+            } catch (e) { return raw; }
+            return raw;
+        })();
 
-        // Extracurricular
+        const hasHonours = honourText !== 'None' && honourText !== 'No' && honourText !== 'N/A';
+        content += `<div class="list-item-card" style="margin-bottom: 1rem;">
+            <p style="margin:0; font-weight:bold;">Honours / Minors</p>
+            <div style="margin-bottom:10px;">${honourText}</div>
+            ${hasHonours ? `
+            <div style="margin-top: 10px;">
+                <textarea class="form-control item-comment-input" data-id="academic_honours" data-type="academic_honours" rows="2" placeholder="Honours/Minors Comments..." style="width:100%; font-size:0.9rem; padding:5px;" ${IS_SUPER_ADMIN || IS_LOCKED ? 'readonly' : ''}>${academic.honours_minors_comments || ''}</textarea>
+            </div>` : ''}
+        </div>`;
+
+        // 3. Competitive Exams
+        const examText = (() => {
+            const raw = academic.competitive_exams;
+            if (!raw || raw === 'No' || raw === 'N/A') return 'None';
+
+            // Try to parse as JSON if it looks like an array
+            if (typeof raw === 'string' && raw.trim().startsWith('[')) {
+                try {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed)) {
+                        return parsed.map(e => {
+                            return `<div style="margin-bottom:8px; display:flex; align-items:center;">
+                                <span style="flex:1">• <strong>${e.name}</strong> (Score: ${e.score})</span>
+                                ${getCertHtml(e.certificate_path)}
+                            </div>`;
+                        }).join('');
+                    }
+                } catch (e) {
+                    console.error("Error parsing competitive_exams JSON:", e, raw);
+                }
+            }
+
+            // Fallback for old comma-separated format
+            if (typeof raw === 'string' && raw.includes(':')) {
+                return raw.split(',').map(item => `<div>• ${item.trim()}</div>`).join('');
+            }
+
+            return raw;
+        })();
+
+        const hasExams = examText !== 'None';
+        content += `<div class="list-item-card" style="margin-bottom: 1rem;">
+            <p style="margin:0; font-weight:bold; margin-bottom:10px;">Competitive Exams</p>
+            <div style="font-size:0.95rem;">${examText}</div>
+             ${hasExams ? `
+             <div style="margin-top: 15px;">
+                <textarea class="form-control item-comment-input" data-id="academic_exams" data-type="academic_exams" rows="2" placeholder="Competitive Exams Comments..." style="width:100%; font-size:0.9rem; padding:5px;" ${IS_SUPER_ADMIN || IS_LOCKED ? 'readonly' : ''}>${academic.competitive_exams_comments || ''}</textarea>
+            </div>` : ''}
+        </div>`;
+
+        const coItems = safeArr(data.coCurricular);
         const extraItems = safeArr(data.extracurricular);
-        content += `<h4 class="mt-4">Extracurricular Activities (${extraItems.length})</h4>`;
-        if (extraItems.length > 0) {
-            extraItems.forEach(c => {
-                const certLink = c.certificate_path
-                    ? (c.certificate_path.startsWith('FILE:') ? `files/${c.certificate_path.split(':')[1]}` : `files/${c.certificate_path}`)
-                    : null;
-                content += `<div class="list-item-card" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <p style="margin:0; font-weight:bold;">${c.title || 'Untitled'} <span class="text-muted" style="font-weight:normal;">(${c.level || 'Level'})</span></p>
-                         ${certLink ? `<a href="#" onclick="window.openDocModal('${certLink}'); return false;" class="text-primary" style="font-size:0.85rem;"><i class="fa-solid fa-eye"></i> View Certificate</a>` : '<span class="text-muted" style="font-size:0.85rem;">No Certificate</span>'}
+
+        // Group Co-Curricular
+        const papers = coItems.filter(i => i.activity_type === 'Paper Publication');
+        const projects = coItems.filter(i => i.activity_type === 'Project');
+        const internships = coItems.filter(i => i.activity_type === 'Internship');
+        const seminars = coItems.filter(i => i.activity_type === 'Workshop/Seminar');
+        const courses = coItems.filter(i => i.activity_type === 'Online Course');
+        const otherCo = coItems.filter(i => i.activity_type === 'Outside College Activity');
+
+        // Group Extracurricular
+        const within = extraItems.filter(i => i.activity_type === 'Within College Activity');
+        const outside = extraItems.filter(i => i.activity_type === 'Outside College Activity');
+        const tech = extraItems.filter(i => i.activity_type === 'Tech Fest Coordinator');
+        const otherCoord = extraItems.filter(i => i.activity_type === 'Other Coordinator');
+        const committee = extraItems.filter(i => i.activity_type === 'Committee Member');
+        const nss = extraItems.filter(i => i.activity_type === 'NSS/Social Service');
+        const extAwards = extraItems.filter(i => i.activity_type === 'Extracurricular Award');
+
+
+        const renderItem = (label, items, typeStr) => {
+            if (items.length === 0) return '';
+            let html = `<h4 class="mt-4">${label} (${items.length})</h4>`;
+            items.forEach(c => {
+                html += `<div class="list-item-card" style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div>
+                            <p style="margin:0; font-weight:bold;">${c.title || c.name || 'Untitled'}</p>
+                            ${c.level ? `<small class="text-muted d-block">${c.level}</small>` : ''}
+                            ${c.description ? `<small class="text-muted d-block">${c.description}</small>` : ''}
+                            <div style="margin-top:5px;">${getCertHtml(c.certificate_path)}</div>
+                        </div>
+                        ${IS_SUPER_ADMIN ? `
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <label style="font-size: 0.8rem;">Marks:</label>
+                            <input type="number" step="0.1" class="item-score ${typeStr}-score" data-id="${c.id}" value="${c.score || 0}" style="width: 70px; padding: 5px; border-radius:5px; border:1px solid #ddd;">
+                        </div>` : ''}
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <label style="font-size: 0.8rem;">Marks:</label>
-                        <input type="number" step="0.1" class="item-score extra-score" data-id="${c.id}" value="${c.score || 0}" style="width: 70px; padding: 5px; border-radius:5px; border:1px solid #ddd;">
+                    <div style="margin-top: 10px;">
+                        <textarea class="form-control item-comment-input" data-id="${c.id}" data-type="${typeStr}" rows="1" placeholder="HOD Comments..." style="width:100%; font-size:0.9rem; padding:5px;" ${IS_SUPER_ADMIN ? 'readonly' : ''}>${c.hod_comments || ''}</textarea>
                     </div>
                 </div>`;
             });
-        } else {
-            content += `<p class="text-muted">No extracurricular records.</p>`;
-        }
+            return html;
+        };
+
+        content += renderItem("Paper Publications", papers, "co");
+        content += renderItem("Projects", projects, "co");
+        content += renderItem("Internships", internships, "co");
+        content += renderItem("Workshops / Seminars", seminars, "co");
+        content += renderItem("Online Courses", courses, "co");
+        content += renderItem("Co-Curricular Activities", otherCo, "co");
+
+        content += renderItem("Within College Activities", within, "extra");
+        content += renderItem("Outside College Activities", outside, "extra");
+        content += renderItem("Tech Fest Coordinators", tech, "extra");
+        content += renderItem("Other Coordinators", otherCoord, "extra");
+        content += renderItem("Committee Members", committee, "extra");
+        content += renderItem("NSS / Social Service", nss, "extra");
+        content += renderItem("Extracurricular Awards", extAwards, "extra");
 
         // Recommendation
         if (data.user.recommendation_letter_path) {
@@ -202,19 +280,59 @@ document.addEventListener('DOMContentLoaded', () => {
              </div>`;
         }
 
+        // Interview Breakdown
+        if (data.interview && data.interview.length > 0) {
+            content += `<h4 class="mt-4">Interview Assessment Breakdown</h4>
+            <div class="list-item-card" style="margin-bottom: 1rem;">
+                <table class="table table-sm" style="margin:0;">
+                    <thead>
+                        <tr>
+                            <th>Panel Member</th>
+                            <th style="text-align:right;">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.interview.map(im => `
+                            <tr>
+                                <td>${im.panel_name || 'Panel Member'}</td>
+                                <td style="text-align:right; font-weight:bold;">${parseFloat(im.score).toFixed(1)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                    <tfoot>
+                        <tr style="border-top: 2px solid #e2e8f0;">
+                            <td><strong>Average Interview Score</strong></td>
+                            <td style="text-align:right; font-weight:bold; color:var(--primary-color); font-size:1.1rem;">
+                                ${(data.finalScore?.interview_score || 0)}
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>`;
+        } else if (IS_SUPER_ADMIN) {
+            content += `<h4 class="mt-4">Interview Assessment</h4>
+            <div class="list-item-card" style="margin-bottom: 1rem; color:var(--text-muted); font-style:italic;">
+                No interview marks recorded yet.
+            </div>`;
+        }
+
         // Inject Content
         const detailsEl = document.getElementById('submissionDetails');
         if (detailsEl) {
             detailsEl.innerHTML = content;
         }
 
-        // Attach Listeners
-        document.querySelectorAll('.item-score').forEach(input => {
-            input.addEventListener('input', updateCategoryTotals);
-        });
+        // Attach Listeners for scoring (only if Super Admin)
+        if (IS_SUPER_ADMIN) {
+            document.querySelectorAll('.item-score').forEach(input => {
+                input.addEventListener('input', updateCategoryTotals);
+            });
+        }
     }
 
     function updateCategoryTotals() {
+        if (!IS_SUPER_ADMIN) return;
+
         let coTotal = 0;
         document.querySelectorAll('.co-score').forEach(i => coTotal += parseFloat(i.value) || 0);
 
@@ -239,8 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('valExtra').innerText = cappedExtraTotal.toFixed(1);
     }
 
-    function prefillScores(data) {
+    function prefillData(data) {
         const setScore = (id, valId, value) => {
+            if (!IS_SUPER_ADMIN) return; // Don't try to set values on hidden inputs if they don't exist (though hidden inputs sort of exist)
             const val = value || 0;
             const el = document.getElementById(id);
             if (el) el.value = val;
@@ -251,12 +370,78 @@ document.addEventListener('DOMContentLoaded', () => {
         const scores = data.finalScore || {};
         const acad = data.academic || {};
 
-        // Use academic table scores if available, else derive from final_scores, else 0
-        setScore('scAcademicCGPA', 'valAcademicCGPA', acad.cgpa_score || 0);
-        setScore('scAcademicHonours', 'valAcademicHonours', acad.honours_score || 0);
-        setScore('scAcademicExams', 'valAcademicExams', acad.exams_score || 0);
-        setScore('scCo', 'valCo', scores.co_curricular_score || 0);
-        setScore('scExtra', 'valExtra', scores.extracurricular_score || 0);
+        // Prefill General Academic Comments
+        const commentsAcad = document.getElementById('txtAcademicComments');
+        if (commentsAcad) commentsAcad.value = acad.academic_comments || '';
+
+        const commentsHonours = document.getElementById('txtHonoursMinorsComments');
+        if (commentsHonours) commentsHonours.value = acad.honours_minors_comments || '';
+
+        if (IS_SUPER_ADMIN) {
+            setScore('scAcademicCGPA', 'valAcademicCGPA', acad.cgpa_score || 0);
+            setScore('scAcademicHonours', 'valAcademicHonours', acad.honours_score || 0);
+            setScore('scAcademicExams', 'valAcademicExams', acad.exams_score || 0);
+            setScore('scCo', 'valCo', scores.co_curricular_score || 0);
+            setScore('scExtra', 'valExtra', scores.extracurricular_score || 0);
+        } else {
+            // HOD View: Show Overall Comment and Footer
+            const formFooter = document.createElement('div');
+            formFooter.className = 'list-item-card';
+            formFooter.style.marginTop = '2rem';
+            formFooter.style.background = '#f8fafc';
+            formFooter.style.border = '1px solid #e2e8f0';
+
+            formFooter.innerHTML = `
+                <h5 style="color:#334155; border-bottom:1px solid #cbd5e1; padding-bottom:10px; margin-bottom:15px; font-weight:600;">
+                    <i class="fa-solid fa-file-signature"></i> HOD Final Declaration
+                </h5>
+                
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label style="font-weight:600; font-size:0.9rem; color:#475569; margin-bottom:5px; display:block;">Overall HOD Remarks</label>
+                    <textarea id="txtHodOverall" class="form-control" rows="3" placeholder="Enter overall remarks for this student..." 
+                        style="border:1px solid #cbd5e1; box-shadow:none;" ${IS_LOCKED ? 'readonly' : ''}>${acad.hod_overall_comments || ''}</textarea>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 1.5rem;">
+                    <div class="form-group">
+                        <label style="font-weight:600; font-size:0.9rem; color:#475569; margin-bottom:5px; display:block;">Name of HOD</label>
+                        <div class="input-icon-wrapper" style="position:relative;">
+                            <i class="fa-solid fa-user-tie" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#94a3b8;"></i>
+                            <input type="text" id="txtHodName" class="form-control" placeholder="Enter Name" value="${acad.hod_name || ''}" 
+                                style="padding-left:35px; border:1px solid #cbd5e1;" ${IS_LOCKED ? 'readonly' : ''}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-weight:600; font-size:0.9rem; color:#475569; margin-bottom:5px; display:block;">Date of Evaluation</label>
+                         <div class="input-icon-wrapper" style="position:relative;">
+                            <i class="fa-solid fa-calendar-alt" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#94a3b8;"></i>
+                            <input type="date" id="txtHodDate" class="form-control" value="${acad.hod_evaluation_date || new Date().toISOString().split('T')[0]}" 
+                                style="padding-left:35px; border:1px solid #cbd5e1;" ${IS_LOCKED ? 'readonly' : ''}>
+                        </div>
+                    </div>
+                </div>
+
+                ${IS_LOCKED
+                    ? `<div class="alert" style="background:#dcfce7; color:#166534; border:1px solid #bbf7d0; padding:10px; border-radius:6px; font-weight:500; display:flex; align-items:center; gap:10px;">
+                        <i class="fa-solid fa-lock"></i> Evaluation Submitted & Locked
+                       </div>`
+                    : `<p style="font-size:0.85rem; color:#64748b; margin-bottom:15px;">
+                        <i class="fa-solid fa-circle-info"></i> By clicking submit, you confirm that these details are final. The evaluation will be locked.
+                       </p>`
+                }
+            `;
+            const submitBtn = document.querySelector('#scoreForm button[type="submit"]');
+            submitBtn.parentElement.insertBefore(formFooter, submitBtn);
+
+            if (IS_LOCKED) {
+                submitBtn.style.display = 'none';
+            } else {
+                // Style the button to look better
+                submitBtn.className = 'btn-primary'; // Ensure it has the class
+                submitBtn.style.width = '100%';
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Final Submission';
+            }
+        }
     }
 
     // Submit Scores Handler
@@ -268,22 +453,59 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
 
         try {
+            // Comments & Item-level data
             const coScores = [];
-            document.querySelectorAll('.co-score').forEach(i => coScores.push({ id: i.dataset.id, score: parseFloat(i.value) || 0 }));
+            // If super admin, gather scores. If HOD, gather comments.
+            // Actually gather BOTH if available.
+            const coInputs = document.querySelectorAll('.item-comment-input[data-type="co"]');
+            coInputs.forEach(input => {
+                const id = input.dataset.id;
+                const comment = input.value;
+                const scoreInput = document.querySelector(`.co-score[data-id="${id}"]`);
+                const score = scoreInput ? (parseFloat(scoreInput.value) || 0) : null;
+
+                const item = { id: id, hod_comments: comment };
+                if (score !== null) item.score = score;
+                coScores.push(item);
+            });
 
             const extraScores = [];
-            document.querySelectorAll('.extra-score').forEach(i => extraScores.push({ id: i.dataset.id, score: parseFloat(i.value) || 0 }));
+            const extraInputs = document.querySelectorAll('.item-comment-input[data-type="extra"]');
+            extraInputs.forEach(input => {
+                const id = input.dataset.id;
+                const comment = input.value;
+                const scoreInput = document.querySelector(`.extra-score[data-id="${id}"]`);
+                const score = scoreInput ? (parseFloat(scoreInput.value) || 0) : null;
+
+                const item = { id: id, hod_comments: comment };
+                if (score !== null) item.score = score;
+                extraScores.push(item);
+            });
+
+            // Scrape granular academic comments
+            // Note: academic_main (CGPA) comment is removed from UI as per requirements
+            const acadHonoursComment = document.querySelector('.item-comment-input[data-type="academic_honours"]')?.value || '';
+            const acadExamsComment = document.querySelector('.item-comment-input[data-type="academic_exams"]')?.value || '';
 
             const data = {
                 user_id: document.getElementById('evalUserId').value,
-                academic_cgpa_score: document.getElementById('scAcademicCGPA').value,
-                academic_honours_score: document.getElementById('scAcademicHonours').value,
-                academic_exams_score: document.getElementById('scAcademicExams').value,
-                co_curricular_score: document.getElementById('scCo').value,
-                extracurricular_score: document.getElementById('scExtra').value,
+                academic_comments: '', // No longer using this field input
+                honours_minors_comments: acadHonoursComment,
+                competitive_exams_comments: acadExamsComment,
                 co_scores: coScores,
-                extra_scores: extraScores
+                extra_scores: extraScores,
+                hod_name: document.getElementById('txtHodName')?.value || '',
+                hod_evaluation_date: document.getElementById('txtHodDate')?.value || '',
+                hod_overall_comments: document.getElementById('txtHodOverall')?.value || ''
             };
+
+            if (IS_SUPER_ADMIN) {
+                data.academic_cgpa_score = document.getElementById('scAcademicCGPA').value;
+                data.academic_honours_score = document.getElementById('scAcademicHonours').value;
+                data.academic_exams_score = document.getElementById('scAcademicExams').value;
+                data.co_curricular_score = document.getElementById('scCo').value;
+                data.extracurricular_score = document.getElementById('scExtra').value;
+            }
 
             const res = await fetch('admin/evaluate', {
                 method: 'POST',
@@ -292,7 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (res.ok) {
-                alert('Evaluation Saved Successfully!');
+                const respData = await res.json();
+                alert(respData.message || 'Saved Successfully!');
                 window.location.href = 'admin-dashboard.php';
             } else {
                 const err = await res.json();
@@ -300,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.error(err);
-            alert('Failed to save scores: ' + err.message);
+            alert('Failed to save: ' + err.message);
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;
@@ -309,22 +532,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// Global Modal Logic need to be outside
+// Global Modal Logic (Bootstrap 5)
 window.openDocModal = (url) => {
-    const modal = document.getElementById('docPreviewModal');
+    const modal = document.getElementById('certModal');
+    if (!modal) return;
+
     const frame = document.getElementById('docFrame');
-    if (modal && frame) {
-        frame.src = url;
-        modal.style.display = 'flex';
-    } else {
-        console.error("Modal elements not found");
-        window.open(url, '_blank'); // Fallback
+    const img = document.getElementById('docImage');
+    const loader = document.getElementById('modalLoader');
+    const modalBody = modal.querySelector('.modal-body');
+
+    if (loader) loader.style.display = 'flex';
+    if (frame) {
+        frame.src = '';
+        frame.style.display = 'none';
     }
+    if (img) {
+        img.src = '';
+        img.style.display = 'none';
+    }
+
+    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+
+    // Force modal body scroll behavior
+    if (modalBody) {
+        modalBody.style.overflow = isImage ? 'hidden' : 'auto';
+    }
+
+    if (isImage) {
+        if (img) {
+            img.src = url;
+            img.style.display = 'block';
+        }
+    } else {
+        if (frame) {
+            frame.src = url;
+            frame.style.display = 'block';
+        }
+    }
+
+    modal.style.display = 'flex';
 };
 
 window.closeDocModal = () => {
-    const modal = document.getElementById('docPreviewModal');
-    const frame = document.getElementById('docFrame');
+    const modal = document.getElementById('certModal');
     if (modal) modal.style.display = 'none';
+    const frame = document.getElementById('docFrame');
+    const img = document.getElementById('docImage');
     if (frame) frame.src = '';
+    if (img) img.src = '';
 };
+
+// End of modal logic

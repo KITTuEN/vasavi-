@@ -92,6 +92,17 @@ try {
             iv VARCHAR(32),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE SET NULL
+        )",
+        "CREATE TABLE IF NOT EXISTS interview_marks (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            panel_id INT NOT NULL,
+            score FLOAT DEFAULT 0,
+            comments TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE KEY (user_id, panel_id),
+            FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY(panel_id) REFERENCES users(id) ON DELETE CASCADE
         )"
     ];
 

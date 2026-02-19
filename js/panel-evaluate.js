@@ -1,3 +1,10 @@
+const getCertHtml = (path) => {
+    if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
+    const url = `files/${path.replace('FILE:', '')}`;
+    return `<a href="#" onclick="openDocModal('${url}'); return false;" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
+        <i class="fa-solid fa-eye"></i> View
+    </a>`;
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
@@ -62,7 +69,12 @@ function renderProfile(data, userId) {
     // *Self-Correction*: The user is in 'Top 20' list so they exist in final_scores.
     // We can assume fetch default 0 or we might need to update backend to send 'interview_score' in the details.
 
-    setupEvaluationForm(userId);
+    setupEvaluationForm(userId, data);
+
+    // Bio and Contact
+    document.getElementById('stEmail').innerText = u.email || 'N/A';
+    document.getElementById('stContact').innerText = u.contact_number || 'N/A';
+    document.getElementById('stBio').innerText = u.bio || 'No bio provided.';
 
     // 3. Academic
     document.getElementById('acCgpa').innerText = ac.cgpa || 'N/A';
@@ -78,31 +90,75 @@ function renderProfile(data, userId) {
     // 3.1 Honours/Minors Parsing
     const renderHonours = () => {
         const raw = ac.honours_minors;
-        if (!raw || raw === 'No') return 'Not Pursuing';
-        try {
-            if (raw.trim().startsWith('{')) {
-                const parsed = JSON.parse(raw);
-                if (parsed.courses && Array.isArray(parsed.courses)) {
-                    const list = parsed.courses.map(c => {
-                        let link = '';
-                        if (c.certificate_path) {
-                            const path = c.certificate_path.startsWith('FILE:')
-                                ? `files/${c.certificate_path.split(':')[1]}`
-                                : `files/${c.certificate_path}`;
-                            // Use window.openDocModal for consistency
-                            link = ` <a href="#" onclick="window.openDocModal('${path}'); return false;" class="text-primary" style="margin-left:5px;"><i class="fa-solid fa-eye"></i></a>`;
-                        }
-                        return `<li><strong>${c.name}</strong>${link}</li>`;
-                    }).join('');
-                    return `<div style="margin-bottom:0.5rem;"><strong>${parsed.type}:</strong></div><ul style="padding-left:1.5rem; margin:0;">${list}</ul>`;
+        const comments = ac.honours_minors_comments;
+        let html = '';
+
+        if (!raw || raw === 'No') {
+            html = 'Not Pursuing';
+        } else {
+            try {
+                if (raw.trim().startsWith('{')) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed.courses && Array.isArray(parsed.courses)) {
+                        const list = parsed.courses.map(c => {
+                            return `<li style="margin-bottom:8px; display:flex; align-items:center;">
+                                <span style="flex:1"><strong>${c.name}</strong></span>
+                                ${getCertHtml(c.certificate_path)}
+                            </li>`;
+                        }).join('');
+                        html = `<div style="margin-bottom:0.8rem; font-weight:600; color:var(--primary-color);">${parsed.type}:</div><ul style="padding-left:0; list-style:none; margin:0;">${list}</ul>`;
+                    }
                 }
-            }
-        } catch (e) { return raw; }
-        return raw;
+            } catch (e) { html = raw; }
+            if (!html) html = raw;
+        }
+
+        if (comments) {
+            html += `<div style="margin-top:10px; padding:10px; background:#f0f9ff; border-left:4px solid #0ea5e9; border-radius:4px;">
+                        <small style="color:#0369a1; font-weight:700; text-transform:uppercase; font-size:0.7rem; display:block; margin-bottom:4px;">HOD Remarks:</small>
+                        <div style="font-size:0.9rem; color:#075985;">${comments}</div>
+                    </div>`;
+        }
+        return html;
     };
     document.getElementById('acHonours').innerHTML = renderHonours();
 
-    document.getElementById('acExams').innerText = ac.competitive_exams || 'None';
+    // 3.2 Competitive Exams Parsing
+    const renderExams = () => {
+        const raw = ac.competitive_exams;
+        const comments = ac.competitive_exams_comments;
+        let html = '';
+
+        if (!raw || raw === 'No' || raw === 'N/A') {
+            html = 'None';
+        } else if (typeof raw === 'string' && raw.trim().startsWith('[')) {
+            try {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) {
+                    html = parsed.map(e => {
+                        return `<div style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                            <span>• <strong>${e.name}</strong> (Score: ${e.score})</span>
+                            ${getCertHtml(e.certificate_path)}
+                        </div>`;
+                    }).join('');
+                }
+            } catch (e) { console.error("Panel parsing error:", e, raw); }
+        } else if (typeof raw === 'string' && raw.includes(':')) {
+            html = raw.split(',').map(item => `<div>• ${item.trim()}</div>`).join('');
+        } else {
+            html = raw;
+        }
+
+        if (comments) {
+            html += `<div style="margin-top:10px; padding:10px; background:#f0f9ff; border-left:4px solid #0ea5e9; border-radius:4px;">
+                        <small style="color:#0369a1; font-weight:700; text-transform:uppercase; font-size:0.7rem; display:block; margin-bottom:4px;">HOD Remarks:</small>
+                        <div style="font-size:0.9rem; color:#075985;">${comments}</div>
+                    </div>`;
+        }
+        return html;
+    };
+    document.getElementById('acExams').innerHTML = renderExams();
+
     document.getElementById('acProjects').innerText = ac.projects || 'None';
 
     const fileLink = (path, label) => {
@@ -113,49 +169,109 @@ function renderProfile(data, userId) {
 
     document.getElementById('recLetterContainer').innerHTML = fileLink(u.recommendation_letter_path, "View Recommendation Letter");
 
-    // 4. Co-Curricular
+    const coItems = co;
+    const extraItems = ex;
+
+    // Clear containers
     const coContainer = document.getElementById('coContainer');
-    if (co.length) {
-        coContainer.innerHTML = `
-        <table class="custom-table">
-            <thead><tr><th>Title</th><th>Type</th><th>Score</th><th>Proof</th></tr></thead>
-            <tbody>
-                ${co.map(c => `<tr>
-                    <td>${c.title}</td>
-                    <td>${c.activity_type}</td>
-                    <td>${c.score}</td>
-                    <td>${fileLink(c.certificate_path, "View Certificate")}</td>
-                </tr>`).join('')}
-            </tbody>
-        </table>`;
-    } else {
-        coContainer.innerHTML = `<p style="color:var(--text-muted); padding:1rem;">No co-curricular activities.</p>`;
+    const exContainer = document.getElementById('extraContainer');
+    if (coContainer) coContainer.innerHTML = '';
+    if (exContainer) exContainer.innerHTML = '';
+
+    // Grouping helper
+    const renderItemsList = (items) => {
+        if (!items || items.length === 0) return '<p style="color:var(--text-muted); padding:0.5rem;">None recorded.</p>';
+        return `
+            <table class="custom-table">
+                <thead><tr><th>Details</th><th style="width:180px;">HOD Remarks</th><th style="width:120px;">Proof</th></tr></thead>
+                <tbody>
+                    ${items.map(item => `<tr>
+                        <td>
+                            <div style="font-weight:500;">${item.title || item.name || 'Untitled'}</div>
+                            ${item.level ? `<div style="font-size:0.75rem; color:#64748b;">${item.level}</div>` : ''}
+                            ${item.description ? `<div style="font-size:0.75rem; color:#64748b;">${item.description}</div>` : ''}
+                        </td>
+                        <td style="font-size:0.85rem; color:#0369a1;">${item.hod_comments || '<span style="color:#cbd5e1;">-</span>'}</td>
+                        <td>${getCertHtml(item.certificate_path)}</td>
+                    </tr>`).join('')}
+                </tbody>
+            </table>`;
+    };
+
+    // Co-Curricular Rendering
+    const coTypes = ["Paper Publication", "Project", "Internship", "Workshop/Seminar", "Online Course", "Outside College Activity"];
+    let coHtml = '';
+    coTypes.forEach(type => {
+        const items = co.filter(i => i.activity_type === type);
+        if (items.length > 0) {
+            coHtml += `<div style="margin-top:1.5rem;">
+                        <h6 style="font-weight:600; color:var(--text-color); margin-bottom:0.8rem; display:flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-circle-check" style="color:var(--primary-color); font-size:0.8rem;"></i> ${type}
+                        </h6>
+                        ${renderItemsList(items)}
+                      </div>`;
+        }
+    });
+    if (coContainer) coContainer.innerHTML = coHtml || '<p style="color:var(--text-muted); padding:1rem;">No co-curricular activities recorded.</p>';
+
+    // Extracurricular Rendering
+    const exTypes = ["Within College Activity", "Outside College Activity", "Tech Fest Coordinator", "Other Coordinator", "Committee Member", "NSS/Social Service", "Extracurricular Award"];
+    let exHtml = '';
+    exTypes.forEach(type => {
+        const items = ex.filter(i => i.activity_type === type);
+        if (items.length > 0) {
+            exHtml += `<div style="margin-top:1.5rem;">
+                        <h6 style="font-weight:600; color:var(--text-color); margin-bottom:0.8rem; display:flex; align-items:center; gap:8px;">
+                            <i class="fa-solid fa-medal" style="color:var(--primary-color); font-size:0.8rem;"></i> ${type}
+                        </h6>
+                        ${renderItemsList(items)}
+                      </div>`;
+        }
+    });
+    if (exContainer) exContainer.innerHTML = exHtml || '<p style="color:var(--text-muted); padding:1rem;">No extracurricular activities recorded.</p>';
+
+    // 4. Declaration
+    if (u.declaration_place) {
+        document.getElementById('declarationArea').style.display = 'block';
+        document.getElementById('declPlace').innerText = u.declaration_place;
+        document.getElementById('declDate').innerText = u.declaration_date;
+        if (u.signature_path) {
+            const sigUrl = `files/${u.signature_path.replace('FILE:', '')}`;
+            document.getElementById('declSignature').innerHTML = `<img src="${sigUrl}" alt="Signature" style="max-height:80px; border:1px solid #ddd; padding:5px; margin-top:5px;">`;
+        }
     }
 
-    // 5. Extracurricular
-    const extraContainer = document.getElementById('extraContainer');
-    if (ex.length) {
-        extraContainer.innerHTML = `
-        <table class="custom-table">
-            <thead><tr><th>Title</th><th>Type</th><th>Score</th><th>Proof</th></tr></thead>
-            <tbody>
-                ${ex.map(e => `<tr>
-                    <td>${e.title}</td>
-                    <td>${e.activity_type}</td>
-                    <td>${e.score}</td>
-                    <td>${fileLink(e.certificate_path, "View Certificate")}</td>
-                </tr>`).join('')}
-            </tbody>
-        </table>`;
-    } else {
-        extraContainer.innerHTML = `<p style="color:var(--text-muted); padding:1rem;">No extracurricular activities.</p>`;
+    // 5. Overall HOD Remarks
+    if (ac.hod_overall_comments) {
+        document.getElementById('hodOverallSection').style.display = 'block';
+        document.getElementById('hodOverallText').innerText = ac.hod_overall_comments;
+        document.getElementById('hodName').innerText = ac.hod_name || 'Department HOD';
+        document.getElementById('hodDate').innerText = ac.hod_evaluation_date || 'N/A';
     }
 }
 
-function setupEvaluationForm(userId) {
+function setupEvaluationForm(userId, data) {
     const slider = document.getElementById('evalSlider');
     const display = document.getElementById('evalDisplay');
     const btn = document.getElementById('saveScoreBtn');
+
+    // Load existing score
+    if (data.myScore && data.myScore > 0) {
+        slider.value = data.myScore;
+        display.innerText = data.myScore;
+
+        // LOCK FORM
+        slider.disabled = true;
+        btn.innerHTML = `<i class="fa-solid fa-lock"></i> Evaluation Submitted`;
+        btn.style.background = '#94a3b8';
+        btn.disabled = true;
+
+        // Inform user
+        const lockNote = document.createElement('div');
+        lockNote.style.cssText = 'font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; text-align: right; font-style: italic;';
+        lockNote.innerHTML = '<i class="fa-solid fa-info-circle"></i> This evaluation has been finalized and cannot be modified.';
+        btn.parentElement.appendChild(lockNote);
+    }
 
     slider.addEventListener('input', () => display.innerText = slider.value);
 
@@ -190,15 +306,53 @@ function setupEvaluationForm(userId) {
     });
 }
 
-// Global Modal Logic
+// Global Modal Logic (Custom Overlay)
 window.openDocModal = (url) => {
-    const modal = document.getElementById('docPreviewModal');
+    const modal = document.getElementById('certModal');
+    if (!modal) return;
+
     const frame = document.getElementById('docFrame');
-    frame.src = url;
+    const img = document.getElementById('docImage');
+    const loader = document.getElementById('modalLoader');
+    const modalBody = modal.querySelector('.modal-body');
+
+    if (loader) loader.style.display = 'flex';
+    if (frame) {
+        frame.src = '';
+        frame.style.display = 'none';
+    }
+    if (img) {
+        img.src = '';
+        img.style.display = 'none';
+    }
+
+    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+
+    // Force modal body scroll behavior
+    if (modalBody) {
+        modalBody.style.overflow = isImage ? 'hidden' : 'auto';
+    }
+
+    if (isImage) {
+        if (img) {
+            img.src = url;
+            img.style.display = 'block';
+        }
+    } else {
+        if (frame) {
+            frame.src = url;
+            frame.style.display = 'block';
+        }
+    }
+
     modal.style.display = 'flex';
 };
 
 window.closeDocModal = () => {
-    document.getElementById('docPreviewModal').style.display = 'none';
-    document.getElementById('docFrame').src = '';
+    const modal = document.getElementById('certModal');
+    if (modal) modal.style.display = 'none';
+    const frame = document.getElementById('docFrame');
+    const img = document.getElementById('docImage');
+    if (frame) frame.src = '';
+    if (img) img.src = '';
 };

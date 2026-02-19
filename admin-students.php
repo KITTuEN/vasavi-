@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/src/includes/auth_check.php'; require_auth(['admin']); ?>
+<?php require_once __DIR__ . '/src/includes/auth_check.php'; require_auth(['admin', 'panel']); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,10 +48,11 @@
                 <div class="logo-icon">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <h2>AdminPanel</h2>
+                <h2><?php echo ($_SESSION['user']['role'] === 'panel') ? 'PanelView' : 'AdminPanel'; ?></h2>
             </div>
 
             <div class="nav-links">
+                <?php if ($_SESSION['user']['role'] === 'admin'): ?>
                 <a href="admin-dashboard.php" class="nav-item">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Overview</span>
@@ -64,6 +65,16 @@
                     <i class="fa-solid fa-trophy"></i>
                     <span>Performance</span>
                 </a>
+                <?php else: ?>
+                <a href="panel-dashboard.php" class="nav-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Assigned Students</span>
+                </a>
+                <a href="admin-students.php" class="nav-item active">
+                    <i class="fa-solid fa-users"></i>
+                    <span>All Students</span>
+                </a>
+                <?php endif; ?>
             </div>
 
             <div class="sidebar-footer">
@@ -98,7 +109,11 @@
         </main>
     </div>
 
-    <script type="module" src="js/admin.js?v=4"></script>
+    <script>
+        window.isSuperAdmin = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
+    </script>
+    <script type="module" src="js/admin.js?v=7"></script>
 </body>
 
 </html>

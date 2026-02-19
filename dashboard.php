@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -40,13 +41,13 @@
                     <i class="fas fa-trophy"></i>
                     <span>Co-Curricular</span>
                 </button>
-                <button class="nav-item tab-btn" data-tab="recommendation">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <span>Letter</span>
-                </button>
                 <button class="nav-item tab-btn" data-tab="extracurricular">
                     <i class="fas fa-running"></i>
                     <span>Extracurricular</span>
+                </button>
+                <button class="nav-item tab-btn" data-tab="recommendation">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <span>Letter</span>
                 </button>
             </div>
 
@@ -239,10 +240,13 @@
                                     style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
                                     <label>Exam Details</label>
                                     <div id="examListContainer">
-                                        <div class="exam-entry"
-                                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 0.5rem;">
-                                            <input type="text" class="exam-name" placeholder="Exam Name (e.g. GATE)">
-                                            <input type="text" class="exam-score" placeholder="Rank / Score">
+                                        <div class="exam-entry dynamic-entry-grid"
+                                            style="margin-bottom: 0.5rem;">
+                                            <input type="text" class="exam-name input-full" placeholder="Exam Name (e.g. GATE)">
+                                            <input type="text" class="exam-score input-full" placeholder="Rank / Score">
+                                            <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                                                <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                            </div>
                                         </div>
                                     </div>
                                     <button type="button" id="addExamBtn" class="btn-secondary"><i
@@ -436,39 +440,6 @@
                 </div>
             </div>
 
-            <!-- Recommendation Letter Tab -->
-            <div id="recommendation" class="tab-content">
-                <div class="glass-card">
-                    <div class="card-header">
-                        <h2><i class="fas fa-envelope-open-text" style="color: var(--primary-color);"></i> Recommendation Letter</h2>
-                    </div>
-                    <div style="padding: 2rem;">
-                        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
-                            Upload a recommendation letter from a faculty member or mentor. This document will be reviewed by the admin.
-                        </p>
-                        <form id="recommendationForm">
-                            <div class="form-group">
-                                <label for="recLetterFile">Upload Letter (PDF, DOCX, JPG, PNG)</label>
-                                <input type="file" id="recLetterFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-                                <div id="recLetterPreview" style="margin-top: 1rem; display: none;">
-                                    <p style="font-weight: 500; color: var(--primary-color);">
-                                        <i class="fas fa-check-circle"></i> File selected: <span id="recFileName"></span>
-                                    </p>
-                                </div>
-                                <div id="currentRecLetter" style="margin-top: 1rem; display: none;">
-                                    <p style="font-weight: 500;">Current File:</p>
-                                    <a href="#" target="_blank" id="recFileLink" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color);">
-                                        <i class="fas fa-file-alt"></i> View Uploaded Letter
-                                    </a>
-                                </div>
-                            </div>
-                            <button type="submit" id="saveRecBtn" class="btn-primary">
-                                <i class="fas fa-save"></i> Upload Letter
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
             <!-- Extracurricular Tab -->
             <div id="extracurricular" class="tab-content">
@@ -627,7 +598,42 @@
                             <i class="fas fa-save"></i> Save Extracurricular Activities
                         </button>
 
-                        <!-- Declaration Section -->
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Recommendation Letter Tab (Corrected Order) -->
+            <div id="recommendation" class="tab-content">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-envelope-open-text" style="color: var(--primary-color);"></i> Recommendation Letter</h2>
+                    </div>
+                    <div style="padding: 2rem;">
+                        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                            Upload a recommendation letter from a faculty member or mentor. This document will be reviewed by the admin.
+                        </p>
+                        <form id="recommendationForm">
+                            <div class="form-group">
+                                <label for="recLetterFile">Upload Letter (PDF, DOCX, JPG, PNG)</label>
+                                <input type="file" id="recLetterFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <div id="recLetterPreview" style="margin-top: 1rem; display: none;">
+                                    <p style="font-weight: 500; color: var(--primary-color);">
+                                        <i class="fas fa-check-circle"></i> File selected: <span id="recFileName"></span>
+                                    </p>
+                                </div>
+                                <div id="currentRecLetter" style="margin-top: 1rem; display: none;">
+                                    <p style="font-weight: 500;">Current File:</p>
+                                    <a href="#" target="_blank" id="recFileLink" style="display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color);">
+                                        <i class="fas fa-file-alt"></i> View Uploaded Letter
+                                    </a>
+                                </div>
+                            </div>
+                            <button type="submit" id="saveRecBtn" class="btn-primary">
+                                <i class="fas fa-save"></i> Upload Letter
+                            </button>
+                        </form>
+
+                        <!-- Declaration Section (Moved from Extracurricular) -->
                         <div id="declarationSection" class="card" style="margin-top: 2rem; padding: 2rem; border-left: 5px solid var(--primary-color);">
                             <h3 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; color: var(--primary-color);">
                                 <i class="fa-solid fa-file-signature"></i> DECLARATION
@@ -637,7 +643,7 @@
                                 I hereby declare that all the details furnished above are true to my knowledge. 
                                 I forfeit the award if I furnish wrong information.
                             </p>
-
+    
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
                                 <div class="form-group">
                                     <label for="declPlace" style="font-weight: 600;">Place</label>
@@ -648,7 +654,7 @@
                                     <input type="text" id="declDate" value="<?php echo date('d-m-Y'); ?>" readonly style="background: #f3f4f6; cursor: not-allowed;">
                                 </div>
                             </div>
-
+    
                             <div class="form-group" style="margin-bottom: 2rem;">
                                 <label for="declSignature" style="font-weight: 600;">Signature of the Student</label>
                                 <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
@@ -659,14 +665,14 @@
                                     <img src="" alt="Signature Preview" style="max-height: 80px; border: 1px solid #ddd; padding: 5px; border-radius: 4px; background: white;">
                                 </div>
                             </div>
-
+    
                             <div class="form-group" style="display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
                                 <input type="checkbox" id="declCheck" style="width: 1.2rem; height: 1.2rem; accent-color: var(--primary-color);">
                                 <label for="declCheck" style="margin: 0; font-weight: 700; cursor: pointer; color: var(--text-main);">I accept the above declaration</label>
                             </div>
                         </div>
-
-                        <!-- Final Submit -->
+    
+                        <!-- Final Submit (Moved from Extracurricular) -->
                         <div
                             style="margin-top: 3rem; text-align: center; padding: 2rem; background: rgba(0,0,0,0.03); border-radius: var(--radius-lg);">
                             <p style="margin-bottom: 1rem; color: var(--text-muted);">Ensure all information is correct
@@ -688,22 +694,32 @@
         </main>
     </div>
 
-    <!-- Certificate Modal -->
-    <!-- Certificate Modal -->
-    <div id="certModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>View Certificate</h3>
-                <button onclick="document.getElementById('certModal').style.display='none'"
-                    class="close-modal">&times;</button>
+    <!-- Custom Document Preview Modal (Restored Overlay Style) -->
+    <div id="certModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="height: 90vh; border-radius: 16px; border: none; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+            <div class="modal-header" style="background: #fff; border-bottom: 1px solid #f1f5f9; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                <h5 class="modal-title" style="font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 10px; margin: 0;">
+                    <i class="fa-solid fa-file-invoice" style="color: #4f46e5;"></i> Document Preview
+                </h5>
+                <button type="button" class="btn-close" onclick="closeDocModal()"></button>
             </div>
-            <div class="modal-body" style="flex:1; overflow:hidden; position:relative; display:flex; justify-content:center; align-items:center;">
-                <iframe id="certIframe" style="width:100%; height:100%; border:none; display:none;"></iframe>
-                <img id="certImage" style="max-width:100%; max-height:100%; object-fit:contain; display:none;" alt="Certificate Preview">
+            <div class="modal-body p-0" style="background: #f8fafc; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; flex: 1; min-height: 0;">
+                <!-- Loading Spinner -->
+                <div id="modalLoader" style="position: absolute; display: flex; flex-direction: column; align-items: center; gap: 1rem; z-index: 5;">
+                    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+                    <p style="color: #64748b; font-weight: 500; margin: 0;">Loading...</p>
+                </div>
+                
+                <iframe id="docFrame" style="width:100%; height:100%; border:none; display:none; z-index: 10;" src="" onload="document.getElementById('modalLoader').style.display='none';"></iframe>
+                <img id="docImage" style="max-width:100%; max-height:100%; object-fit:contain; display:none; z-index: 10; padding: 0; margin: auto;" alt="Document Preview" onload="document.getElementById('modalLoader').style.display='none';">
+            </div>
+            <div class="modal-footer" style="background: #fff; border-top: 1px solid #f1f5f9; padding: 0.75rem 1.5rem; display: flex; justify-content: center; align-items: center;">
+                <button type="button" class="btn btn-link text-muted text-decoration-none" onclick="closeDocModal()" style="font-weight: 700; font-size: 1rem;">Close Preview</button>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/responsive.js"></script>
     <script src="js/dashboard.js?v=<?php echo time(); ?>"></script>
 </body>

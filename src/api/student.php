@@ -95,7 +95,6 @@ if ($method === 'GET') {
         $projects = $_POST['projects'] ?? '';
         $research_papers = $_POST['research_papers'] ?? '';
         $certifications = $_POST['certifications'] ?? '';
-        $competitive_exams = $_POST['competitive_exams'] ?? '';
         
         $sgpas = [];
         for($i=1; $i<=8; $i++) {
@@ -112,12 +111,12 @@ if ($method === 'GET') {
                 $fileKey = "nptel_file_$index";
                 if (isset($_FILES[$fileKey])) {
                     if ($_FILES[$fileKey]['error'] === UPLOAD_ERR_OK) {
-                    $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
-                    $encrypted = encrypt_data($fileData);
-                    db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                        $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
-                    ]);
-                    $certPath = "FILE:" . db_last_id();
+                        $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
+                        $encrypted = encrypt_data($fileData);
+                        db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
+                            $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
+                        ]);
+                        $certPath = "FILE:" . db_last_id();
                     } elseif ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_NO_FILE) {
                         http_response_code(400);
                         echo json_encode(['error' => "NPTEL file upload failed for course '$index' with error code: " . $_FILES[$fileKey]['error']]);
@@ -129,13 +128,40 @@ if ($method === 'GET') {
             $finalHonoursMinors = json_encode(['type' => $_POST['honours_minors_type'], 'courses' => $updatedCourses]);
         }
 
+        // Competitive Exams Logic (Harmonized with Honours)
+        $finalCompetitiveExams = $_POST['competitive_exams'] ?? 'No';
+        if (isset($_POST['exam_details'])) {
+            $exams = json_decode($_POST['exam_details'] ?? '[]', true);
+            $updatedExams = [];
+            foreach($exams as $index => $exam) {
+                $certPath = $exam['certificate_path'] ?? null;
+                $fileKey = "exam_file_$index";
+                if (isset($_FILES[$fileKey])) {
+                    if ($_FILES[$fileKey]['error'] === UPLOAD_ERR_OK) {
+                        $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
+                        $encrypted = encrypt_data($fileData);
+                        db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
+                            $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
+                        ]);
+                        $certPath = "FILE:" . db_last_id();
+                    } elseif ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_NO_FILE) {
+                        http_response_code(400);
+                        echo json_encode(['error' => "Exam file upload failed for '$index' with error code: " . $_FILES[$fileKey]['error']]);
+                        exit;
+                    }
+                }
+                $updatedExams[] = ['name' => $exam['name'], 'score' => $exam['score'], 'certificate_path' => $certPath];
+            }
+            $finalCompetitiveExams = json_encode($updatedExams);
+        }
+
         $row = db_get("SELECT id FROM academic_records WHERE user_id = ?", [$userId]);
         if ($row) {
             $sql = "UPDATE academic_records SET cgpa = ?, projects = ?, research_papers = ?, certifications = ?, 
                     sgpa_sem1 = ?, sgpa_sem2 = ?, sgpa_sem3 = ?, sgpa_sem4 = ?, 
                     sgpa_sem5 = ?, sgpa_sem6 = ?, sgpa_sem7 = ?, sgpa_sem8 = ?, 
                     honours_minors = ?, competitive_exams = ? WHERE user_id = ?";
-            $params = array_merge([$cgpa, $projects, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $competitive_exams, $userId]);
+            $params = array_merge([$cgpa, $projects, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $userId]);
             db_run($sql, $params);
             echo json_encode(['message' => 'Academic records updated']);
         } else {
@@ -143,7 +169,7 @@ if ($method === 'GET') {
                     sgpa_sem1, sgpa_sem2, sgpa_sem3, sgpa_sem4, 
                     sgpa_sem5, sgpa_sem6, sgpa_sem7, sgpa_sem8, 
                     honours_minors, competitive_exams) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array_merge([$userId, $cgpa, $projects, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $competitive_exams]);
+            $params = array_merge([$userId, $cgpa, $projects, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams]);
             db_run($sql, $params);
             echo json_encode(['message' => 'Academic records saved']);
         }

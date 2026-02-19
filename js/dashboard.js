@@ -1,3 +1,64 @@
+const getCertHtml = (path) => {
+    if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
+    const url = `files/${path.replace('FILE:', '')}`;
+    return `<a href="#" onclick="openDocModal('${url}'); return false;" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
+        <i class="fa-solid fa-eye"></i> View
+    </a>`;
+};
+
+// Global Modal Logic (Custom Overlay)
+window.openDocModal = (url) => {
+    const modal = document.getElementById('certModal');
+    if (!modal) return;
+
+    const frame = document.getElementById('docFrame');
+    const img = document.getElementById('docImage');
+    const loader = document.getElementById('modalLoader');
+    const modalBody = modal.querySelector('.modal-body');
+
+    if (loader) loader.style.display = 'flex';
+    if (frame) {
+        frame.src = '';
+        frame.style.display = 'none';
+    }
+    if (img) {
+        img.src = '';
+        img.style.display = 'none';
+    }
+
+    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+
+    // Force modal body scroll behavior
+    if (modalBody) {
+        modalBody.style.overflow = isImage ? 'hidden' : 'auto';
+    }
+
+    if (isImage) {
+        if (img) {
+            img.src = url;
+            img.style.display = 'block';
+        }
+    } else {
+        if (frame) {
+            frame.src = url;
+            frame.style.display = 'block';
+        }
+    }
+
+    modal.style.display = 'flex';
+};
+
+window.closeDocModal = () => {
+    const modal = document.getElementById('certModal');
+    if (modal) modal.style.display = 'none';
+    const frame = document.getElementById('docFrame');
+    const img = document.getElementById('docImage');
+    if (frame) frame.src = '';
+    if (img) img.src = '';
+};
+
+// End of modal logic
+
 document.addEventListener('DOMContentLoaded', () => {
     // Logout
     const logoutBtn = document.getElementById('logoutBtn');
@@ -367,46 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<a href="#" onclick="openCertModal('${url}'); return false;" class="file-link-btn"><i class="fas fa-eye"></i> View Certificate</a>`;
     };
 
-    // Make global so it can be called from onclick
-    window.openCertModal = (url) => {
-        const modal = document.getElementById('certModal');
-        const iframe = document.getElementById('certIframe');
-        const img = document.getElementById('certImage');
-
-        if (modal) {
-            // Reset state
-            if (iframe) {
-                iframe.style.display = 'none';
-                iframe.src = '';
-            }
-            if (img) {
-                img.style.display = 'none';
-                img.src = ''; // Clear previous
-
-                // Try loading as image first
-                img.onload = () => {
-                    img.style.display = 'block';
-                    if (iframe) iframe.style.display = 'none';
-                };
-
-                img.onerror = () => {
-                    img.style.display = 'none';
-                    if (iframe) {
-                        iframe.style.display = 'block';
-                        iframe.src = url;
-                    }
-                };
-
-                img.src = url;
-            } else if (iframe) {
-                // Fallback if no img tag
-                iframe.src = url;
-                iframe.style.display = 'block';
-            }
-
-            modal.style.display = 'flex';
-        }
-    };
+    // Unified with openDocModal
+    window.openCertModal = (url) => window.openDocModal(url);
 
     async function loadAllData() {
         // Co-Curricular
@@ -862,18 +885,51 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.competitive_exams && data.competitive_exams !== 'No') {
                         const eYes = document.getElementById('examsYes');
                         if (eYes) { eYes.checked = true; eYes.dispatchEvent(new Event('change')); }
-                        const examList = data.competitive_exams.split(',');
+
+                        let parsed = null;
+                        if (typeof data.competitive_exams === 'string' && data.competitive_exams.trim().startsWith('[')) {
+                            try { parsed = JSON.parse(data.competitive_exams); } catch (e) { parsed = null; }
+                        }
+
                         const examContainer = document.getElementById('examListContainer');
                         if (examContainer) {
                             examContainer.innerHTML = '';
-                            examList.forEach(ex => {
-                                const parts = ex.split(':');
-                                const div = document.createElement('div');
-                                div.className = 'exam-entry dynamic-entry-grid';
-                                div.style.marginBottom = '0.5rem';
-                                div.innerHTML = `<input type="text" class="exam-name input-full" value="${parts[0]?.trim() || ''}" placeholder="Exam Name"><input type="text" class="exam-score input-full" value="${parts[1]?.trim() || ''}" placeholder="Rank / Score">`;
-                                examContainer.appendChild(div);
-                            });
+                            if (Array.isArray(parsed)) {
+                                // New JSON Format
+                                parsed.forEach(ex => {
+                                    const div = document.createElement('div');
+                                    div.className = 'exam-entry dynamic-entry-grid';
+                                    div.style.marginBottom = '0.5rem';
+                                    const certLink = getCertHtml(ex.certificate_path);
+                                    div.innerHTML = `
+                                            <input type="text" class="exam-name input-full" value="${ex.name || ''}" placeholder="Exam Name">
+                                            <input type="text" class="exam-score input-full" value="${ex.score || ''}" placeholder="Rank / Score">
+                                            <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                                                <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                                <input type="hidden" class="exam-existing-path" value="${ex.certificate_path || ''}">
+                                                ${certLink}
+                                            </div>`;
+                                    examContainer.appendChild(div);
+                                });
+                            } else if (data.competitive_exams && data.competitive_exams !== 'No') {
+                                // Fallback to Old String Format
+                                const examList = data.competitive_exams.split(',');
+                                examList.forEach(ex => {
+                                    const parts = ex.split(':');
+                                    if (parts[0]) {
+                                        const div = document.createElement('div');
+                                        div.className = 'exam-entry dynamic-entry-grid';
+                                        div.style.marginBottom = '0.5rem';
+                                        div.innerHTML = `
+                                                <input type="text" class="exam-name input-full" value="${parts[0]?.trim() || ''}" placeholder="Exam Name">
+                                                <input type="text" class="exam-score input-full" value="${parts[1]?.trim() || ''}" placeholder="Rank / Score">
+                                                <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                                                    <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                                </div>`;
+                                        examContainer.appendChild(div);
+                                    }
+                                });
+                            }
                         }
                     } else {
                         const eNo = document.getElementById('examsNo');
@@ -914,15 +970,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Exams
-                const examsEl = document.querySelector('input[name="examsTaken"]:checked');
+                const examsEl = document.querySelector('input[name="qualifiedExams"]:checked'); // Fixed from examsTaken to qualifiedExams
                 if (examsEl && examsEl.value === 'yes') {
                     const exams = [];
-                    document.querySelectorAll('.exam-entry').forEach(div => {
-                        const name = div.querySelector('.exam-name')?.value;
-                        const score = div.querySelector('.exam-score')?.value;
-                        if (name) exams.push(`${name}: ${score}`);
+                    document.querySelectorAll('.exam-entry').forEach((div, idx) => {
+                        const name = div.querySelector('.exam-name')?.value.trim();
+                        const score = div.querySelector('.exam-score')?.value.trim();
+                        const file = div.querySelector('.exam-file')?.files[0];
+                        const existing = div.querySelector('.exam-existing-path')?.value;
+                        if (name) {
+                            exams.push({ name, score, certificate_path: existing || null });
+                            if (file) fd.append(`exam_file_${exams.length - 1}`, file);
+                        }
                     });
-                    fd.append('competitive_exams', exams.join(', '));
+                    fd.append('exam_details', JSON.stringify(exams));
                 } else {
                     fd.append('competitive_exams', 'No');
                 }
@@ -952,6 +1013,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleHonours = () => {
         if (honoursYes.checked) {
             honoursDetails.classList.remove('hidden');
+            if (courseContainer && courseContainer.children.length === 0) {
+                addCourseBtn.click();
+            }
         } else {
             honoursDetails.classList.add('hidden');
         }
@@ -985,6 +1049,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleExams = () => {
         if (examsYes.checked) {
             examDetails.classList.remove('hidden');
+            if (examContainer && examContainer.children.length === 0) {
+                addExamBtn.click();
+            }
         } else {
             examDetails.classList.add('hidden');
         }
@@ -1003,6 +1070,9 @@ document.addEventListener('DOMContentLoaded', () => {
             div.innerHTML = `
                     <input type="text" class="exam-name input-full" placeholder="Exam Name (e.g. GATE)">
                     <input type="text" class="exam-score input-full" placeholder="Rank / Score">
+                    <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
+                        <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                    </div>
                 `;
             examContainer.appendChild(div);
             div.querySelector('input').focus();
@@ -1322,7 +1392,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const savePapersBtn = document.getElementById('savePapersBtn');
 
     if (papersYes) {
-        const toggle = () => paperDetails.classList.toggle('hidden', !papersYes.checked);
+        const toggle = () => {
+            if (papersYes.checked) {
+                paperDetails.classList.remove('hidden');
+                if (paperContainer && paperContainer.children.length === 0) {
+                    addPaperBtn.click();
+                }
+            } else {
+                paperDetails.classList.add('hidden');
+            }
+        };
         papersYes.addEventListener('change', toggle);
         papersNo.addEventListener('change', toggle);
     }
@@ -1359,7 +1438,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveInterBtn = document.getElementById('saveInterBtn');
 
     if (interYes) {
-        const toggle = () => interDetails.classList.toggle('hidden', !interYes.checked);
+        const toggle = () => {
+            if (interYes.checked) {
+                interDetails.classList.remove('hidden');
+                if (interContainer && interContainer.children.length === 0) {
+                    addInterBtn.click();
+                }
+            } else {
+                interDetails.classList.add('hidden');
+            }
+        };
         interYes.addEventListener('change', toggle);
         interNo.addEventListener('change', toggle);
     }
@@ -1394,7 +1482,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveIntraDeptBtn = document.getElementById('saveIntraDeptBtn');
 
     if (intraDeptYes) {
-        const toggle = () => intraDeptDetails.classList.toggle('hidden', !intraDeptYes.checked);
+        const toggle = () => {
+            if (intraDeptYes.checked) {
+                intraDeptDetails.classList.remove('hidden');
+                if (intraDeptContainer && intraDeptContainer.children.length === 0) {
+                    addIntraDeptBtn.click();
+                }
+            } else {
+                intraDeptDetails.classList.add('hidden');
+            }
+        };
         intraDeptYes.addEventListener('change', toggle);
         intraDeptNo.addEventListener('change', toggle);
     }
@@ -1429,7 +1526,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveSeminarsBtn = document.getElementById('saveSeminarsBtn');
 
     if (seminarsYes) {
-        const toggle = () => seminarDetails.classList.toggle('hidden', !seminarsYes.checked);
+        const toggle = () => {
+            if (seminarsYes.checked) {
+                seminarDetails.classList.remove('hidden');
+                if (seminarContainer && seminarContainer.children.length === 0) {
+                    addSeminarBtn.click();
+                }
+            } else {
+                seminarDetails.classList.add('hidden');
+            }
+        };
         seminarsYes.addEventListener('change', toggle);
         seminarsNo.addEventListener('change', toggle);
     }
@@ -1458,7 +1564,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveRepBtn = document.getElementById('saveRepBtn');
 
     if (repYes) {
-        const toggle = () => repDetails.classList.toggle('hidden', !repYes.checked);
+        const toggle = () => {
+            if (repYes.checked) {
+                repDetails.classList.remove('hidden');
+                if (repContainer && repContainer.children.length === 0) {
+                    addRepBtn.click();
+                }
+            } else {
+                repDetails.classList.add('hidden');
+            }
+        };
         repYes.addEventListener('change', toggle);
         repNo.addEventListener('change', toggle);
     }
@@ -1487,7 +1602,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveMembershipBtn = document.getElementById('saveMembershipBtn');
 
     if (membershipYes) {
-        const toggle = () => membershipDetails.classList.toggle('hidden', !membershipYes.checked);
+        const toggle = () => {
+            if (membershipYes.checked) {
+                membershipDetails.classList.remove('hidden');
+                if (membershipContainer && membershipContainer.children.length === 0) {
+                    addMembershipBtn.click();
+                }
+            } else {
+                membershipDetails.classList.add('hidden');
+            }
+        };
         membershipYes.addEventListener('change', toggle);
         membershipNo.addEventListener('change', toggle);
     }
@@ -1516,7 +1640,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveMoocsBtn = document.getElementById('saveMoocsBtn');
 
     if (moocsYes) {
-        const toggle = () => moocsDetails.classList.toggle('hidden', !moocsYes.checked);
+        const toggle = () => {
+            if (moocsYes.checked) {
+                moocsDetails.classList.remove('hidden');
+                if (moocsContainer && moocsContainer.children.length === 0) {
+                    addMoocsBtn.click();
+                }
+            } else {
+                moocsDetails.classList.add('hidden');
+            }
+        };
         moocsYes.addEventListener('change', toggle);
         moocsNo.addEventListener('change', toggle);
     }
@@ -1545,7 +1678,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveInternshipBtn = document.getElementById('saveInternshipBtn');
 
     if (internshipYes) {
-        const toggle = () => internshipDetails.classList.toggle('hidden', !internshipYes.checked);
+        const toggle = () => {
+            if (internshipYes.checked) {
+                internshipDetails.classList.remove('hidden');
+                if (internshipContainer && internshipContainer.children.length === 0) {
+                    addInternshipBtn.click();
+                }
+            } else {
+                internshipDetails.classList.add('hidden');
+            }
+        };
         internshipYes.addEventListener('change', toggle);
         internshipNo.addEventListener('change', toggle);
     }
@@ -1582,7 +1724,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveAwardsBtn = document.getElementById('saveAwardsBtn');
 
     if (awardsYes) {
-        const toggle = () => awardsDetails.classList.toggle('hidden', !awardsYes.checked);
+        const toggle = () => {
+            if (awardsYes.checked) {
+                awardsDetails.classList.remove('hidden');
+                if (awardsContainer && awardsContainer.children.length === 0) {
+                    addAwardsBtn.click();
+                }
+            } else {
+                awardsDetails.classList.add('hidden');
+            }
+        };
         awardsYes.addEventListener('change', toggle);
         awardsNo.addEventListener('change', toggle);
     }
@@ -1612,7 +1763,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveUniTeamBtn = document.getElementById('saveUniTeamBtn');
 
     if (uniTeamYes) {
-        const toggle = () => uniTeamDetails.classList.toggle('hidden', !uniTeamYes.checked);
+        const toggle = () => {
+            if (uniTeamYes.checked) {
+                uniTeamDetails.classList.remove('hidden');
+                if (uniTeamContainer && uniTeamContainer.children.length === 0) {
+                    addUniTeamBtn.click();
+                }
+            } else {
+                uniTeamDetails.classList.add('hidden');
+            }
+        };
         uniTeamYes.addEventListener('change', toggle);
         uniTeamNo.addEventListener('change', toggle);
     }
@@ -1652,7 +1812,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveOutsideBtn = document.getElementById('saveOutsideBtn');
 
     if (outsideYes) {
-        const toggle = () => outsideDetails.classList.toggle('hidden', !outsideYes.checked);
+        const toggle = () => {
+            if (outsideYes.checked) {
+                outsideDetails.classList.remove('hidden');
+                if (outsideContainer && outsideContainer.children.length === 0) {
+                    addOutsideBtn.click();
+                }
+            } else {
+                outsideDetails.classList.add('hidden');
+            }
+        };
         outsideYes.addEventListener('change', toggle);
         outsideNo.addEventListener('change', toggle);
     }
@@ -1692,7 +1861,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveWithinBtn = document.getElementById('saveWithinBtn');
 
     if (withinYes) {
-        const toggle = () => withinDetails.classList.toggle('hidden', !withinYes.checked);
+        const toggle = () => {
+            if (withinYes.checked) {
+                withinDetails.classList.remove('hidden');
+                if (withinContainer && withinContainer.children.length === 0) {
+                    addWithinBtn.click();
+                }
+            } else {
+                withinDetails.classList.add('hidden');
+            }
+        };
         withinYes.addEventListener('change', toggle);
         withinNo.addEventListener('change', toggle);
     }
@@ -1732,7 +1910,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveTechBtn = document.getElementById('saveTechBtn');
 
     if (techYes) {
-        const toggle = () => techDetails.classList.toggle('hidden', !techYes.checked);
+        const toggle = () => {
+            if (techYes.checked) {
+                techDetails.classList.remove('hidden');
+                if (techContainer && techContainer.children.length === 0) {
+                    addTechBtn.click();
+                }
+            } else {
+                techDetails.classList.add('hidden');
+            }
+        };
         techYes.addEventListener('change', toggle);
         techNo.addEventListener('change', toggle);
     }
@@ -1772,7 +1959,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveOtherCoordBtn = document.getElementById('saveOtherCoordBtn');
 
     if (otherCoordYes) {
-        const toggle = () => otherCoordDetails.classList.toggle('hidden', !otherCoordYes.checked);
+        const toggle = () => {
+            if (otherCoordYes.checked) {
+                otherCoordDetails.classList.remove('hidden');
+                if (otherCoordContainer && otherCoordContainer.children.length === 0) {
+                    addOtherCoordBtn.click();
+                }
+            } else {
+                otherCoordDetails.classList.add('hidden');
+            }
+        };
         otherCoordYes.addEventListener('change', toggle);
         otherCoordNo.addEventListener('change', toggle);
     }
@@ -1812,7 +2008,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveCommitteeBtn = document.getElementById('saveCommitteeBtn');
 
     if (committeeYes) {
-        const toggle = () => committeeDetails.classList.toggle('hidden', !committeeYes.checked);
+        const toggle = () => {
+            if (committeeYes.checked) {
+                committeeDetails.classList.remove('hidden');
+                if (committeeContainer && committeeContainer.children.length === 0) {
+                    addCommitteeBtn.click();
+                }
+            } else {
+                committeeDetails.classList.add('hidden');
+            }
+        };
         committeeYes.addEventListener('change', toggle);
         committeeNo.addEventListener('change', toggle);
     }
@@ -1841,7 +2046,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveNssBtn = document.getElementById('saveNssBtn');
 
     if (nssYes) {
-        const toggle = () => nssDetails.classList.toggle('hidden', !nssYes.checked);
+        const toggle = () => {
+            if (nssYes.checked) {
+                nssDetails.classList.remove('hidden');
+                if (nssContainer && nssContainer.children.length === 0) {
+                    addNssBtn.click();
+                }
+            } else {
+                nssDetails.classList.add('hidden');
+            }
+        };
         nssYes.addEventListener('change', toggle);
         nssNo.addEventListener('change', toggle);
     }
@@ -1870,7 +2084,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveExtAwardsBtn = document.getElementById('saveExtAwardsBtn');
 
     if (extAwardsYes) {
-        const toggle = () => extAwardsDetails.classList.toggle('hidden', !extAwardsYes.checked);
+        const toggle = () => {
+            if (extAwardsYes.checked) {
+                extAwardsDetails.classList.remove('hidden');
+                if (extAwardsContainer && extAwardsContainer.children.length === 0) {
+                    addExtAwardsBtn.click();
+                }
+            } else {
+                extAwardsDetails.classList.add('hidden');
+            }
+        };
         extAwardsYes.addEventListener('change', toggle);
         extAwardsNo.addEventListener('change', toggle);
     }

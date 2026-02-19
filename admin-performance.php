@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <style>
         .nav-item {
             cursor: pointer;
@@ -36,6 +38,52 @@
 
         .nav-item:hover:not(.active) {
             background: rgba(99, 102, 241, 0.1);
+        }
+
+        .leaderboard-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .l-tab {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .l-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-pdf {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-pdf:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -82,10 +130,30 @@
 
             <div class="content-wrapper">
                 <div class="glass-card">
-                    <div class="card-header">
-                        <h2><i class="fa-solid fa-trophy"></i> Top 20 Performers</h2>
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <h2 style="margin:0;"><i class="fa-solid fa-trophy"></i> Student Leaderboard</h2>
+                        <button id="downloadPdfBtn" class="btn-pdf">
+                            <i class="fa-solid fa-file-pdf"></i> Download PDF
+                        </button>
                     </div>
-                    <div class="table-responsive">
+
+                    <?php $isSuper = (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])); ?>
+                    <script>
+                        window.isSuperAdmin = <?php echo $isSuper ? 'true' : 'false'; ?>;
+                    </script>
+
+                    <?php if ($isSuper): ?>
+                    <div class="leaderboard-tabs" style="margin-top: 1.5rem;">
+                        <button class="l-tab active" data-type="before">
+                            <i class="fa-solid fa-hourglass-start"></i> Before Interview
+                        </button>
+                        <button class="l-tab" data-type="after">
+                            <i class="fa-solid fa-circle-check"></i> After Interview
+                        </button>
+                    </div>
+                    <?php endif; ?>
+
+                    <div id="pdfContent" class="table-responsive">
                         <table>
                             <thead>
                                 <tr>

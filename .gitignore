@@ -1,5 +1,37 @@
 
+# Sensitive information
+src/config.php
+generated_credentials.txt
+
+# Generated files
+pdf.pdf
 *.log
 *.tmp
 debug_output.txt
 debug_stats.json
+
+# Utility and Diagnostic scripts
+add_exam_comments.php
+add_hod_submit_cols.php
+add_panel_column.php
+check_columns.php
+check_limits.php
+check_schema.php
+check_st15.php
+check_users_schema.php
+create_hods.php
+create_super_admin.php
+diag_*.php
+fix_panel_role.php
+hahahaha
+recheck_schema.php
+test_debug.php
+update_schema_comments.php
+update_users_schema.php
+verify_columns.php
+*.fixed
+
+# Project environment
+.idea/
+.vscode/
+node_modules/

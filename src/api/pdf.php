@@ -30,15 +30,22 @@ $user = db_get("SELECT * FROM users WHERE id = ?", [$userId]);
 $academic = db_get("SELECT * FROM academic_records WHERE user_id = ?", [$userId]);
 $coCurricular = db_all("SELECT * FROM co_curricular WHERE user_id = ?", [$userId]);
 $extracurricular = db_all("SELECT * FROM extracurricular WHERE user_id = ?", [$userId]);
+$finalScores = db_get("SELECT * FROM final_scores WHERE user_id = ?", [$userId]);
 
 class PDF extends FPDF {
     function Header() {
-        // Logo could go here
-        $this->SetFont('Arial', 'B', 16);
-        $this->Cell(0, 10, 'Best Outgoing Student Application', 0, 1, 'C');
-        $this->SetFont('Arial', '', 10);
-        $this->Cell(0, 5, 'Sri Vasavi Engineering College', 0, 1, 'C');
-        $this->Ln(10);
+        // Add header image navv.jpg
+        $headerImg = __DIR__ . '/../../navv.jpg';
+        if (file_exists($headerImg)) {
+            $this->Image($headerImg, 0, 0, 210);
+            $this->Ln(35); // Add space after header image
+        } else {
+            $this->SetFont('Arial', 'B', 16);
+            $this->Cell(0, 10, 'Best Outgoing Student Application', 0, 1, 'C');
+            $this->SetFont('Arial', '', 10);
+            $this->Cell(0, 5, 'Sri Vasavi Engineering College', 0, 1, 'C');
+            $this->Ln(10);
+        }
     }
 
     function Footer() {
@@ -54,11 +61,69 @@ class PDF extends FPDF {
         $this->Ln(4);
     }
     
-    function InfoRow($label, $value) {
-        $this->SetFont('Arial', 'B', 10);
-        $this->Cell(50, 6, $label, 0);
-        $this->SetFont('Arial', '', 10);
-        $this->Cell(0, 6, $value, 0, 1);
+    function FancyTable($header, $data, $widths) {
+        $this->SetFillColor(240, 240, 240);
+        $this->SetTextColor(0);
+        $this->SetDrawColor(128, 0, 0); // Maroon-ish borders
+        $this->SetLineWidth(.3);
+        $this->SetFont('Arial', 'B', 9);
+        
+        // Header
+        for($i=0; $i<count($header); $i++)
+            $this->Cell($widths[$i], 7, $header[$i], 1, 0, 'C', true);
+        $this->Ln();
+        
+        // Data
+        $this->SetFont('Arial', '', 9);
+        foreach($data as $row) {
+            $h = 6;
+            // Handle multi-line for title
+            $nb = 0;
+            foreach($row as $col_index => $col_val) {
+                $nb = max($nb, $this->NbLines($widths[$col_index], $col_val));
+            }
+            $h = 6 * $nb;
+            
+            // Check page break
+            $this->CheckPageBreak($h);
+            
+            for($i=0; $i<count($row); $i++) {
+                $x = $this->GetX();
+                $y = $this->GetY();
+                $this->Rect($x, $y, $widths[$i], $h);
+                $this->MultiCell($widths[$i], 6, $row[$i], 0, 'L');
+                $this->SetXY($x + $widths[$i], $y);
+            }
+            $this->Ln($h);
+        }
+    }
+
+    // Helper for MultiCell height calculation
+    function NbLines($w, $txt) {
+        $cw = &$this->CurrentFont['cw'];
+        if($w == 0) $w = $this->w - $this->rMargin - $this->x;
+        $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+        $s = str_replace("\r", '', $txt);
+        $nb = strlen($s);
+        if($nb > 0 and $s[$nb-1] == "\n") $nb--;
+        $sep = -1; $i = 0; $j = 0; $l = 0; $nl = 1;
+        while($i < $nb) {
+            $c = $s[$i];
+            if($c == "\n") { $i++; $sep = -1; $j = $i; $l = 0; $nl++; continue; }
+            if($c == ' ') $sep = $i;
+            $l += $cw[$c];
+            if($l > $wmax) {
+                if($sep == -1) { if($i == $j) $i++; }
+                else $i = $sep + 1;
+                $sep = -1; $j = $i; $l = 0; $nl++;
+            } else $i++;
+        }
+        return $nl;
+    }
+
+    function CheckPageBreak($h) {
+        if($this->GetY() + $h > $this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
     }
 }
 
@@ -69,70 +134,70 @@ $pdf->AddPage();
 // --- Personal Information ---
 $pdf->SectionTitle('Personal Information');
 
-// Handle Profile Photo
+// Profile Photo
 $tempPhoto = null;
 if ($user['profile_photo']) {
-    log_debug("Processing profile photo: " . $user['profile_photo']);
     $photoId = str_replace('FILE:', '', $user['profile_photo']);
     $fileRecord = db_get("SELECT * FROM file_uploads WHERE id = ?", [$photoId]);
     if ($fileRecord) {
-        log_debug("File record found. Size: " . strlen($fileRecord['data']));
         try {
             $imgData = decrypt_data($fileRecord['data'], $fileRecord['iv']);
-            log_debug("Decrypted image size: " . strlen($imgData));
-            // Create temp file
             $ext = explode('/', $fileRecord['mime_type'])[1] ?? 'jpg';
             $tempPhoto = sys_get_temp_dir() . '/temp_photo_' . $userId . '.' . $ext;
             file_put_contents($tempPhoto, $imgData);
-            log_debug("Temp file created: " . $tempPhoto);
-            
-            // Add Image (x, y, w, h)
-            // Position at top right
-            $pdf->Image($tempPhoto, 160, 35, 30);
-            log_debug("Image added to PDF.");
-        } catch (Exception $e) {
-            log_debug("Error processing image: " . $e->getMessage());
-        }
-    } else {
-        log_debug("File record not found for ID: " . $photoId);
+            // Adjusted Y position to account for the new header image
+            $currentY = $pdf->GetY() + 5;
+            $pdf->Image($tempPhoto, 160, $currentY, 30);
+        } catch (Exception $e) {}
     }
 }
 
-$pdf->InfoRow('Name:', $user['name']);
-$pdf->InfoRow('Roll Number:', $user['roll_number']);
-$pdf->InfoRow('Department:', $user['department']);
-$pdf->InfoRow('Email:', $user['email']);
-$pdf->InfoRow('Contact:', $user['contact_number'] ?: 'N/A');
-$pdf->Ln(2);
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(50, 6, 'Bio:', 0, 1);
+$pdf->Cell(40, 8, 'Full Name', 1);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(90, 8, $user['name'], 1);
+$pdf->Ln();
+
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(40, 8, 'Roll Number', 1);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(90, 8, $user['roll_number'], 1);
+$pdf->Ln();
+
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(40, 8, 'Department', 1);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(90, 8, $user['department'], 1);
+$pdf->Ln();
+
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(40, 8, 'Email-ID', 1);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(90, 8, $user['email'], 1);
+$pdf->Ln();
+
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(40, 8, 'Contact No', 1);
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(90, 8, $user['contact_number'] ?: 'N/A', 1);
+$pdf->Ln(5);
+
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(0, 6, 'Bio:', 0, 1);
 $pdf->SetFont('Arial', '', 10);
 $pdf->MultiCell(130, 5, $user['bio'] ?: 'N/A'); 
 $pdf->Ln(10);
 
-// --- Academic Records ---
+// --- Academic Performance ---
 $pdf->SectionTitle('Academic Performance');
-$pdf->InfoRow('Overall CGPA:', $academic['cgpa'] ?? 'N/A');
 
-$pdf->Ln(2);
-$pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(0, 6, 'Semester SGPA:', 0, 1);
-$pdf->SetFont('Arial', '', 9);
+$pdf->SetFont('Arial', 'B', 11);
+$pdf->Cell(130, 8, 'Description', 1, 0, 'C', true);
+$pdf->Cell(60, 8, 'Marks Allotted', 1, 1, 'C', true);
 
-// Simple Grid for SGPA
-$w = 20;
-for($i=1; $i<=8; $i++) {
-    $pdf->Cell($w, 6, "Sem $i", 1, 0, 'C');
-}
-$pdf->Ln();
-for($i=1; $i<=8; $i++) {
-    $val = $academic["sgpa_sem$i"] ?? '-';
-    $pdf->Cell($w, 6, $val, 1, 0, 'C');
-}
-$pdf->Ln(10);
-
-// Honours/Minors and Exams
-$pdf->InfoRow('Competitive Exams:', $academic['competitive_exams'] ?? 'None');
+$pdf->SetFont('Arial', '', 10);
+$pdf->Cell(130, 8, 'CGPA Performance (' . ($academic['cgpa'] ?? 'N/A') . ')', 1);
+$pdf->Cell(60, 8, $academic['cgpa_score'] ?? '0', 1, 1, 'C');
 
 $honours = 'No';
 if (!empty($academic['honours_minors']) && $academic['honours_minors'] !== 'No') {
@@ -140,66 +205,106 @@ if (!empty($academic['honours_minors']) && $academic['honours_minors'] !== 'No')
     if(is_array($h)) {
         $honours = $h['type'] . ' (' . count($h['courses']) . ' courses)';
     } else {
-        $honours = $academic['honours_minors']; // Legacy support
+        $honours = $academic['honours_minors'];
     }
 }
-$pdf->InfoRow('Honours/Minors:', $honours);
+$pdf->Cell(130, 8, 'Honours/Minors: ' . $honours, 1);
+$pdf->Cell(60, 8, $academic['honours_score'] ?? '0', 1, 1, 'C');
 
-$pdf->Ln(5);
+$pdf->Cell(130, 8, 'Competitive Exams: ' . ($academic['competitive_exams'] ?? 'None'), 1);
+$pdf->Cell(60, 8, $academic['exams_score'] ?? '0', 1, 1, 'C');
+
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(0, 6, 'Projects / Research:', 0, 1);
-$pdf->SetFont('Arial', '', 10);
-$pdf->MultiCell(0, 5, $academic['projects'] ?? 'N/A');
-$pdf->Ln(2);
-$pdf->MultiCell(0, 5, $academic['research_papers'] ?? 'N/A');
+$pdf->SetFillColor(250, 250, 200);
+$pdf->Cell(130, 8, 'Total Academic Score', 1, 0, 'R', true);
+$pdf->Cell(60, 8, $finalScores['academic_score'] ?? '0', 1, 1, 'C', true);
+$pdf->Ln(5);
+
+// SGPA Grid
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(0, 6, 'Semester-wise SGPA:', 0, 1);
+$w = 23.75;
+$pdf->SetFont('Arial', 'B', 9);
+for($i=1; $i<=8; $i++) $pdf->Cell($w, 7, "Sem $i", 1, 0, 'C', true);
+$pdf->Ln();
+$pdf->SetFont('Arial', '', 9);
+for($i=1; $i<=8; $i++) {
+    $val = $academic["sgpa_sem$i"] ?? '-';
+    $pdf->Cell($w, 7, $val, 1, 0, 'C');
+}
 $pdf->Ln(10);
 
+// Projects/Research
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(0, 6, 'Projects / Research Details:', 0, 1);
+$pdf->SetFont('Arial', '', 10);
+if (!empty($academic['projects']) || !empty($academic['research_papers'])) {
+    $pdf->MultiCell(0, 5, "Projects: " . ($academic['projects'] ?? 'N/A') . "\n\nResearch Papers: " . ($academic['research_papers'] ?? 'N/A'), 1);
+} else {
+    $pdf->Cell(0, 8, 'N/A', 1, 1);
+}
+$pdf->Ln(10);
 
 // --- Co-Curricular ---
 $pdf->SectionTitle('Co-Curricular Activities');
+$pdf->SetFont('Arial', 'B', 10);
 if (count($coCurricular) > 0) {
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(100, 7, 'Title', 1);
-    $pdf->Cell(40, 7, 'Type', 1);
-    $pdf->Cell(50, 7, 'Date', 1);
-    $pdf->Ln();
-    
-    $pdf->SetFont('Arial', '', 9);
-    foreach ($coCurricular as $row) {
-        $pdf->Cell(100, 6, substr($row['title'], 0, 60), 1);
-        $pdf->Cell(40, 6, substr($row['activity_type'], 0, 20), 1);
-        $pdf->Cell(50, 6, substr($row['date'], 0, 10), 1);
-        $pdf->Ln();
+    $header = ['Title', 'Activity Type', 'Date', 'Marks'];
+    $data = [];
+    foreach($coCurricular as $row) {
+        $data[] = [
+            $row['title'],
+            $row['activity_type'],
+            $row['date'],
+            $row['score'] ?? '0'
+        ];
     }
+    $pdf->FancyTable($header, $data, [80, 40, 40, 30]);
+    
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->SetFillColor(250, 250, 200);
+    $pdf->Cell(160, 8, 'Total Co-Curricular Score', 1, 0, 'R', true);
+    $pdf->Cell(30, 8, $finalScores['co_curricular_score'] ?? '0', 1, 1, 'C', true);
 } else {
-    $pdf->Cell(0, 10, 'No records found.', 0, 1);
+    $pdf->Cell(0, 10, 'No records found.', 1, 1);
 }
 $pdf->Ln(10);
 
 // --- Extracurricular ---
 $pdf->SectionTitle('Extracurricular Activities');
 if (count($extracurricular) > 0) {
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(100, 7, 'Title', 1);
-    $pdf->Cell(40, 7, 'Level', 1);
-    $pdf->Cell(50, 7, 'Description', 1); // Using Description slot for extra info if needed
-    $pdf->Ln();
-    
-    $pdf->SetFont('Arial', '', 9);
-    foreach ($extracurricular as $row) {
-        $pdf->Cell(100, 6, substr($row['title'], 0, 60), 1);
-        $pdf->Cell(40, 6, substr($row['level'], 0, 20), 1);
-        $pdf->Cell(50, 6, substr($row['description'], 0, 30), 1);
-        $pdf->Ln();
+    $header = ['Title', 'Level', 'Description', 'Marks'];
+    $data = [];
+    foreach($extracurricular as $row) {
+        $data[] = [
+            $row['title'],
+            $row['level'],
+            $row['description'],
+            $row['score'] ?? '0'
+        ];
     }
+    $pdf->FancyTable($header, $data, [60, 30, 70, 30]);
+
+    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->SetFillColor(250, 250, 200);
+    $pdf->Cell(160, 8, 'Total Extracurricular Score', 1, 0, 'R', true);
+    $pdf->Cell(30, 8, $finalScores['extracurricular_score'] ?? '0', 1, 1, 'C', true);
 } else {
-    $pdf->Cell(0, 10, 'No records found.', 0, 1);
+    $pdf->Cell(0, 10, 'No records found.', 1, 1);
 }
+$pdf->Ln(10);
+
+// --- Total Score ---
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->SetFillColor(200, 255, 200);
+$pdf->Cell(160, 10, 'FINAL OVERALL SCORE', 1, 0, 'R', true);
+$pdf->Cell(30, 10, $finalScores['total_score'] ?? '0', 1, 1, 'C', true);
 
 // Cleanup temp photo
 if ($tempPhoto && file_exists($tempPhoto)) {
-    unlink($tempPhoto);
+    @unlink($tempPhoto);
 }
 
-$pdf->Output('D', 'Application_' . $user['roll_number'] . '.pdf');
+$pdf->Output('D', 'pdf.pdf');
+exit;
 ?>
