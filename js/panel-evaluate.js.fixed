@@ -1,0 +1,45 @@
+// Global Modal Logic (Custom Overlay)
+window.openDocModal = (url) => {
+    const modal = document.getElementById('certModal');
+    if (!modal) return;
+
+    const frame = document.getElementById('docFrame');
+    const img = document.getElementById('docImage');
+    const dlLink = document.getElementById('downloadLink');
+    const loader = document.getElementById('modalLoader');
+
+    if (loader) loader.style.display = 'flex';
+    if (frame) {
+        frame.src = '';
+        frame.style.display = 'none';
+    }
+    if (img) {
+        img.src = '';
+        img.style.display = 'none';
+    }
+    if (dlLink) dlLink.href = url;
+
+    const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+    if (isImage) {
+        if (img) {
+            img.src = url;
+            img.style.display = 'block';
+        }
+    } else {
+        if (frame) {
+            frame.src = url;
+            frame.style.display = 'block';
+        }
+    }
+
+    modal.style.display = 'flex';
+};
+
+window.closeDocModal = () => {
+    const modal = document.getElementById('certModal');
+    if (modal) modal.style.display = 'none';
+    const frame = document.getElementById('docFrame');
+    const img = document.getElementById('docImage');
+    if (frame) frame.src = '';
+    if (img) img.src = '';
+};
