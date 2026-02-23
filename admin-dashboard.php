@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         window.IS_SUPER_ADMIN = <?php echo (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
     </script>
     <style>
         .nav-item {

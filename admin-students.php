@@ -110,7 +110,7 @@
     </div>
 
     <script>
-        window.isSuperAdmin = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.IS_SUPER_ADMIN = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
         window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
     </script>
     <script src="js/responsive.js"></script>

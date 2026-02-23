@@ -46,13 +46,8 @@ if ($method === 'GET') {
             // Panel: Show ALL students (like Super Admin) but maybe restricted to submitted ones
             $departmentFilter = ""; // Global view
         } else {
-            // Super Admin: Show ONLY students who have been reviewed by HOD (have comments)
-            $departmentFilter = " AND (
-                (ar.academic_comments IS NOT NULL AND ar.academic_comments != '') 
-                OR (ar.honours_minors_comments IS NOT NULL AND ar.honours_minors_comments != '')
-                OR EXISTS (SELECT 1 FROM co_curricular cc WHERE cc.user_id = u.id AND cc.hod_comments IS NOT NULL AND cc.hod_comments != '')
-                OR EXISTS (SELECT 1 FROM extracurricular ec WHERE ec.user_id = u.id AND ec.hod_comments IS NOT NULL AND ec.hod_comments != '')
-            )";
+            // Super Admin: Show all submitted students
+            $departmentFilter = "";
         }
 
         $query = "
@@ -61,10 +56,13 @@ if ($method === 'GET') {
                    (ar.academic_comments IS NOT NULL AND ar.academic_comments != '') as has_academic_comments,
                    (SELECT COUNT(*) FROM co_curricular WHERE user_id = u.id) as co_curricular_count,
                    (SELECT COUNT(*) FROM extracurricular WHERE user_id = u.id) as extracurricular_count,
-                   (SELECT COUNT(*) FROM final_scores WHERE user_id = u.id) as is_evaluated
+                   (SELECT COUNT(*) FROM final_scores WHERE user_id = u.id) as is_evaluated,
+                   fs.total_score
             FROM users u
             LEFT JOIN academic_records ar ON u.id = ar.user_id
-            WHERE u.role = 'student' AND u.is_submitted = 1" . $departmentFilter;
+            LEFT JOIN final_scores fs ON u.id = fs.user_id
+            WHERE u.role = 'student' AND u.is_submitted = 1" . $departmentFilter . "
+            ORDER BY fs.total_score DESC, u.name ASC";
         
         echo json_encode(db_all($query, $params));
     } elseif ($action === 'stats') {
@@ -152,17 +150,19 @@ if ($method === 'GET') {
         if ($type === 'before') {
             // Before Interview: Sum of academic, co-curricular, and extracurricular
             $scoreExpr = "(IFNULL(fs.academic_score, 0) + IFNULL(fs.co_curricular_score, 0) + IFNULL(fs.extracurricular_score, 0))";
+            $interviewFilter = "";
         } else {
-            // After Interview: Total score
+            // After Interview: Total score (Include only those actually interviewed)
             $scoreExpr = "IFNULL(fs.total_score, 0)";
+            $interviewFilter = " AND EXISTS (SELECT 1 FROM interview_marks WHERE user_id = u.id)";
         }
-
+ 
         $query = "
             SELECT u.name, u.department, u.roll_number, 
                    $scoreExpr as score
             FROM users u
             LEFT JOIN final_scores fs ON u.id = fs.user_id
-            WHERE u.role = 'student' AND u.is_submitted = 1 " . $deptFilter . "
+            WHERE u.role = 'student' AND u.is_submitted = 1 " . $deptFilter . $interviewFilter . "
             ORDER BY score DESC
         ";
         echo json_encode(db_all($query, $params));
@@ -314,11 +314,13 @@ if ($method === 'GET') {
         $user_id = $input['user_id'] ?? null;
         
         if (!$user_id) {
+            http_response_code(400);
             echo json_encode(['error' => 'User ID required']);
             exit;
         }
 
         db_run("UPDATE users SET is_sent_to_panel = 1 WHERE id = ?", [$user_id]);
         echo json_encode(['message' => 'Student sent to panel successfully']);
+        exit;
     }
 }

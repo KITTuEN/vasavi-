@@ -141,7 +141,7 @@
                     </div>
 
                     <script>
-                        window.isSuperAdmin = <?php echo $isSuper ? 'true' : 'false'; ?>;
+                        window.IS_SUPER_ADMIN = <?php echo $isSuper ? 'true' : 'false'; ?>;
                     </script>
 
                     <?php if ($isSuper): ?>

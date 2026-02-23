@@ -157,8 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const isHodSubmitted = s.is_hod_submitted == 1;
 
             let badge = '';
+            let scoreIndicator = '';
+
             if (isEvaluated) {
                 badge = '<span style="background: #10b981; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;">Evaluated</span>';
+                if (s.total_score !== null) {
+                    scoreIndicator = `<span style="margin-left:8px; background:#f1f5f9; color:#475569; padding: 2px 6px; border-radius:4px; font-size:0.75rem; border:1px solid #e2e8f0;">Score: <b>${parseFloat(s.total_score).toFixed(2)}</b></span>`;
+                }
             } else if (isHodSubmitted) {
                 badge = '<span style="background: #3b82f6; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; font-weight: 600;">HOD Submitted</span>';
             } else if (s.has_academic_comments == 1) {
@@ -169,16 +174,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return `
             <div class="student-item">
-                <div style="display: flex; align-items: center; gap: 0.75rem; cursor:pointer;" onclick="viewStudent(${s.id})">
-                    <span>${s.name} (${s.roll_number})</span>
+                <div style="display: flex; align-items: center; gap: 0.25rem; flex-wrap: wrap; cursor:pointer;" onclick="viewStudent(${s.id})">
+                    <span style="font-weight:500;">${s.name}</span>
+                    <small style="color:#64748b;">(${s.roll_number})</small>
                     ${badge}
+                    ${scoreIndicator}
                 </div>
                 <div style="display:flex; align-items:center; gap: 1rem;">
                     <small>${s.department}</small>
-                    ${window.isSuperAdmin ? (
+                    ${window.IS_SUPER_ADMIN ? (
                     s.is_sent_to_panel == 1
                         ? `<span style="color: #6366f1; font-size: 0.8rem; font-weight: 500;"><i class="fa-solid fa-circle-check"></i> Sent to Panel</span>`
-                        : `<button class="btn btn-sm btn-outline-primary" style="padding: 2px 8px; font-size: 0.8rem;" onclick="sendToPanel(${s.id}, event)">
+                        : `<button class="btn btn-send-panel" onclick="sendToPanel(${s.id}, event)">
                              <i class="fa-solid fa-paper-plane"></i> Send to Panel
                         </button>`
                 ) : ''}
@@ -191,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Performance Page Logic
     async function loadLeaderboardTable(viewType = null) {
         if (!viewType) {
-            viewType = window.isSuperAdmin ? 'before' : 'after';
+            viewType = window.IS_SUPER_ADMIN ? 'before' : 'after';
         }
 
         const res = await fetch(`admin/leaderboard?type=${viewType}`);
