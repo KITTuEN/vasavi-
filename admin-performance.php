@@ -130,14 +130,16 @@
 
             <div class="content-wrapper">
                 <div class="glass-card">
+                    <?php $isSuper = (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])); ?>
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                         <h2 style="margin:0;"><i class="fa-solid fa-trophy"></i> Student Leaderboard</h2>
+                        <?php if ($isSuper): ?>
                         <button id="downloadPdfBtn" class="btn-pdf">
                             <i class="fa-solid fa-file-pdf"></i> Download PDF
                         </button>
+                        <?php endif; ?>
                     </div>
 
-                    <?php $isSuper = (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])); ?>
                     <script>
                         window.isSuperAdmin = <?php echo $isSuper ? 'true' : 'false'; ?>;
                     </script>
