@@ -6,8 +6,9 @@ $method = $_SERVER['REQUEST_METHOD'];
 $action = str_replace('auth/', '', $path);
 
 if ($action === 'logout') {
+    require_once __DIR__ . '/../includes/auth_check.php';
     session_destroy();
-    header("Location: /Best outgoing/");
+    header("Location: " . get_base_url() . "/");
     exit;
 }
 
@@ -86,10 +87,14 @@ if ($method === 'POST') {
         
         session_write_close();
 
+        if (!isset($authenticated_user_role)) { // Just a dummy check to ensure get_base_url is available or include it
+             require_once __DIR__ . '/../includes/auth_check.php';
+        }
+
         echo json_encode([
             'message' => 'Login successful',
             'role' => $user['role'],
-            'redirect' => $user['role'] === 'admin' ? '/admin-dashboard' : ($user['role'] === 'panel' ? '/panel-dashboard' : '/dashboard')
+            'redirect' => get_base_url() . ($user['role'] === 'admin' ? '/admin-dashboard' : ($user['role'] === 'panel' ? '/panel-dashboard' : '/dashboard'))
         ]);
     }
 }

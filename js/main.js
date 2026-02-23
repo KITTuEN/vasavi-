@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (res.ok) {
                 if (data.redirect) {
-                    window.location.href = data.redirect.replace(/^\//, ''); // Ensure relative redirect
+                    window.location.href = data.redirect; // Use path as provided by server
                 } else {
                     showAlert(alertBox, data.error || 'Login successful but no redirect provided', 'error');
                 }
