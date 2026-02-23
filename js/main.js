@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const res = await fetch('auth/login', {
+            const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+            const res = await fetch(apiBase + '/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, role: roleOverride })
@@ -78,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const res = await fetch('auth/register', {
+                const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+                const res = await fetch(apiBase + '/auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
