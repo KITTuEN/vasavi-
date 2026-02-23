@@ -3,8 +3,8 @@
 
 // Database Configuration
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '25315'); // As per current setup
+define('DB_USER', 'vasavi_user');
+define('DB_PASS', 'StrongPass123!'); // As per current setup
 define('DB_NAME', 'best_outgoing');
 
 // Encryption Configuration

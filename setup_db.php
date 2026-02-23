@@ -3,8 +3,8 @@
 // Run this file once to create the database and tables in MySQL.
 
 $host = 'localhost';
-$user = 'root';
-$pass = '25315';
+$user = 'vasavi_user';
+$pass = 'StrongPass123!';
 $dbname = 'best_outgoing';
 
 try {

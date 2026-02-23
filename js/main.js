@@ -22,9 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await res.json();
 
             if (res.ok) {
-                // Optional: Check role if we wanted to enforce strict portal usage
-                // For now, trust the redirection
-                window.location.href = data.redirect.replace(/^\//, ''); // Ensure relative redirect
+                if (data.redirect) {
+                    window.location.href = data.redirect.replace(/^\//, ''); // Ensure relative redirect
+                } else {
+                    showAlert(alertBox, data.error || 'Login successful but no redirect provided', 'error');
+                }
             } else {
                 showAlert(alertBox, data.error, 'error');
             }
