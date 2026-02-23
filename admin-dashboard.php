@@ -151,7 +151,8 @@
         </main>
     </div>
 
-    <script type="module" src="js/admin.js?v=5"></script>
+    <script src="js/responsive.js"></script>
+    <script type="module" src="js/admin.js?v=6"></script>
 </body>
 
 </html>

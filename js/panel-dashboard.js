@@ -40,18 +40,20 @@ async function loadStudents() {
                 : '<span style="background: #f59e0b; color: white; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: 600;">Pending</span>';
 
             return `
-                <div class="student-item" onclick="window.location.href='panel-evaluate.php?id=${s.id}'">
+                <a href="panel-evaluate.php?id=${s.id}" class="student-item" style="text-decoration:none; color:inherit; display:flex; justify-content:space-between; align-items:center;">
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #64748b;">
+                        <div style="width: 40px; height: 40px; background: #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #64748b; flex-shrink: 0;">
                             ${s.name.charAt(0)}
                         </div>
-                        <div>
-                            <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">${s.name}</div>
-                            <div style="font-size: 0.9rem; color: var(--text-muted);">${s.roll_number} • ${s.department}</div>
+                        <div style="min-width: 0;">
+                            <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${s.name}</div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${s.roll_number} &bull; ${s.department}</div>
                         </div>
                     </div>
-                    ${badge}
-                </div>
+                    <div style="margin-left: 10px; flex-shrink: 0;">
+                        ${badge}
+                    </div>
+                </a>
             `;
         }).join('');
 

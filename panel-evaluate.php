@@ -13,49 +13,6 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         .admin-body { background: #f8fafc; font-family: 'Outfit', sans-serif; }
-        .dashboard-container { display: flex; min-height: 100vh; overflow-x: hidden; position: relative; }
-        
-        .sidebar { 
-            width: 260px; 
-            background: #fff; 
-            border-right: 1px solid var(--border-color); 
-            display: flex; 
-            flex-direction: column; 
-            position: fixed; 
-            height: 100vh; 
-            z-index: 1050; 
-            transition: transform 0.3s ease;
-        }
-
-        .main-content { 
-            flex: 1; 
-            margin-left: 260px; 
-            padding: 2rem; 
-            transition: margin 0.3s ease;
-            width: 100%;
-        }
-
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1040;
-        }
-
-        .sidebar-header { padding: 1.5rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border-color); }
-        .sidebar-header h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin: 0; }
-        .logo-icon { width: 40px; height: 40px; background: var(--primary-color); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-        .nav-links { padding: 1.5rem 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-        .nav-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; border-radius: 8px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: all 0.2s; }
-        .nav-item:hover, .nav-item.active { background: #f1f5f9; color: var(--primary-color); }
-        .sidebar-footer { padding: 1.5rem; border-top: 1px solid var(--border-color); }
-        .logout-btn { display: flex; align-items: center; gap: 0.75rem; width: 100%; border: none; background: #fee2e2; color: #ef4444; padding: 0.8rem 1rem; border-radius: 8px; cursor: pointer; font-weight: 500; }
-        
-        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
         .top-bar .back-link { color: var(--text-muted); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
         .top-bar .back-link:hover { color: var(--primary-color); }
 
@@ -101,10 +58,6 @@
         .profile-avatar { width: 80px; height: 80px; border-radius: 50%; background: #e2e8f0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; color: #64748b; }
 
         @media (max-width: 991.98px) {
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.show { transform: translateX(0); }
-            .sidebar-overlay.show { display: block; }
-            .main-content { margin-left: 0; padding: 1.5rem; background: var(--bg-body); }
             .header-profile { flex-direction: column; align-items: center; text-align: center; }
             .score-slider-container { flex-direction: column; align-items: stretch; gap: 1rem; }
             .score-display { margin: 0 auto; }
@@ -143,6 +96,22 @@
             .evaluation-box.mobile-hide, .content-card.mobile-hide {
                 display: none;
             }
+
+            .sgpa-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.75rem;
+            }
+            .sgpa-grid .info-card:first-child {
+                grid-column: span 2;
+                text-align: center;
+            }
+            .sgpa-grid .info-card {
+                padding: 0.75rem;
+            }
+            .sgpa-grid .info-card label {
+                font-size: 0.75rem;
+                letter-spacing: -0.2px;
+            }
         }
 
         .main-content {
@@ -154,15 +123,12 @@
     </style>
 </head>
 <body class="admin-body">
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
     <div class="dashboard-container">
         <!-- Sidebar -->
         <nav class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo-icon">📋</div>
                 <h2>Panel View</h2>
-                <button class="btn btn-sm d-lg-none ms-auto" id="closeSidebar"><i class="fa-solid fa-times"></i></button>
             </div>
             <div class="nav-links">
                 <a href="panel-dashboard" class="nav-item"><i class="fa-solid fa-list-check"></i> Assigned Students</a>
@@ -177,12 +143,9 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <header class="top-bar">
+            <header class="top-bar" style="background:transparent; box-shadow:none;">
                  <div class="d-flex align-items-center gap-3">
-                    <button class="hamburger-menu btn btn-outline-secondary d-lg-none" id="sidebarToggle">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                    <a href="panel-dashboard" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                    <a href="panel-dashboard.php" class="back-link btn btn-light" style="color:var(--text-dark); background:#fff; border:1px solid #e2e8f0; font-weight:600;"><i class="fa-solid fa-arrow-left"></i> <span class="d-none d-sm-inline">Back</span></a>
                 </div>
                 <div class="welcome-text"></div>
             </header>
@@ -218,16 +181,16 @@
                 </div>
 
                 <div class="mobile-eval-tabs">
-                    <button class="mobile-tab-btn active" onclick="switchMobileTab('evaluation', this)">
-                        <i class="fa-solid fa-star"></i> Evaluation
-                    </button>
-                    <button class="mobile-tab-btn" onclick="switchMobileTab('submissions', this)">
+                    <button class="mobile-tab-btn active" onclick="switchMobileTab('submissions', this)">
                         <i class="fa-solid fa-file-lines"></i> Submissions
+                    </button>
+                    <button class="mobile-tab-btn" onclick="switchMobileTab('evaluation', this)">
+                        <i class="fa-solid fa-star"></i> Evaluation
                     </button>
                 </div>
 
-                <!-- Evaluation Section (First for focus) -->
-                <div class="evaluation-box" id="evaluationBox">
+                <!-- Evaluation Section -->
+                <div class="evaluation-box mobile-hide" id="evaluationBox">
                     <h3 style="margin-top:0; color:var(--primary-color); border-bottom:1px solid #e2e8f0; padding-bottom:1rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
                         <span><i class="fa-solid fa-user-pen"></i> Interview Assessment</span>
                         <span style="font-size:0.9rem; font-weight:normal; color:var(--text-muted);">Score Limit: 5.0</span>
@@ -246,9 +209,9 @@
                     </div>
                 </div>
 
-                <div class="content-card mobile-hide" id="submissionsCard">
+                <div class="content-card" id="submissionsCard">
                     <h4 class="section-title"><i class="fa-solid fa-book"></i> Academic Performance</h4>
-                    <div class="info-grid">
+                    <div class="info-grid sgpa-grid">
                         <div class="info-card"><label>CGPA</label><div class="value" id="acCgpa">--</div></div>
                         <div class="info-card"><label>SGPA (Sem 1)</label><div class="value" id="acS1">--</div></div>
                         <div class="info-card"><label>SGPA (Sem 2)</label><div class="value" id="acS2">--</div></div>
@@ -343,24 +306,10 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="js/panel-evaluate.js?v=11"></script>
+    <script>window.isSuperAdmin = false;</script>
+    <script src="js/responsive.js"></script>
+    <script type="module" src="js/panel-evaluate.js?v=12"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebarOverlay');
-            const toggle = document.getElementById('sidebarToggle');
-            const close = document.getElementById('closeSidebar');
-
-            function toggleSidebar() {
-                sidebar.classList.toggle('show');
-                overlay.classList.toggle('show');
-            }
-
-            if(toggle) toggle.addEventListener('click', toggleSidebar);
-            if(close) close.addEventListener('click', toggleSidebar);
-            if(overlay) overlay.addEventListener('click', toggleSidebar);
-        });
-
         function switchMobileTab(tab, btn) {
             const evalBox = document.getElementById('evaluationBox');
             const subCard = document.getElementById('submissionsCard');
@@ -369,12 +318,12 @@
             btns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
-            if (tab === 'evaluation') {
-                evalBox.classList.remove('mobile-hide');
-                subCard.classList.add('mobile-hide');
-            } else {
+            if (tab === 'submissions') {
                 evalBox.classList.add('mobile-hide');
                 subCard.classList.remove('mobile-hide');
+            } else {
+                evalBox.classList.remove('mobile-hide');
+                subCard.classList.add('mobile-hide');
             }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });

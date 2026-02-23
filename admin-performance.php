@@ -155,7 +155,7 @@
                     </div>
                     <?php endif; ?>
 
-                    <div id="pdfContent" class="table-responsive">
+                    <div id="pdfContent" class="table-responsive leaderboard-table">
                         <table>
                             <thead>
                                 <tr>
@@ -176,7 +176,8 @@
         </main>
     </div>
 
-    <script type="module" src="js/admin.js?v=5"></script>
+    <script src="js/responsive.js"></script>
+    <script type="module" src="js/admin.js?v=8"></script>
 </body>
 
 </html>

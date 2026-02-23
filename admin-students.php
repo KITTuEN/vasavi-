@@ -113,6 +113,7 @@
         window.isSuperAdmin = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
         window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
     </script>
+    <script src="js/responsive.js"></script>
     <script type="module" src="js/admin.js?v=7"></script>
 </body>
 

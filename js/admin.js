@@ -221,11 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tbody.innerHTML = data.map((s, i) => `
             <tr>
-                <td>${i + 1}</td>
-                <td>${s.name}</td>
-                <td>${s.department}</td>
-                <td>${s.roll_number}</td>
-                <td><strong>${parseFloat(s.score || 0).toFixed(2)}</strong></td>
+                <td data-label="Rank">${i + 1}</td>
+                <td data-label="Student">${s.name}</td>
+                <td data-label="Dept">${s.department}</td>
+                <td data-label="Roll No">${s.roll_number}</td>
+                <td data-label="Score"><strong>${parseFloat(s.score || 0).toFixed(2)}</strong></td>
             </tr>
         `).join('');
     }

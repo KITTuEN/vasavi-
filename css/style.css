@@ -841,8 +841,8 @@ body.admin-body {
     min-height: 120px;
     /* Ensure enough height */
     background-image: url('../navv.jpg');
-    background-size: 100% 100%;
-    /* Stretch to fill */
+    background-size: contain;
+    background-color: white;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: var(--radius-lg);
@@ -1856,6 +1856,57 @@ input[type=range]::-webkit-slider-thumb:hover {
         color: var(--text-muted);
         content: attr(data-label);
         /* Requires HTML update for data-label, fallback to flow */
+    }
+
+    /* Override for Performance/Leaderboard Table to stay horizontal */
+    .leaderboard-table table,
+    .leaderboard-table thead,
+    .leaderboard-table tbody,
+    .leaderboard-table th,
+    .leaderboard-table td,
+    .leaderboard-table tr {
+        display: table-cell;
+    }
+
+    .leaderboard-table table {
+        display: table;
+        width: 100%;
+    }
+
+    .leaderboard-table thead {
+        display: table-header-group;
+    }
+
+    .leaderboard-table tbody {
+        display: table-row-group;
+    }
+
+    .leaderboard-table tr {
+        display: table-row;
+        border: none;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .leaderboard-table thead tr {
+        position: static;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        white-space: nowrap;
+    }
+
+    .leaderboard-table td:before {
+        content: none;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
