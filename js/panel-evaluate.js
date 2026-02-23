@@ -1,6 +1,8 @@
+const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+
 const getCertHtml = (path) => {
     if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
-    const url = `files/${path.replace('FILE:', '')}`;
+    const url = `${apiBase}/files/${path.replace('FILE:', '')}`;
     return `<a href="#" onclick="openDocModal('${url}'); return false;" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
         <i class="fa-solid fa-eye"></i> View
     </a>`;
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadStudentDetails(id) {
     try {
-        const res = await fetch(`panel/students/details?id=${id}`);
+        const res = await fetch(apiBase + `/panel/students/details?id=${id}`);
         if (!res.ok) throw new Error("Failed to load student data");
         const data = await res.json();
 
@@ -53,8 +55,8 @@ function renderProfile(data, userId) {
     const avatarEl = document.getElementById('stAvatar');
     if (u.profile_photo) {
         const photoUrl = u.profile_photo.startsWith('FILE:')
-            ? `files/${u.profile_photo.replace('FILE:', '')}`
-            : (u.profile_photo.startsWith('http') ? u.profile_photo : `files/${u.profile_photo}`);
+            ? `${apiBase}/files/${u.profile_photo.replace('FILE:', '')}`
+            : (u.profile_photo.startsWith('http') ? u.profile_photo : `${apiBase}/files/${u.profile_photo}`);
         avatarEl.innerHTML = `<img src="${photoUrl}" alt="Profile" style="width:100%; height:100%; object-fit:cover;">`;
     } else {
         avatarEl.innerHTML = u.name.charAt(0).toUpperCase();
@@ -163,7 +165,7 @@ function renderProfile(data, userId) {
 
     const fileLink = (path, label) => {
         if (!path) return '<span style="color:#aaa; font-style:italic;">Not uploaded</span>';
-        const url = `files/${path.replace('FILE:', '')}`;
+        const url = `${apiBase}/files/${path.replace('FILE:', '')}`;
         return `<a href="#" onclick="window.openDocModal('${url}'); return false;" class="file-link"><i class="fa-solid fa-eye"></i> ${label}</a>`;
     };
 
@@ -255,7 +257,7 @@ function renderProfile(data, userId) {
         document.getElementById('declPlace').innerText = u.declaration_place;
         document.getElementById('declDate').innerText = u.declaration_date;
         if (u.signature_path) {
-            const sigUrl = `files/${u.signature_path.replace('FILE:', '')}`;
+            const sigUrl = `${apiBase}/files/${u.signature_path.replace('FILE:', '')}`;
             document.getElementById('declSignature').innerHTML = `<img src="${sigUrl}" alt="Signature" style="max-height:80px; border:1px solid #ddd; padding:5px; margin-top:5px;">`;
         }
     }
@@ -300,7 +302,7 @@ function setupEvaluationForm(userId, data) {
         btn.disabled = true;
 
         try {
-            const res = await fetch('panel/evaluate/interview', {
+            const res = await fetch(apiBase + '/panel/evaluate/interview', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: userId, interview_score: slider.value })

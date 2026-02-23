@@ -110,6 +110,7 @@
     </div>
 
     <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
         window.IS_SUPER_ADMIN = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
         window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
     </script>

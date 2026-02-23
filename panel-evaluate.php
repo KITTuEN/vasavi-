@@ -306,7 +306,10 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>window.isSuperAdmin = false;</script>
+    <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
+        window.IS_SUPER_ADMIN = false;
+    </script>
     <script src="js/responsive.js"></script>
     <script type="module" src="js/panel-evaluate.js?v=12"></script>
     <script>

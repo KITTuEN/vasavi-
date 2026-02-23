@@ -1,6 +1,8 @@
+const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+
 const getCertHtml = (path) => {
     if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
-    const url = `files/${path.replace('FILE:', '')}`;
+    const url = `${apiBase}/files/${path.replace('FILE:', '')}`;
     return `<a href="#" onclick="openDocModal('${url}'); return false;" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
         <i class="fa-solid fa-eye"></i> View
     </a>`;
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const headerLoader = document.getElementById('studentName');
             if (headerLoader) headerLoader.innerText = "Fetching data...";
 
-            const res = await fetch(`admin/students/${id}`);
+            const res = await fetch(apiBase + `/admin/students/${id}`);
             if (!res.ok) {
                 throw new Error(`API Error: ${res.status} ${res.statusText}`);
             }
@@ -50,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (avatarEl) {
                 if (data.user.profile_photo) {
                     const photoUrl = data.user.profile_photo.startsWith('FILE:')
-                        ? `files/${data.user.profile_photo.replace('FILE:', '')}`
-                        : (data.user.profile_photo.startsWith('http') ? data.user.profile_photo : `files/${data.user.profile_photo}`);
+                        ? `${apiBase}/files/${data.user.profile_photo.replace('FILE:', '')}`
+                        : (data.user.profile_photo.startsWith('http') ? data.user.profile_photo : `${apiBase}/files/${data.user.profile_photo}`);
                     avatarEl.innerHTML = `<img src="${photoUrl}" alt="Profile" style="width:100%; height:100%; object-fit:cover;" onerror="this.onerror=null;this.src='https://cdn-icons-png.flaticon.com/512/1077/1077114.png';">`;
                 } else {
                     const initials = (data.user.name || 'S').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
@@ -274,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Recommendation
         if (data.user.recommendation_letter_path) {
-            const recPath = `files/${data.user.recommendation_letter_path.replace('FILE:', '')}`;
+            const recPath = `${apiBase}/files/${data.user.recommendation_letter_path.replace('FILE:', '')}`;
             content += `<h4 class="mt-4">Recommendation Letter</h4>
              <div class="list-item-card">
                  <p style="margin-bottom:0.5rem;">Uploaded Document:</p>
@@ -293,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="margin-top:10px;">
                     <strong>Signature:</strong><br>
                     ${data.user.signature_path ?
-                    `<img src="files/${data.user.signature_path.replace('FILE:', '')}" alt="Signature" style="max-height:80px; border:1px solid #ddd; padding:5px; margin-top:5px;">`
+                    `<img src="${apiBase}/files/${data.user.signature_path.replace('FILE:', '')}" alt="Signature" style="max-height:80px; border:1px solid #ddd; padding:5px; margin-top:5px;">`
                     : '<span class="text-muted">No signature uploaded</span>'}
                 </div>
              </div>`;
@@ -582,7 +584,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.extracurricular_score = document.getElementById('scExtra').value;
             }
 
-            const res = await fetch('admin/evaluate', {
+            const res = await fetch(apiBase + '/admin/evaluate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

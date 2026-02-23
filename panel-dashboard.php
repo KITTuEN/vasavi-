@@ -57,8 +57,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
         window.userRole = "panel";
-        window.isSuperAdmin = false;
+        window.IS_SUPER_ADMIN = false;
     </script>
     <script src="js/responsive.js"></script>
     <script type="module" src="js/panel-dashboard.js"></script>

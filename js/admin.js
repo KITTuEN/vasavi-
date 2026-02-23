@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
-            await fetch('auth/logout', { method: 'POST' });
-            window.location.href = 'index.php';
+            await fetch(apiBase + '/auth/logout', { method: 'POST' });
+            window.location.href = apiBase + '/index.php';
         });
     }
 
@@ -128,14 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshDashboard();
     } else if (studentsContainer) {
         loadStudents();
+        loadStats();
     } else if (performanceContainer) {
         loadLeaderboardTable();
     }
 
     // Students Page Logic
     let allStudents = [];
-    async function loadStudents() {
-        const res = await fetch('admin/students');
+    const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+
+    async function loadStats() {
+        const res = await fetch(apiBase + '/admin/stats');
         allStudents = await res.json();
         renderStudentList(allStudents);
     }
@@ -201,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             viewType = window.IS_SUPER_ADMIN ? 'before' : 'after';
         }
 
-        const res = await fetch(`admin/leaderboard?type=${viewType}`);
+        const res = await fetch(apiBase + `/admin/leaderboard?type=${viewType}`);
         const data = await res.json();
 
         const tabs = document.querySelectorAll('.l-tab');

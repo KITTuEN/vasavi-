@@ -141,6 +141,7 @@
                     </div>
 
                     <script>
+                        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
                         window.IS_SUPER_ADMIN = <?php echo $isSuper ? 'true' : 'false'; ?>;
                     </script>
 

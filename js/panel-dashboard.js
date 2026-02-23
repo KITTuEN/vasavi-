@@ -1,11 +1,13 @@
 
+const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+
 document.addEventListener('DOMContentLoaded', () => {
     // Logout
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
-            await fetch('auth/logout', { method: 'POST' });
-            window.location.href = 'index.php';
+            await fetch(apiBase + '/auth/logout', { method: 'POST' });
+            window.location.href = apiBase + '/index.php';
         });
     }
 
@@ -17,7 +19,7 @@ async function loadStudents() {
     const loading = document.getElementById('loading');
 
     try {
-        const res = await fetch('panel/students');
+        const res = await fetch(apiBase + '/panel/students');
         const students = await res.json();
 
         loading.style.display = 'none';

@@ -12,6 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
+    </script>
 </head>
 
 <body class="admin-body">
@@ -720,6 +723,11 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
+        window.IS_SUPER_ADMIN = <?php echo (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
+    </script>
     <script src="js/responsive.js"></script>
     <script src="js/dashboard.js?v=<?php echo time(); ?>"></script>
 </body>

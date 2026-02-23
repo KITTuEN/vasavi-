@@ -1,6 +1,8 @@
+const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+
 const getCertHtml = (path) => {
     if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
-    const url = `files/${path.replace('FILE:', '')}`;
+    const url = `${apiBase}/files/${path.replace('FILE:', '')}`;
     return `<a href="#" onclick="openDocModal('${url}'); return false;" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
         <i class="fa-solid fa-eye"></i> View
     </a>`;
@@ -64,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
-            await fetch('auth/logout', { method: 'POST' });
-            window.location.href = 'index.php';
+            await fetch(apiBase + '/auth/logout', { method: 'POST' });
+            window.location.href = apiBase + '/index.php';
         });
     }
 
@@ -122,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- PROFILE HANDLING ---
     async function loadProfile() {
         try {
-            const res = await fetch('student/profile');
+            const res = await fetch(apiBase + '/student/profile');
             if (!res.ok) {
                 const debugEl = document.getElementById('debug-info');
                 if (debugEl) debugEl.innerText = 'Profile Fetch Failed';
@@ -164,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set Photo
             const photoPrev = document.getElementById('pPhotoPreview');
             if (photoPrev && data.profile_photo) {
-                photoPrev.src = 'files/' + data.profile_photo.replace('FILE:', '');
+                photoPrev.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
             }
 
             // Update char count on load
@@ -181,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const recAnchor = document.getElementById('recFileLink');
                 if (recLinkDiv && recAnchor) {
                     recLinkDiv.style.display = 'block';
-                    recAnchor.href = 'files/' + data.recommendation_letter_path.replace('FILE:', '');
+                    recAnchor.href = apiBase + '/files/' + data.recommendation_letter_path.replace('FILE:', '');
                 }
             }
 
@@ -198,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sigPreview = document.getElementById('signaturePreview');
                 const sigImg = sigPreview.querySelector('img');
                 if (sigPreview && sigImg) {
-                    sigImg.src = 'files/' + data.signature_path.replace('FILE:', '');
+                    sigImg.src = apiBase + '/files/' + data.signature_path.replace('FILE:', '');
                     sigPreview.style.display = 'block';
                 }
             }
@@ -293,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const res = await fetch('student/profile', {
+                const res = await fetch(apiBase + '/student/profile', {
                     method: 'POST',
                     body: fd // No Content-Type header when using FormData
                 });
@@ -302,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const data = await res.json();
                     if (data.profile_photo) {
                         const pp = document.getElementById('pPhotoPreview');
-                        if (pp) pp.src = 'files/' + data.profile_photo.replace('FILE:', '');
+                        if (pp) pp.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
                     }
                 } else {
                     let errMsg = 'Unknown error';
@@ -365,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            const res = await fetch(url, {
+            const res = await fetch(apiBase + (url.startsWith('/') ? url : '/' + url), {
                 method: 'POST',
                 // No Content-Type header for FormData
                 body: fd
@@ -434,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadAllData() {
         // Co-Curricular
         try {
-            const coRes = await fetch('student/co-curricular');
+            const coRes = await fetch(apiBase + '/student/co-curricular');
             if (coRes.ok) {
                 const coData = await coRes.json();
 
@@ -608,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Extracurricular
         try {
-            const extRes = await fetch('student/extracurricular');
+            const extRes = await fetch(apiBase + '/student/extracurricular');
             if (extRes.ok) {
                 const extData = await extRes.json();
 
