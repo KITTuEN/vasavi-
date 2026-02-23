@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS users (
     declaration_place VARCHAR(255) DEFAULT NULL,
     declaration_date VARCHAR(50) DEFAULT NULL,
     signature_path VARCHAR(255) DEFAULT NULL,
+    recommendation_letter_path VARCHAR(255) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -37,6 +38,9 @@ CREATE TABLE IF NOT EXISTS academic_records (
     certifications TEXT,
     honours_minors TEXT,
     competitive_exams TEXT,
+    academic_comments TEXT,
+    honours_minors_comments TEXT,
+    competitive_exams_comments TEXT,
     hod_name VARCHAR(255),
     hod_evaluation_date VARCHAR(50),
     hod_overall_comments TEXT,
@@ -54,6 +58,7 @@ CREATE TABLE IF NOT EXISTS co_curricular (
     date VARCHAR(50),
     certificate_path VARCHAR(255),
     score FLOAT,
+    hod_comments TEXT,
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -67,6 +72,7 @@ CREATE TABLE IF NOT EXISTS extracurricular (
     level VARCHAR(50),
     certificate_path VARCHAR(255),
     score FLOAT,
+    hod_comments TEXT,
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -104,4 +110,10 @@ CREATE TABLE IF NOT EXISTS interview_marks (
     UNIQUE KEY (user_id, panel_id),
     FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY(panel_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Table: department_toppers
+CREATE TABLE IF NOT EXISTS department_toppers (
+    department VARCHAR(255) PRIMARY KEY,
+    topper_cgpa FLOAT DEFAULT 0
 );
