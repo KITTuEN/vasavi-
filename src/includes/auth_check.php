@@ -53,10 +53,16 @@ function require_guest() {
 }
 
 function get_base_url() {
-    // Dynamically detect the base path (e.g., /Best outgoing or empty string if at root)
-    $script_dir = dirname($_SERVER['SCRIPT_NAME']);
-    // Normalize: remove trailing slash and fix backslashes for Windows compat if needed
-    $base = trim(str_replace(['\\', '/src/includes'], ['/', ''], $script_dir), '/');
-    return $base ? '/' . $base : '';
+    $script_name = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
+    // If the script is under /src/, the base is everything before it
+    $pos = strpos($script_name, '/src/');
+    if ($pos !== false) {
+        $base = substr($script_name, 0, $pos);
+    } else {
+        // Otherwise, it's the directory of the current script
+        $base = dirname($script_name);
+    }
+    // Normalize and remove trailing slash
+    return rtrim(str_replace('\\', '/', $base), '/');
 }
 ?>
