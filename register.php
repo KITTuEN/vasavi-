@@ -14,6 +14,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
+    </script>
     <style>
         .login-body {
             min-height: 100vh;
