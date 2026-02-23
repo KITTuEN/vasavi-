@@ -103,9 +103,15 @@ if ($method === 'GET') {
             'topScore' => is_array($top) ? ($top['score'] ?? 0) : 0,
             'branches' => $branches
         ]);
+    } elseif ($action === 'toppers') {
+        $toppers = db_all("SELECT department, topper_cgpa FROM department_toppers ORDER BY department ASC");
+        echo json_encode($toppers);
     } elseif (preg_match('/students\/(\d+)/', $action, $matches)) {
         $userId = $matches[1];
-        $user = db_get("SELECT id, name, email, department, roll_number, profile_photo, is_submitted, declaration_place, declaration_date, signature_path, recommendation_letter_path FROM users WHERE id = ?", [$userId]);
+        $user = db_get("SELECT u.id, u.name, u.email, u.department, u.roll_number, u.profile_photo, u.is_submitted, u.declaration_place, u.declaration_date, u.signature_path, u.recommendation_letter_path, dt.topper_cgpa 
+                        FROM users u 
+                        LEFT JOIN department_toppers dt ON u.department = dt.department 
+                        WHERE u.id = ?", [$userId]);
         if (!$user) {
             http_response_code(404);
             echo json_encode(['error' => 'Student not found']);
@@ -162,7 +168,31 @@ if ($method === 'GET') {
         echo json_encode(db_all($query, $params));
     }
 } elseif ($method === 'POST') {
-    if ($action === 'evaluate') {
+    if ($action === 'toppers') {
+        $isSuperAdmin = !isset($_SESSION['user']['department']) || empty($_SESSION['user']['department']);
+        if (!$isSuperAdmin) {
+            http_response_code(403);
+            echo json_encode(['error' => 'Only Super Admin can edit toppers']);
+            exit;
+        }
+        
+        $input = json_decode(file_get_contents('php://input'), true);
+        if (!is_array($input)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid data format']);
+            exit;
+        }
+        
+        foreach ($input as $row) {
+            $dept = $row['department'] ?? '';
+            $cgpa = floatval($row['topper_cgpa'] ?? 10.0);
+            if ($dept) {
+                db_run("UPDATE department_toppers SET topper_cgpa = ? WHERE department = ?", [$cgpa, $dept]);
+            }
+        }
+        echo json_encode(['success' => true]);
+        
+    } elseif ($action === 'evaluate') {
         $input = json_decode(file_get_contents('php://input'), true);
         $user_id = $input['user_id'] ?? null;
         

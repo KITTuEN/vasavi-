@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.IS_SUPER_ADMIN = <?php echo (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+    </script>
     <style>
         .nav-item {
             cursor: pointer;
@@ -53,6 +56,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        .topper-input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .topper-input-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            width: 100px;
+        }
+        .topper-input-group input {
+            width: 120px;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            text-align: right;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
     </style>
 </head>
 
@@ -80,6 +108,13 @@
                     <i class="fa-solid fa-trophy"></i>
                     <span>Performance</span>
                 </a>
+                <?php $isSuperAdmin = !isset($_SESSION['user']['department']) || empty($_SESSION['user']['department']); ?>
+                <?php if ($isSuperAdmin): ?>
+                <a href="#" class="nav-item" onclick="openTopperModal(); return false;" id="navTopperBtn">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Set Topper CGPA</span>
+                </a>
+                <?php endif; ?>
             </div>
 
             <div class="sidebar-footer">
@@ -151,8 +186,30 @@
         </main>
     </div>
 
+    <!-- Topper CGPA Modal -->
+    <div id="topperModal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; padding: 1rem;">
+        <div class="modal-content" style="width: 100%; max-width: 500px; padding: 1.5rem; max-height: 90vh; display: flex; flex-direction: column;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                <h3 style="margin:0;"><i class="fa-solid fa-ranking-star" style="color:var(--primary-color);"></i> Set Topper CGPAs</h3>
+                <button class="btn-close" onclick="closeTopperModal()"></button>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">
+                Set the baseline for calculating the Academic CGPA Score (Max 55).
+            </p>
+            <form id="topperForm" style="display: flex; flex-direction: column; overflow: hidden; flex: 1;">
+                <div id="topperInputsContainer" style="overflow-y: auto; padding-right: 10px; margin-bottom: 5px; flex: 1;">
+                    <div style="text-align:center;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</div>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:1rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+                    <button type="button" class="btn-secondary" onclick="closeTopperModal()" style="border:none; background:transparent; color:#64748b;">Cancel</button>
+                    <button type="submit" class="btn-primary"><i class="fa-solid fa-save"></i> Save Configuration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/admin.js?v=6"></script>
+    <script type="module" src="js/admin.js?v=7"></script>
 </body>
 
 </html>

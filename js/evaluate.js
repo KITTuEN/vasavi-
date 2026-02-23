@@ -394,7 +394,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (commentsHonours) commentsHonours.value = acad.honours_minors_comments || '';
 
         if (IS_SUPER_ADMIN) {
-            setScore('scAcademicCGPA', 'valAcademicCGPA', acad.cgpa_score || 0);
+            // Calculate Academic CGPA Score automatically
+            let topperCgpa = parseFloat(data.user.topper_cgpa);
+            if (isNaN(topperCgpa) || topperCgpa <= 0) topperCgpa = 10.0;
+
+            let studentCgpa = parseFloat(acad.cgpa);
+            if (isNaN(studentCgpa)) studentCgpa = 0;
+
+            let calculatedScore = (studentCgpa / topperCgpa) * 55;
+            calculatedScore = Math.min(Math.max(calculatedScore, 0), 55);
+
+            // Format to 2 decimal places for display as string
+            const scoreStr = calculatedScore.toFixed(2);
+
+            console.log(`CGPA Calculation: (${studentCgpa} / ${topperCgpa}) * 55 = ${calculatedScore} -> ${scoreStr}`);
+
+            const formulaText = document.getElementById('cgpaFormulaText');
+            if (formulaText) {
+                formulaText.innerHTML = `Formula: (${studentCgpa.toFixed(2)} / ${topperCgpa.toFixed(2)}) × 55`;
+            }
+
+            // Explicitly set the CGPA score
+            setScore('scAcademicCGPA', 'valAcademicCGPA', scoreStr);
+
+            // Prefill other scores from DB
             setScore('scAcademicHonours', 'valAcademicHonours', acad.honours_score || 0);
             setScore('scAcademicExams', 'valAcademicExams', acad.exams_score || 0);
             setScore('scCo', 'valCo', scores.co_curricular_score || 0);

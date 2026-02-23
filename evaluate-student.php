@@ -220,11 +220,13 @@
                              <h4 style="color: #166534; margin-top:0;"><i class="fa-solid fa-star"></i> Scoring (Super Admin Only)</h4>
                             
                             <!-- Academic Granular -->
-                            <div class="slider-group">
-                                <label>Academic: CGPA Score (Max 55) <span class="score-display"
-                                        id="valAcademicCGPA">0</span></label>
-                                <input type="range" id="scAcademicCGPA" min="0" max="55" step="0.1" value="0"
-                                    oninput="document.getElementById('valAcademicCGPA').innerText = this.value">
+                            <div class="slider-group" style="background:#fff; padding:15px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:15px;">
+                                <label style="margin-bottom:0.5rem; display:block;">Academic: CGPA Score (Max 55) <span class="score-display"
+                                        id="valAcademicCGPA" style="float:right; margin-top:-10px;">0</span></label>
+                                <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:10px;" id="cgpaFormulaText">
+                                    Formula: (Student CGPA / Dept Topper CGPA) × 55
+                                </div>
+                                <input type="hidden" id="scAcademicCGPA" value="0">
                             </div>
                             <div class="slider-group">
                                 <label>Academic: Honours/Minors (Max 5) <span class="score-display"
