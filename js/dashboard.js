@@ -519,7 +519,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 prefillSection(coData, 'Class Representative', 'repYes', 'repNo', 'repListContainer', (item) => {
                     const div = document.createElement('div');
                     div.className = 'rep-entry dynamic-entry';
-                    const sem = item.name.replace('Semester ', '').trim();
+                    const nameStr = item.title || item.name || '';
+                    const sem = nameStr.replace('Semester ', '').trim();
                     div.innerHTML = `
                         <label class="form-label">Semester (e.g. 3, 4)</label>
                         <input type="number" class="rep-semester input-full" value="${sem}" min="1" max="8">
