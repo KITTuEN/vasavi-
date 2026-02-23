@@ -242,7 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const doc = new jsPDFObj('p', 'mm', 'a4');
-                const activeTab = document.querySelector('.l-tab.active').innerText.trim();
+                const activeTabEl = document.querySelector('.l-tab.active');
+                const activeTab = activeTabEl ? activeTabEl.innerText.trim() : 'Overall';
                 const tableRows = document.querySelectorAll('#leaderboardBody tr');
 
                 if (tableRows.length === 0) {
@@ -307,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 doc.save(`Leaderboard_${activeTab.replace(/\s+/g, '_')}.pdf`);
             } catch (err) {
                 console.error("PDF Export Error:", err);
-                alert("An error occurred while generating the PDF. Please contact support.");
+                alert("An error occurred while generating the PDF: " + err.message);
             }
         });
     }
