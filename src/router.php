@@ -9,11 +9,20 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $request_uri = $_SERVER['REQUEST_URI'];
-$base_path = dirname(dirname($_SERVER['SCRIPT_NAME'])); // Level up from src/router.php
+$script_name = $_SERVER['SCRIPT_NAME'];
+$base_path = dirname(dirname($script_name)); // Level up from src/router.php
 
-// Simple routing logic - decode URL spaces and strip base path
-// We want the internal route only. e.g. /Best outgoing/auth/login -> auth/login
-$path = str_replace($base_path, '', rawurldecode(parse_url($request_uri, PHP_URL_PATH)));
+// Normalize base_path: ensure it uses forward slashes and doesn't end with a slash unless it's just /
+$base_path = str_replace('\\', '/', $base_path);
+if ($base_path === '/') $base_path = '';
+
+// Simple routing logic - decode URL spaces and strip base path prefix only
+$full_path = rawurldecode(parse_url($request_uri, PHP_URL_PATH));
+$path = $full_path;
+
+if (!empty($base_path) && strpos($full_path, $base_path) === 0) {
+    $path = substr($full_path, strlen($base_path));
+}
 $path = trim($path, '/');
 
 // Debug logging disabled
