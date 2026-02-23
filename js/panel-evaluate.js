@@ -199,7 +199,17 @@ function renderProfile(data, userId) {
     };
 
     // Co-Curricular Rendering
-    const coTypes = ["Paper Publication", "Project", "Internship", "Workshop/Seminar", "Online Course", "Outside College Activity"];
+    const coTypes = [
+        "Paper Publications",
+        "Inter-College Activity",
+        "Intra-Department Winner",
+        "Seminars Delivered",
+        "Class Representative",
+        "Professional Body Membership",
+        "MOOCs Certification",
+        "Internship/Consultancy",
+        "Award/Contribution"
+    ];
     let coHtml = '';
     coTypes.forEach(type => {
         const items = co.filter(i => i.activity_type === type);
@@ -215,7 +225,16 @@ function renderProfile(data, userId) {
     if (coContainer) coContainer.innerHTML = coHtml || '<p style="color:var(--text-muted); padding:1rem;">No co-curricular activities recorded.</p>';
 
     // Extracurricular Rendering
-    const exTypes = ["Within College Activity", "Outside College Activity", "Tech Fest Coordinator", "Other Coordinator", "Committee Member", "NSS/Social Service", "Extracurricular Award"];
+    const exTypes = [
+        "University Team Selection",
+        "Within College Activity",
+        "Outside College Activity",
+        "Tech Fest Coordinator",
+        "Other Coordinator",
+        "Committee Member",
+        "NSS/Social Service",
+        "Extracurricular Award"
+    ];
     let exHtml = '';
     exTypes.forEach(type => {
         const items = ex.filter(i => i.activity_type === type);

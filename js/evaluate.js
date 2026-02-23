@@ -195,14 +195,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const extraItems = safeArr(data.extracurricular);
 
         // Group Co-Curricular
-        const papers = coItems.filter(i => i.activity_type === 'Paper Publication');
-        const projects = coItems.filter(i => i.activity_type === 'Project');
-        const internships = coItems.filter(i => i.activity_type === 'Internship');
-        const seminars = coItems.filter(i => i.activity_type === 'Workshop/Seminar');
-        const courses = coItems.filter(i => i.activity_type === 'Online Course');
-        const otherCo = coItems.filter(i => i.activity_type === 'Outside College Activity');
+        const papers = coItems.filter(i => i.activity_type === 'Paper Publications');
+        const interCollege = coItems.filter(i => i.activity_type === 'Inter-College Activity');
+        const intraDept = coItems.filter(i => i.activity_type === 'Intra-Department Winner');
+        const seminars = coItems.filter(i => i.activity_type === 'Seminars Delivered');
+        const classRep = coItems.filter(i => i.activity_type === 'Class Representative');
+        const membership = coItems.filter(i => i.activity_type === 'Professional Body Membership');
+        const moocs = coItems.filter(i => i.activity_type === 'MOOCs Certification');
+        const internships = coItems.filter(i => i.activity_type === 'Internship/Consultancy');
+        const awards = coItems.filter(i => i.activity_type === 'Award/Contribution');
 
         // Group Extracurricular
+        const uniTeam = extraItems.filter(i => i.activity_type === 'University Team Selection');
         const within = extraItems.filter(i => i.activity_type === 'Within College Activity');
         const outside = extraItems.filter(i => i.activity_type === 'Outside College Activity');
         const tech = extraItems.filter(i => i.activity_type === 'Tech Fest Coordinator');
@@ -238,13 +242,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return html;
         };
 
-        content += renderItem("Paper Publications", papers, "co");
-        content += renderItem("Projects", projects, "co");
-        content += renderItem("Internships", internships, "co");
-        content += renderItem("Workshops / Seminars", seminars, "co");
-        content += renderItem("Online Courses", courses, "co");
-        content += renderItem("Co-Curricular Activities", otherCo, "co");
+        if (coItems.length > 0) {
+            content += `<h3 style="margin-top:2.5rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0; color:var(--primary-color);"><i class="fa-solid fa-medal"></i> Co-Curricular Activities</h3>`;
+        }
 
+        content += renderItem("Paper Publications", papers, "co");
+        content += renderItem("Inter-College Activity", interCollege, "co");
+        content += renderItem("Intra-Department Winner", intraDept, "co");
+        content += renderItem("Seminars Delivered", seminars, "co");
+        content += renderItem("Class Representative", classRep, "co");
+        content += renderItem("Professional Body Membership", membership, "co");
+        content += renderItem("MOOCs Certification", moocs, "co");
+        content += renderItem("Internship/Consultancy", internships, "co");
+        content += renderItem("Awards / Significant Contributions", awards, "co");
+
+        if (extraItems.length > 0) {
+            content += `<h3 style="margin-top:2.5rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0; color:var(--primary-color);"><i class="fa-solid fa-futbol"></i> Extracurricular Activities</h3>`;
+        }
+
+        content += renderItem("University Team Selection", uniTeam, "extra");
         content += renderItem("Within College Activities", within, "extra");
         content += renderItem("Outside College Activities", outside, "extra");
         content += renderItem("Tech Fest Coordinators", tech, "extra");

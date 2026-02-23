@@ -304,7 +304,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/responsive.js"></script>
-    <script src="js/evaluate.js?v=11"></script>
+    <script src="js/evaluate.js?v=12"></script>
     <script>
         function switchMobileTab(tab, btn) {
             const details = document.getElementById('detailsCol');
