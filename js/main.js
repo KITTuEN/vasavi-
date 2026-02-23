@@ -19,7 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, role: roleOverride })
             });
-            const data = await res.json();
+
+            let data;
+            const contentType = res.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                data = await res.json();
+            } else {
+                const text = await res.text();
+                console.error("Non-JSON response received:", text);
+                data = { error: "Server returned non-JSON response. status: " + res.status };
+            }
 
             if (res.ok) {
                 if (data.redirect) {
@@ -28,10 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     showAlert(alertBox, data.error || 'Login successful but no redirect provided', 'error');
                 }
             } else {
-                showAlert(alertBox, data.error, 'error');
+                showAlert(alertBox, data.error || ('Login failed with status ' + res.status), 'error');
             }
         } catch (err) {
-            showAlert(alertBox, 'An error occurred', 'error');
+            console.error("Fetch error:", err);
+            showAlert(alertBox, 'An error occurred: ' + err.message, 'error');
         }
     };
 

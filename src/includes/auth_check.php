@@ -53,8 +53,10 @@ function require_guest() {
 }
 
 function get_base_url() {
-    // Assuming the app is hosted at /Best outgoing/
-    // You might also derive this dynamically or from config
-    return "/Best outgoing";
+    // Dynamically detect the base path (e.g., /Best outgoing or empty string if at root)
+    $script_dir = dirname($_SERVER['SCRIPT_NAME']);
+    // Normalize: remove trailing slash and fix backslashes for Windows compat if needed
+    $base = trim(str_replace(['\\', '/src/includes'], ['/', ''], $script_dir), '/');
+    return $base ? '/' . $base : '';
 }
 ?>

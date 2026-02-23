@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase "/Best outgoing/"
+    # RewriteBase "/Best outgoing/"
 
     # API routes
     RewriteRule ^(auth|student|admin|panel|files|downloads)(/.*)?$ src/router.php [L,QSA]

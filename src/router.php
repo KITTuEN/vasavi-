@@ -12,6 +12,7 @@ $request_uri = $_SERVER['REQUEST_URI'];
 $base_path = dirname(dirname($_SERVER['SCRIPT_NAME'])); // Level up from src/router.php
 
 // Simple routing logic - decode URL spaces and strip base path
+// We want the internal route only. e.g. /Best outgoing/auth/login -> auth/login
 $path = str_replace($base_path, '', rawurldecode(parse_url($request_uri, PHP_URL_PATH)));
 $path = trim($path, '/');
 
