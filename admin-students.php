@@ -115,7 +115,7 @@
         window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
     </script>
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/admin.js?v=7"></script>
+    <script type="module" src="js/admin.js?v=9"></script>
 </body>
 
 </html>

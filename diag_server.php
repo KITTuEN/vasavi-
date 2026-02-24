@@ -74,5 +74,27 @@ try {
     echo "Database check: <b style='color:red;'>FAILED</b> - " . htmlspecialchars($e->getMessage()) . "<br>";
 }
 
-echo "<br><hr><p>If anything is <b>MISSING</b> or <b>FAILED</b> above, that is why your uploads aren't working.</p>";
+echo "<h2>API Rewrite Test</h2>";
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'];
+$api_test_url = $protocol . $host . $detected_base . "/auth/test_rewrite";
+
+echo "Testing URL: <code>$api_test_url</code><br>";
+$context = stream_context_create(['http' => ['ignore_errors' => true, 'timeout' => 5]]);
+$response = @file_get_contents($api_test_url, false, $context);
+
+if ($response !== false) {
+    $data = json_decode($response, true);
+    if (isset($data['error']) && $data['error'] === 'Route not found: auth/test_rewrite') {
+        echo "Rewrite Test: <b style='color:green;'>SUCCESS (Router reached)</b><br>";
+    } else {
+        echo "Rewrite Test: <b>RESPONSE RECEIVED BUT UNEXPECTED</b><br>";
+        echo "<pre>" . htmlspecialchars(substr($response, 0, 200)) . "</pre>";
+    }
+} else {
+    echo "Rewrite Test: <b style='color:red;'>FAILED (Could not reach API)</b><br>";
+    echo "This usually means <b>mod_rewrite</b> is disabled or <b>AllowOverride All</b> is missing in Apache config.<br>";
+}
+
+echo "<br><hr><p>If anything is <b>MISSING</b> or <b>FAILED</b> above, that is why your application is not working correctly.</p>";
 ?>

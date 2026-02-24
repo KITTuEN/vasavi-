@@ -10,11 +10,16 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $request_uri = $_SERVER['REQUEST_URI'];
 $script_name = $_SERVER['SCRIPT_NAME'];
-$base_path = dirname(dirname($script_name)); // Level up from src/router.php
 
-// Normalize base_path: ensure it uses forward slashes and doesn't end with a slash unless it's just /
-$base_path = str_replace('\\', '/', $base_path);
-if ($base_path === '/') $base_path = '';
+// Detect base path more reliably
+$script_dir = dirname($script_name);
+$base_path = ($script_dir === '/' || $script_dir === '\\') ? '' : rtrim(str_replace(['\\'], ['/'], $script_dir), '/');
+
+// For router.php specifically, go up one more level if it's in /src/
+if (strpos($script_name, '/src/') !== false) {
+    $base_path = dirname($base_path);
+    if ($base_path === '/' || $base_path === '\\') $base_path = '';
+}
 
 // Simple routing logic - decode URL spaces and strip base path prefix only
 $full_path = rawurldecode(parse_url($request_uri, PHP_URL_PATH));

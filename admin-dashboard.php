@@ -211,7 +211,7 @@
     </div>
 
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/admin.js?v=7"></script>
+    <script type="module" src="js/admin.js?v=9"></script>
 </body>
 
 </html>
