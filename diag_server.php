@@ -96,5 +96,30 @@ if ($response !== false) {
     echo "This usually means <b>mod_rewrite</b> is disabled or <b>AllowOverride All</b> is missing in Apache config.<br>";
 }
 
+echo "<h2>Students API Test</h2>";
+$students_url = $protocol . $host . $detected_base . "/admin/students";
+echo "Testing URL: <code>$students_url</code> (Requires active session)<br>";
+
+// Note: This might fail if the session cookie isn't passed, but let's try to get the raw response
+$response = @file_get_contents($students_url, false, $context);
+if ($response !== false) {
+    echo "API Response: <b style='color:green;'>RECEIVED</b><br>";
+    $data = json_decode($response, true);
+    if (json_last_error() === JSON_ERROR_NONE) {
+        if (isset($data['error'])) {
+            echo "API Error: <b style='color:orange;'>" . htmlspecialchars($data['error']) . "</b> (This is normal if not logged in)<br>";
+        } elseif (is_array($data)) {
+            echo "API Content: <b style='color:green;'>Valid JSON Array (" . count($data) . " items)</b><br>";
+        } else {
+            echo "API Content: <b style='color:orange;'>Unknown JSON structure</b><br>";
+        }
+    } else {
+        echo "API Content: <b style='color:red;'>INVALID JSON</b><br>";
+        echo "<pre>" . htmlspecialchars(substr($response, 0, 500)) . "</pre>";
+    }
+} else {
+    echo "API Response: <b style='color:red;'>FAILED TO FETCH</b><br>";
+}
+
 echo "<br><hr><p>If anything is <b>MISSING</b> or <b>FAILED</b> above, that is why your application is not working correctly.</p>";
 ?>
