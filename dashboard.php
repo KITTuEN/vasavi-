@@ -174,7 +174,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" style="max-width: 300px;">
+                            <div class="form-group cgpa-input-group">
                                 <label for="cgpa" style="font-weight: 700;">Overall CGPA (out of 10) <br><small
                                         style="color: var(--text-muted); font-weight: 400;">(Max 55 Marks in
                                         evaluation)</small></label>
