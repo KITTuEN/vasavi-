@@ -64,7 +64,13 @@ if ($method === 'GET') {
             WHERE u.role = 'student' AND u.is_submitted = 1" . $departmentFilter . "
             ORDER BY fs.total_score DESC, u.name ASC";
         
-        echo json_encode(db_all($query, $params));
+        try {
+            $data = db_all($query, $params);
+            echo json_encode($data);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Database Query Error: ' . $e->getMessage()]);
+        }
     } elseif ($action === 'stats') {
         $deptFilter = "";
         $params = [];

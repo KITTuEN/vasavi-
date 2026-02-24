@@ -180,11 +180,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const res = await fetch(apiBase + '/admin/students');
-            allStudents = await res.json();
+            const data = await res.json();
+
+            if (data.error) {
+                throw new Error(data.error);
+            }
+
+            if (!Array.isArray(data)) {
+                console.error('Expected array of students, got:', data);
+                throw new Error('Invalid data format received from server');
+            }
+
+            allStudents = data;
             renderStudentList(allStudents);
         } catch (err) {
             console.error('Error loading students:', err);
-            if (list) list.innerHTML = '<p class="alert alert-danger">Error loading students. Please refresh.</p>';
+            if (list) {
+                list.innerHTML = `
+                    <div style="padding: 2rem; text-align: center; color: #ef4444; background: #fee2e2; border-radius: 12px; border: 1px solid #fecaca; margin: 1rem;">
+                        <i class="fa-solid fa-circle-exclamation" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p style="font-weight: 600; margin-bottom: 0.5rem;">Failed to fetch students</p>
+                        <p style="font-size: 0.85rem; opacity: 0.8;">${err.message}</p>
+                        <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                            <i class="fa-solid fa-arrows-rotate"></i> Try Again
+                        </button>
+                    </div>
+                `;
+            }
         }
     }
 
