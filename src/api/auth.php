@@ -8,7 +8,13 @@ $action = str_replace('auth/', '', $path);
 if ($action === 'logout') {
     require_once __DIR__ . '/../includes/auth_check.php';
     session_destroy();
-    header("Location: " . get_base_url() . "/");
+    
+    // If it's an AJAX/Fetch request, return JSON. Otherwise redirect.
+    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false || $_SERVER['REQUEST_METHOD'] === 'POST') {
+        echo json_encode(['success' => true, 'message' => 'Logged out successfully']);
+    } else {
+        header("Location: " . get_base_url() . "/");
+    }
     exit;
 }
 

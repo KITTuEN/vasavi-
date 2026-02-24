@@ -57,7 +57,7 @@
             <div class="sidebar-footer">
                 <a href="downloads/generate" target="_blank" class="btn-primary"
                     style="justify-content: center; text-decoration: none;">
-                    <i class="fas fa-file-pdf"></i> <span>Download App</span>
+                    <i class="fas fa-file-pdf"></i> <span>Download PDF</span>
                 </a>
                 <button id="logoutBtn" class="logout-btn">
                     <i class="fas fa-sign-out-alt"></i>

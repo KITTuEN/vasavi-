@@ -15,8 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
-            await fetch(apiBase + '/auth/logout', { method: 'POST' });
-            window.location.href = apiBase + '/index.php';
+            const originalHtml = logoutBtn.innerHTML;
+            logoutBtn.disabled = true;
+            logoutBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging out...';
+
+            try {
+                await fetch(apiBase + '/auth/logout', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' }
+                });
+            } catch (err) {
+                console.error('Logout error:', err);
+            } finally {
+                window.location.replace(apiBase + '/index.php');
+            }
         });
     }
 
@@ -138,9 +150,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
 
     async function loadStats() {
-        const res = await fetch(apiBase + '/admin/stats');
-        allStudents = await res.json();
-        renderStudentList(allStudents);
+        try {
+            const res = await fetch(apiBase + '/admin/stats');
+            const stats = await res.json();
+
+            // Update Stat Cards on dashboard if they exist
+            const statTotal = document.getElementById('statTotal');
+            const statEvaluated = document.getElementById('statEvaluated');
+            const statTop = document.getElementById('statTop');
+
+            if (statTotal) statTotal.innerText = stats.totalStudents ?? 0;
+            if (statEvaluated) statEvaluated.innerText = stats.evaluated ?? 0;
+            if (statTop) statTop.innerText = stats.topScore ?? 0;
+        } catch (err) {
+            console.error('Error loading stats:', err);
+        }
+    }
+
+    async function loadStudents() {
+        const list = document.getElementById('studentList');
+        if (list) {
+            list.innerHTML = `
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item"></div>
+                <div class="skeleton-item" style="opacity:0.7"></div>
+                <div class="skeleton-item" style="opacity:0.4"></div>
+            `;
+        }
+
+        try {
+            const res = await fetch(apiBase + '/admin/students');
+            allStudents = await res.json();
+            renderStudentList(allStudents);
+        } catch (err) {
+            console.error('Error loading students:', err);
+            if (list) list.innerHTML = '<p class="alert alert-danger">Error loading students. Please refresh.</p>';
+        }
     }
 
     function renderStudentList(students) {
