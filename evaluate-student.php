@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="css/style.css">
     <script>
         window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
-        window.userRole = "panel";
-        window.isSuperAdmin = <?php echo (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.USER_ROLE = "admin";
+        window.IS_SUPER_ADMIN = <?php echo (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
     </script>
     <style>
         .evaluate-page-container {

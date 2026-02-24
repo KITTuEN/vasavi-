@@ -1,4 +1,6 @@
 const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+const IS_SUPER_ADMIN = window.IS_SUPER_ADMIN || false;
+let IS_LOCKED = false;
 
 const getCertHtml = (path) => {
     if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
