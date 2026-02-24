@@ -83,7 +83,12 @@ if ($method === 'GET') {
             }
         }
 
-        $total = db_get("SELECT COUNT(*) as count FROM users WHERE role = 'student' AND is_submitted = 1" . $deptFilter, $params);
+        if (!empty($deptFilter)) {
+            $total = db_get("SELECT COUNT(*) as count FROM users WHERE role = 'student' AND is_submitted = 1" . $deptFilter, $params);
+        } else {
+            // Super Admin: Count only HOD submitted
+            $total = db_get("SELECT COUNT(*) as count FROM users u JOIN academic_records ar ON u.id = ar.user_id WHERE u.role = 'student' AND u.is_submitted = 1 AND ar.is_hod_submitted = 1");
+        }
         
         if (!empty($deptFilter)) {
             // HOD: 'Evaluated' means 'HOD Submitted' (is_hod_submitted = 1)
@@ -96,7 +101,12 @@ if ($method === 'GET') {
         $top = db_get("SELECT MAX(total_score) as score FROM final_scores");
         
         // Filter branches chart for HOD too
-        $branches = db_all("SELECT department, COUNT(*) as count FROM users WHERE role = 'student' AND is_submitted = 1" . $deptFilter . " GROUP BY department", $params);
+        if (!empty($deptFilter)) {
+            $branches = db_all("SELECT department, COUNT(*) as count FROM users WHERE role = 'student' AND is_submitted = 1" . $deptFilter . " GROUP BY department", $params);
+        } else {
+            // Super Admin branches: only HOD submitted
+            $branches = db_all("SELECT u.department, COUNT(*) as count FROM users u JOIN academic_records ar ON u.id = ar.user_id WHERE u.role = 'student' AND u.is_submitted = 1 AND ar.is_hod_submitted = 1 GROUP BY u.department");
+        }
 
         echo json_encode([
             'totalStudents' => is_array($total) ? ($total['count'] ?? 0) : 0,
