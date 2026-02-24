@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const studentsContainer = document.getElementById('studentList');
     const performanceContainer = document.getElementById('leaderboardBody');
 
+    // API Config - defined early to avoid ReferenceError
+    let allStudents = [];
+    const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+
     // Logout
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
@@ -39,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     async function refreshDashboard() {
         try {
             const [statsRes, leaderboardRes] = await Promise.all([
-                fetch('admin/stats'),
-                fetch('admin/leaderboard')
+                fetch(apiBase + '/admin/stats'),
+                fetch(apiBase + '/admin/leaderboard')
             ]);
 
             const stats = await statsRes.json();
@@ -145,9 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadLeaderboardTable();
     }
 
-    // Students Page Logic
-    let allStudents = [];
-    const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+    // List initialization handlers
 
     async function loadStats() {
         try {

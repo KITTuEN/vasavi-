@@ -85,7 +85,7 @@ $response = @file_get_contents($api_test_url, false, $context);
 
 if ($response !== false) {
     $data = json_decode($response, true);
-    if (isset($data['error']) && $data['error'] === 'Route not found: auth/test_rewrite') {
+    if (strpos($response, 'Route not found: auth/test_rewrite') !== false) {
         echo "Rewrite Test: <b style='color:green;'>SUCCESS (Router reached)</b><br>";
     } else {
         echo "Rewrite Test: <b>RESPONSE RECEIVED BUT UNEXPECTED</b><br>";
