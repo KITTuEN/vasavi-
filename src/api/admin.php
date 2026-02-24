@@ -42,12 +42,9 @@ if ($method === 'GET') {
             if (!empty($placeholders)) {
                 $departmentFilter = " AND u.department IN (" . implode(',', $placeholders) . ")";
             }
-        } elseif ($_SESSION['user']['role'] === 'panel') {
-            // Panel: Show ALL students (like Super Admin) but maybe restricted to submitted ones
-            $departmentFilter = ""; // Global view
         } else {
-            // Super Admin: Show all submitted students
-            $departmentFilter = "";
+            // Super Admin & Panel: Show all HOD submitted students
+            $departmentFilter = " AND ar.is_hod_submitted = 1";
         }
 
         $query = "
