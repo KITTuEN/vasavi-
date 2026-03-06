@@ -22,8 +22,15 @@ async function loadStudents() {
         const res = await fetch(apiBase + '/panel/students');
 
         if (!res.ok) {
-            const errorData = await res.json().catch(() => ({}));
-            throw new Error(errorData.error || `Server returned ${res.status}`);
+            let errorMsg = `Server returned ${res.status}`;
+            try {
+                const errorData = await res.json();
+                errorMsg = errorData.error || errorMsg;
+            } catch (e) {
+                const text = await res.text();
+                if (text && text.length < 200) errorMsg += ": " + text;
+            }
+            throw new Error(errorMsg);
         }
 
         const students = await res.json();

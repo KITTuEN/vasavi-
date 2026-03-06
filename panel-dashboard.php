@@ -62,6 +62,6 @@
         window.IS_SUPER_ADMIN = false;
     </script>
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/panel-dashboard.js"></script>
+    <script type="module" src="js/panel-dashboard.js?v=2"></script>
 </body>
 </html>

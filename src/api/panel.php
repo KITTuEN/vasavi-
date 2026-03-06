@@ -138,10 +138,57 @@ if ($method === 'GET') {
                     [$userId, $avgScore, $total]);
 
             echo json_encode(['message' => 'Interview score saved and average updated', 'average' => $avgScore]);
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode(['error' => $e->getMessage()]);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Action not found: ' . $action]);
         }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Database Error: ' . $e->getMessage()]);
+    }
+} elseif ($method === 'POST') {
+    try {
+        if ($action === 'evaluate/interview') {
+            $input = json_decode(file_get_contents('php://input'), true);
+            $userId = $input['user_id'] ?? null;
+            $score = $input['score'] ?? 0;
+            $comments = $input['comments'] ?? '';
+
+            if (!$userId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'User ID required']);
+                exit;
+            }
+
+            // Upsert interview marks
+            db_run("INSERT INTO interview_marks (user_id, panel_id, score, comments) 
+                    VALUES (?, ?, ?, ?) 
+                    ON DUPLICATE KEY UPDATE score = VALUES(score), comments = VALUES(comments)",
+                    [$userId, $_SESSION['user']['id'], $score, $comments]);
+
+            // Recalculate average interview score for this student
+            $avg = db_get("SELECT AVG(score) as avg_score FROM interview_marks WHERE user_id = ?", [$userId]);
+            $avgScore = $avg['avg_score'] ?? 0;
+
+            // Update final_scores table
+            db_run("INSERT INTO final_scores (user_id, interview_score) VALUES (?, ?) 
+                    ON DUPLICATE KEY UPDATE interview_score = VALUES(interview_score)",
+                    [$userId, $avgScore]);
+
+            // Update Total Score (Academic + Co + Extra + Interview)
+            $scores = db_get("SELECT academic_score, co_curricular_score, extracurricular_score, interview_score FROM final_scores WHERE user_id = ?", [$userId]);
+            $total = ($scores['academic_score'] ?? 0) + ($scores['co_curricular_score'] ?? 0) + ($scores['extracurricular_score'] ?? 0) + ($scores['interview_score'] ?? 0);
+            
+            db_run("UPDATE final_scores SET total_score = ? WHERE user_id = ?", [$total, $userId]);
+
+            echo json_encode(['message' => 'Interview score saved and average updated', 'average' => $avgScore]);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'POST action not found: ' . $action]);
+        }
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Post Error: ' . $e->getMessage()]);
     }
 }
 ?>
