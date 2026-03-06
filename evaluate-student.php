@@ -123,6 +123,42 @@
             }
         }
 
+        @media (max-width: 576px) {
+            .evaluate-header {
+                padding: 0.75rem 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .header-actions {
+                width: 100%;
+            }
+            .header-actions button {
+                width: 100%;
+                justify-content: center;
+            }
+            .profile-header-mini {
+                width: 100%;
+            }
+        }
+
+        /* Responsive SGPA Grid Utility */
+        .responsive-sgpa-grid {
+            display: grid;
+            gap: 8px;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .responsive-sgpa-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (max-width: 767px) {
+            .responsive-sgpa-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .back-btn {
             display: flex;
             align-items: center;

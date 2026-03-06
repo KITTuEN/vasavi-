@@ -106,14 +106,44 @@
                 padding: 0.5rem;
             }
             .sgpa-grid .info-card label {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
             }
             .sgpa-grid .info-card .value {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
-            .sgpa-grid .info-card label {
-                font-size: 0.75rem;
-                letter-spacing: -0.2px;
+
+            .evaluate-header {
+                padding: 0.75rem 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .header-actions {
+                width: 100%;
+            }
+            .header-actions button {
+                width: 100%;
+                justify-content: center;
+            }
+            .profile-header-mini {
+                width: 100%;
+            }
+        }
+
+        /* Desktop SGPA Grid */
+        .academic-performance-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(5, 1fr);
+        }
+        @media (max-width: 992px) {
+            .academic-performance-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .academic-performance-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -214,18 +244,19 @@
 
                 <div class="content-card" id="submissionsCard">
                     <h4 class="section-title"><i class="fa-solid fa-book"></i> Academic Performance</h4>
-                    <div style="overflow-x: auto; margin-bottom: 2rem; -webkit-overflow-scrolling: touch;">
-                        <div class="info-grid sgpa-grid" style="min-width: 450px; grid-template-columns: repeat(5, 1fr);">
-                            <div class="info-card" style="background: #eef2ff; border-color: #c7d2fe;"><label style="color: #4338ca; font-weight:700;">OVERALL CGPA</label><div class="value" id="acCgpa" style="color: #3730a3; font-size: 1.25rem;">--</div></div>
-                            <div class="info-card"><label>Sem 1</label><div class="value" id="acS1">--</div></div>
-                            <div class="info-card"><label>Sem 2</label><div class="value" id="acS2">--</div></div>
-                            <div class="info-card"><label>Sem 3</label><div class="value" id="acS3">--</div></div>
-                            <div class="info-card"><label>Sem 4</label><div class="value" id="acS4">--</div></div>
-                            <div class="info-card"><label>Sem 5</label><div class="value" id="acS5">--</div></div>
-                            <div class="info-card"><label>Sem 6</label><div class="value" id="acS6">--</div></div>
-                            <div class="info-card"><label>Sem 7</label><div class="value" id="acS7">--</div></div>
-                            <div class="info-card"><label>Sem 8</label><div class="value" id="acS8">--</div></div>
+                    <div class="academic-performance-grid">
+                        <div class="info-card" style="background: #eef2ff; border-color: #c7d2fe; grid-column: span 2;">
+                            <label style="color: #4338ca; font-weight:700;">OVERALL CGPA</label>
+                            <div class="value" id="acCgpa" style="color: #3730a3; font-size: 1.25rem;">--</div>
                         </div>
+                        <div class="info-card"><label>Sem 1</label><div class="value" id="acS1">--</div></div>
+                        <div class="info-card"><label>Sem 2</label><div class="value" id="acS2">--</div></div>
+                        <div class="info-card"><label>Sem 3</label><div class="value" id="acS3">--</div></div>
+                        <div class="info-card"><label>Sem 4</label><div class="value" id="acS4">--</div></div>
+                        <div class="info-card"><label>Sem 5</label><div class="value" id="acS5">--</div></div>
+                        <div class="info-card"><label>Sem 6</label><div class="value" id="acS6">--</div></div>
+                        <div class="info-card"><label>Sem 7</label><div class="value" id="acS7">--</div></div>
+                        <div class="info-card"><label>Sem 8</label><div class="value" id="acS8">--</div></div>
                     </div>
                     
                     <div style="margin-top: 1.5rem; display: grid; gap: 1rem;">

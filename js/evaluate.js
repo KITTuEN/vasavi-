@@ -110,15 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Overall Performance (SGPA Grid & CGPA) - No Comments
         content += `<div class="list-item-card" style="margin-bottom: 1rem;">
             <p style="margin:0; font-weight:bold; margin-bottom:10px;">Semester Performance (SGPA)</p>
-            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 15px; padding-bottom: 5px;">
-                <div style="display:grid; grid-template-columns: repeat(4, 1fr); min-width: 400px; gap: 8px;">
-                    ${[1, 2, 3, 4, 5, 6, 7, 8].map(i => `
-                        <div style="background:#f8fafc; padding:8px 4px; border-radius:6px; text-align:center; border: 1px solid #f1f5f9;">
-                            <small style="color:#64748b; font-size:0.7rem; display:block; margin-bottom:2px;">Sem ${i}</small>
-                            <span style="font-weight:bold; color:#334155; font-size:0.9rem;">${getSGPA(i)}</span>
-                        </div>
-                    `).join('')}
-                </div>
+            <div class="responsive-sgpa-grid" style="margin-bottom: 15px;">
+                ${[1, 2, 3, 4, 5, 6, 7, 8].map(i => `
+                    <div style="background:#f8fafc; padding:8px 4px; border-radius:6px; text-align:center; border: 1px solid #f1f5f9;">
+                        <small style="color:#64748b; font-size:0.7rem; display:block; margin-bottom:2px;">Sem ${i}</small>
+                        <span style="font-weight:bold; color:#334155; font-size:0.9rem;">${getSGPA(i)}</span>
+                    </div>
+                `).join('')}
             </div>
             <div style="background:#e0e7ff; padding:10px; border-radius:6px; border:1px solid #c7d2fe; display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-weight:bold; color:#3730a3;">Overall CGPA</span>
