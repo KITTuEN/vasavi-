@@ -55,9 +55,15 @@
                                 <label for="regEmail">Email Address</label>
                             </div>
 
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-3 position-relative">
                                 <input type="password" class="form-control" id="regPassword" placeholder="Password" required>
                                 <label for="regPassword">Password</label>
+                                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
                             </div>
 
                             <div class="form-floating mb-3">

@@ -542,6 +542,57 @@ input::placeholder {
     outline: none;
 }
 
+/* --- Improved Password Toggle Visibility --- */
+.password-field-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-field-container input {
+    padding-right: 3rem !important;
+    /* Ensure space for the icon */
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none !important;
+    border: none !important;
+    padding: 8px !important;
+    cursor: pointer;
+    color: #4f46e5;
+    /* Using primary Indigo for high contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+}
+
+.password-toggle:hover {
+    background-color: rgba(79, 70, 229, 0.1) !important;
+    color: #4338ca;
+}
+
+.password-toggle:focus {
+    outline: 2px solid rgba(79, 70, 229, 0.3);
+    outline-offset: -2px;
+}
+
+.password-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Floating label specific adjustments */
+.form-floating .password-toggle {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
 .form-actions {
     margin-top: 2rem;
 }

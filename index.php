@@ -40,7 +40,15 @@
                         </div>
                         <div class="input-group">
                             <label for="studentPassword">Password</label>
-                            <input type="password" id="studentPassword" placeholder="Enter your password" required>
+                            <div class="password-field-container">
+                                <input type="password" id="studentPassword" placeholder="Enter your password" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn-login-modern">Sign In as Student</button>
@@ -68,7 +76,15 @@
                         </div>
                         <div class="input-group">
                             <label for="adminPassword">Password</label>
-                            <input type="password" id="adminPassword" placeholder="Enter your password" required>
+                            <div class="password-field-container">
+                                <input type="password" id="adminPassword" placeholder="Enter your password" required>
+                                <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn-login-modern">Sign In</button>
