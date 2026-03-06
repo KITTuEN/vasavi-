@@ -3,7 +3,10 @@
 require_once __DIR__ . '/../includes/db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$action = str_replace('admin/', '', $path);
+$action = $path;
+if (strpos($path, 'admin/') === 0) {
+    $action = substr($path, 6);
+}
 
 // Middleware: Admin or Panel for browsing
 function isStaff() {

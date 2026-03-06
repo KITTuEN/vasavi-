@@ -4,7 +4,10 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/crypto.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$action = str_replace('student/', '', $path);
+$action = $path;
+if (strpos($path, 'student/') === 0) {
+    $action = substr($path, 8);
+}
 
 // Middleware
 function isAuthenticated() {

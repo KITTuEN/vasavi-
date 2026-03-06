@@ -5,7 +5,11 @@ require_once __DIR__ . '/../includes/db.php';
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Get action from global $path variable provided by router
-$action = str_replace('panel/', '', $path);
+// Robust action extraction: remove 'panel/' prefix if it exists
+$action = $path;
+if (strpos($path, 'panel/') === 0) {
+    $action = substr($path, 6);
+}
 
 // Middleware: Ensure user is a Panel Member
 function isPanel() {

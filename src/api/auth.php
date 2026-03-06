@@ -3,7 +3,10 @@
 require_once __DIR__ . '/../includes/db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
-$action = str_replace('auth/', '', $path);
+$action = $path;
+if (strpos($path, 'auth/') === 0) {
+    $action = substr($path, 5);
+}
 
 if ($action === 'logout') {
     require_once __DIR__ . '/../includes/auth_check.php';

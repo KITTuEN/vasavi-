@@ -23,11 +23,11 @@ async function loadStudents() {
 
         if (!res.ok) {
             let errorMsg = `Server returned ${res.status}`;
+            const text = await res.text();
             try {
-                const errorData = await res.json();
+                const errorData = JSON.parse(text);
                 errorMsg = errorData.error || errorMsg;
             } catch (e) {
-                const text = await res.text();
                 if (text && text.length < 200) errorMsg += ": " + text;
             }
             throw new Error(errorMsg);
