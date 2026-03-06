@@ -23,8 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadStudentDetails(id) {
     try {
         const res = await fetch(apiBase + `/panel/students/details?id=${id}`);
-        if (!res.ok) throw new Error("Failed to load student data");
-        const data = await res.json();
+        const text = await res.text();
+
+        if (!res.ok) {
+            try {
+                const errObj = JSON.parse(text);
+                throw new Error(errObj.error || `Server error: ${res.status}`);
+            } catch (e) {
+                throw new Error(`Server returned ${res.status}: ${text.substring(0, 100)}`);
+            }
+        }
+
+        const data = JSON.parse(text);
 
         renderProfile(data, id);
     } catch (err) {

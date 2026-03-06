@@ -318,24 +318,29 @@ if ($method === 'GET') {
             echo json_encode(['error' => 'Database Error: ' . $e->getMessage()]);
         }
     } elseif ($action === 'send_to_panel') {
-        // Only Super Admin should be able to send to panel
-        if (!empty($_SESSION['user']['department'])) {
-            http_response_code(403);
-            echo json_encode(['error' => 'Unauthorized: Only Super Admin can send students to the panel']);
-            exit;
-        }
+        try {
+            // Only Super Admin should be able to send to panel
+            if (!empty($_SESSION['user']['department'])) {
+                http_response_code(403);
+                echo json_encode(['error' => 'Unauthorized: Only Super Admin can send students to the panel']);
+                exit;
+            }
 
-        $input = json_decode(file_get_contents('php://input'), true);
-        $user_id = $input['user_id'] ?? null;
-        
-        if (!$user_id) {
-            http_response_code(400);
-            echo json_encode(['error' => 'User ID required']);
-            exit;
-        }
+            $input = json_decode(file_get_contents('php://input'), true);
+            $user_id = $input['user_id'] ?? null;
+            
+            if (!$user_id) {
+                http_response_code(400);
+                echo json_encode(['error' => 'User ID required']);
+                exit;
+            }
 
-        db_run("UPDATE users SET is_sent_to_panel = 1 WHERE id = ?", [$user_id]);
-        echo json_encode(['message' => 'Student sent to panel successfully']);
+            db_run("UPDATE users SET is_sent_to_panel = 1 WHERE id = ?", [$user_id]);
+            echo json_encode(['message' => 'Student sent to panel successfully']);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Database Error: ' . $e->getMessage()]);
+        }
         exit;
     }
 }

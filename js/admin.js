@@ -47,8 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(apiBase + '/admin/leaderboard')
             ]);
 
-            const stats = await statsRes.json();
-            const leaderboard = await leaderboardRes.json();
+            const statsText = await statsRes.text();
+            const leaderboardText = await leaderboardRes.text();
+
+            if (!statsRes.ok) throw new Error(statsText);
+            if (!leaderboardRes.ok) throw new Error(leaderboardText);
+
+            const stats = JSON.parse(statsText);
+            const leaderboard = JSON.parse(leaderboardText);
 
             // Update Stat Cards
             const statTotal = document.getElementById('statTotal');
@@ -154,7 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadStats() {
         try {
             const res = await fetch(apiBase + '/admin/stats');
-            const stats = await res.json();
+            const text = await res.text();
+            if (!res.ok) throw new Error(text);
+            const stats = JSON.parse(text);
 
             // Update Stat Cards on dashboard if they exist
             const statTotal = document.getElementById('statTotal');
@@ -182,16 +190,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const res = await fetch(apiBase + '/admin/students');
-            const data = await res.json();
+            const text = await res.text();
 
-            if (data.error) {
-                throw new Error(data.error);
+            if (!res.ok) {
+                try {
+                    const errObj = JSON.parse(text);
+                    throw new Error(errObj.error || `Server error: ${res.status}`);
+                } catch (e) {
+                    throw new Error(`Server returned ${res.status}: ${text.substring(0, 100)}`);
+                }
             }
 
-            if (!Array.isArray(data)) {
-                console.error('Expected array of students, got:', data);
-                throw new Error('Invalid data format received from server');
-            }
+            const data = JSON.parse(text);
 
             allStudents = data;
             renderStudentList(allStudents);

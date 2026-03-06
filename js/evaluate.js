@@ -31,10 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (headerLoader) headerLoader.innerText = "Fetching data...";
 
             const res = await fetch(apiBase + `/admin/students/${id}`);
+            const text = await res.text();
+
             if (!res.ok) {
-                throw new Error(`API Error: ${res.status} ${res.statusText}`);
+                try {
+                    const errObj = JSON.parse(text);
+                    throw new Error(errObj.error || `Server error: ${res.status}`);
+                } catch (e) {
+                    throw new Error(`Server returned ${res.status}: ${text.substring(0, 100)}`);
+                }
             }
-            const data = await res.json();
+            const data = JSON.parse(text);
 
             if (!data || !data.user) {
                 throw new Error('Invalid data: User record missing');

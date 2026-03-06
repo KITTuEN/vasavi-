@@ -85,13 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
                 });
-                const data = await res.json();
+                const text = await res.text();
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    data = { error: "Server error: " + text.substring(0, 100) };
+                }
 
                 if (res.ok) {
                     showAlert(alertBox, 'Registration successful! Please login.', 'success');
                     registerForm.reset();
                 } else {
-                    showAlert(alertBox, data.error, 'error');
+                    showAlert(alertBox, data.error || 'Registration failed', 'error');
                 }
             } catch (err) {
                 showAlert(alertBox, 'An error occurred', 'error');
