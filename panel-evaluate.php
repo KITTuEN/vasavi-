@@ -99,14 +99,17 @@
 
             .sgpa-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.75rem;
-            }
-            .sgpa-grid .info-card:first-child {
-                grid-column: span 2;
-                text-align: center;
+                gap: 0.5rem;
+                min-width: 0;
             }
             .sgpa-grid .info-card {
-                padding: 0.75rem;
+                padding: 0.5rem;
+            }
+            .sgpa-grid .info-card label {
+                font-size: 0.7rem;
+            }
+            .sgpa-grid .info-card .value {
+                font-size: 0.95rem;
             }
             .sgpa-grid .info-card label {
                 font-size: 0.75rem;
@@ -211,16 +214,18 @@
 
                 <div class="content-card" id="submissionsCard">
                     <h4 class="section-title"><i class="fa-solid fa-book"></i> Academic Performance</h4>
-                    <div class="info-grid sgpa-grid">
-                        <div class="info-card"><label>CGPA</label><div class="value" id="acCgpa">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 1)</label><div class="value" id="acS1">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 2)</label><div class="value" id="acS2">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 3)</label><div class="value" id="acS3">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 4)</label><div class="value" id="acS4">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 5)</label><div class="value" id="acS5">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 6)</label><div class="value" id="acS6">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 7)</label><div class="value" id="acS7">--</div></div>
-                        <div class="info-card"><label>SGPA (Sem 8)</label><div class="value" id="acS8">--</div></div>
+                    <div style="overflow-x: auto; margin-bottom: 2rem; -webkit-overflow-scrolling: touch;">
+                        <div class="info-grid sgpa-grid" style="min-width: 450px; grid-template-columns: repeat(5, 1fr);">
+                            <div class="info-card" style="background: #eef2ff; border-color: #c7d2fe;"><label style="color: #4338ca; font-weight:700;">OVERALL CGPA</label><div class="value" id="acCgpa" style="color: #3730a3; font-size: 1.25rem;">--</div></div>
+                            <div class="info-card"><label>Sem 1</label><div class="value" id="acS1">--</div></div>
+                            <div class="info-card"><label>Sem 2</label><div class="value" id="acS2">--</div></div>
+                            <div class="info-card"><label>Sem 3</label><div class="value" id="acS3">--</div></div>
+                            <div class="info-card"><label>Sem 4</label><div class="value" id="acS4">--</div></div>
+                            <div class="info-card"><label>Sem 5</label><div class="value" id="acS5">--</div></div>
+                            <div class="info-card"><label>Sem 6</label><div class="value" id="acS6">--</div></div>
+                            <div class="info-card"><label>Sem 7</label><div class="value" id="acS7">--</div></div>
+                            <div class="info-card"><label>Sem 8</label><div class="value" id="acS8">--</div></div>
+                        </div>
                     </div>
                     
                     <div style="margin-top: 1.5rem; display: grid; gap: 1rem;">
@@ -311,7 +316,7 @@
         window.IS_SUPER_ADMIN = false;
     </script>
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/panel-evaluate.js?v=12"></script>
+    <script type="module" src="js/panel-evaluate.js?v=13"></script>
     <script>
         function switchMobileTab(tab, btn) {
             const evalBox = document.getElementById('evaluationBox');
