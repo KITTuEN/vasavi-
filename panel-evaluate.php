@@ -63,29 +63,34 @@
             .score-display { margin: 0 auto; }
 
             /* Mobile Tab Styles */
+            .content-card, .evaluation-box {
+                padding: 1rem;
+                border-radius: 12px;
+            }
             .mobile-eval-tabs {
                 display: flex;
-                gap: 0.5rem;
-                background: rgba(255, 255, 255, 0.8);
-                backdrop-filter: blur(10px);
-                border: 1px solid var(--border-color);
-                border-radius: 12px;
+                background: #fff;
+                border-bottom: 1px solid var(--border-color);
                 padding: 0.5rem;
-                margin-bottom: 1.5rem;
                 position: sticky;
-                top: 70px; /* Below Top Bar typically */
+                top: 0;
                 z-index: 20;
+                gap: 0.25rem;
             }
 
             .mobile-tab-btn {
                 flex: 1;
-                padding: 0.75rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.75rem 0.25rem;
                 border: none;
                 background: transparent;
                 font-weight: 600;
                 color: var(--text-muted);
                 border-radius: 8px;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .mobile-tab-btn.active {
@@ -97,26 +102,12 @@
                 display: none;
             }
 
-            .sgpa-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 0.5rem;
-                min-width: 0;
-            }
-            .sgpa-grid .info-card {
-                padding: 0.5rem;
-            }
-            .sgpa-grid .info-card label {
-                font-size: 0.65rem;
-            }
-            .sgpa-grid .info-card .value {
-                font-size: 0.9rem;
-            }
-
             .evaluate-header {
                 padding: 0.75rem 1rem;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.75rem;
+                height: auto;
             }
             .header-actions {
                 width: 100%;
@@ -124,6 +115,7 @@
             .header-actions button {
                 width: 100%;
                 justify-content: center;
+                padding: 0.8rem !important;
             }
             .profile-header-mini {
                 width: 100%;

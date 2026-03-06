@@ -99,7 +99,16 @@
         @media (max-width: 992px) {
             .mobile-eval-tabs {
                 display: flex;
+                gap: 0.25rem;
+                padding: 0.5rem;
+            }
+            .mobile-tab-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 gap: 0.5rem;
+                padding: 0.6rem 0.25rem;
             }
 
             .evaluate-body-split {
@@ -111,10 +120,10 @@
             }
 
             .details-col, .scoring-col {
-                padding: 1.5rem;
+                padding: 1rem;
                 height: auto;
                 overflow: visible;
-                border-right: none;
+                border: none;
             }
 
             /* Hide inactive col on mobile */
@@ -123,12 +132,12 @@
             }
         }
 
-        @media (max-width: 576px) {
             .evaluate-header {
                 padding: 0.75rem 1rem;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.75rem;
+                height: auto;
             }
             .header-actions {
                 width: 100%;
@@ -136,6 +145,7 @@
             .header-actions button {
                 width: 100%;
                 justify-content: center;
+                padding: 0.8rem !important;
             }
             .profile-header-mini {
                 width: 100%;
