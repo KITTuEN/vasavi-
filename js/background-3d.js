@@ -59,15 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const mat = Math.random() > 0.8 ? accentMaterial : material;
         const mesh = new THREE.Mesh(geometry, mat);
 
-        // Spread particles more and avoid the center
-        let x = (Math.random() - 0.5) * 150;
-        let y = (Math.random() - 0.5) * 120;
+        // Broader spread to fill the entire screen, including edges
+        let x = (Math.random() - 0.5) * 200; // Increased spread
+        let y = (Math.random() - 0.5) * 150; // Increased spread
 
-        // Push away from center if too close
-        if (Math.abs(x) < 20) x += (x > 0 ? 30 : -30);
-        if (Math.abs(y) < 15) y += (y > 0 ? 25 : -25);
+        // Ensure clearance in the exact center for login cards
+        if (Math.abs(x) < 40) x += (x > 0 ? 50 : -50);
+        if (Math.abs(y) < 30) y += (y > 0 ? 40 : -40);
 
-        mesh.position.set(x, y, (Math.random() - 0.5) * 40);
+        mesh.position.set(x, y, (Math.random() - 0.5) * 60);
 
         mesh.rotation.x = Math.random() * Math.PI;
         mesh.rotation.y = Math.random() * Math.PI;

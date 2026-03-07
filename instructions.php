@@ -240,6 +240,7 @@
     <div class="floating-3d-accent accent-1">📄</div>
     <div class="floating-3d-accent accent-2">💡</div>
     <div class="floating-3d-accent accent-3">🔔</div>
+    <div class="floating-3d-accent accent-4">✨</div>
     
     <div class="instructions-container">
         <div class="instruction-card">

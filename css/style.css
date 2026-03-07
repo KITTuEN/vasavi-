@@ -2705,22 +2705,31 @@ body.landing-page .instruction-card:hover {
 }
 
 .accent-1 {
-    top: 5%;
-    left: 5%;
+    top: 2%;
+    left: 2%;
     font-size: 3.5rem;
     animation-delay: 0s;
 }
 
 .accent-2 {
-    bottom: 8%;
-    right: 8%;
+    bottom: 2%;
+    right: 2%;
     font-size: 4rem;
     animation-delay: 3s;
 }
 
 .accent-3 {
-    top: 12%;
-    right: 10%;
+    top: 5%;
+    right: 5%;
     font-size: 2.8rem;
     animation-delay: 5s;
 }
+
+.accent-4 {
+    bottom: 5%;
+    left: 5%;
+    font-size: 3rem;
+    animation-delay: 1.5s;
+}
+
+/* Added new accent class */
