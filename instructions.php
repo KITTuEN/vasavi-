@@ -151,8 +151,58 @@
             border: 1px solid #fde68a;
         }
 
+        /* Mobile Marks Cards (Hidden by default) */
+        .marks-cards {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .mark-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .mark-card .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+        .mark-card .category-text {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+        .mark-card .max-marks {
+            font-size: 0.9rem;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+        }
+        .mark-card.total-row {
+            background: #4f46e5;
+            color: white;
+            border: none;
+        }
+        .mark-card.total-row .section-label,
+        .mark-card.total-row .category-text,
+        .mark-card.total-row .max-marks {
+            color: white;
+        }
+
         /* Mobile Tweaks */
         @media (max-width: 768px) {
+            .table-responsive {
+                display: none; /* Hide traditional table on small screens */
+            }
+            .marks-cards {
+                display: flex; /* Show card layout instead */
+            }
             .instructions-container {
                 margin: 1rem auto;
                 padding: 1rem;
@@ -243,6 +293,40 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Mobile Card Layout -->
+                <div class="marks-cards">
+                    <div class="mark-card">
+                        <span class="section-label">Section A</span>
+                        <span class="category-text">Academics upto 7th Semester</span>
+                        <div class="max-marks"><span>Max Marks:</span> <strong>55</strong></div>
+                    </div>
+                    <div class="mark-card">
+                        <span class="section-label">Section A+</span>
+                        <span class="category-text">Honours/Minors & GATE/CAT/GRE etc.</span>
+                        <div class="max-marks"><span>Max Marks:</span> <strong>10</strong></div>
+                    </div>
+                    <div class="mark-card">
+                        <span class="section-label">Section B</span>
+                        <span class="category-text">Co-curricular Activities</span>
+                        <div class="max-marks"><span>Max Marks:</span> <strong>15</strong></div>
+                    </div>
+                    <div class="mark-card">
+                        <span class="section-label">Section C</span>
+                        <span class="category-text">Extracurricular Activities</span>
+                        <div class="max-marks"><span>Max Marks:</span> <strong>15</strong></div>
+                    </div>
+                    <div class="mark-card">
+                        <span class="section-label">Section D</span>
+                        <span class="category-text">Interview & Committee Assessment</span>
+                        <div class="max-marks"><span>Max Marks:</span> <strong>05</strong></div>
+                    </div>
+                    <div class="mark-card total-row">
+                        <span class="section-label">Grand Total</span>
+                        <span class="category-text">Total Score</span>
+                        <div class="max-marks"><span>Maximum:</span> <strong>100</strong></div>
+                    </div>
                 </div>
             </div>
 
