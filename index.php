@@ -35,8 +35,8 @@
                     <form id="studentLoginForm">
                         <div id="studentLoginAlert" class="hidden"></div>
                         <div class="input-group">
-                            <label for="studentEmail">Username / Email</label>
-                            <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                            <label for="studentEmail">Roll Number / Email</label>
+                            <input type="text" id="studentEmail" placeholder="Enter your Roll Number or Email" required>
                         </div>
                         <div class="input-group">
                             <label for="studentPassword">Password</label>
@@ -76,7 +76,7 @@
                         <div id="adminLoginAlert" class="hidden"></div>
                         <div class="input-group">
                             <label for="adminEmail">Employee ID / Email</label>
-                            <input type="email" id="adminEmail" placeholder="Enter your ID or Email" required>
+                            <input type="text" id="adminEmail" placeholder="Enter your ID or Email" required>
                         </div>
                         <div class="input-group">
                             <label for="adminPassword">Password</label>

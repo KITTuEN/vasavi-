@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Login Handling
     const handleLogin = async (e, formId, roleOverride) => {
         e.preventDefault();
-        const emailInput = document.querySelector(`#${formId} input[type="email"]`);
+        const emailInput = document.querySelector(`#${formId} input[placeholder*="Email"]`);
         const passwordInput = document.querySelector(`#${formId} input[type="password"]`);
         let alertBoxId = 'studentLoginAlert';
         if (formId === 'adminLoginForm') alertBoxId = 'adminLoginAlert';

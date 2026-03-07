@@ -65,7 +65,7 @@ if ($method === 'POST') {
             exit;
         }
 
-        $user = db_get("SELECT * FROM users WHERE email = ?", [$email]);
+        $user = db_get("SELECT * FROM users WHERE email = ? OR roll_number = ?", [$email, $email]);
 
         if (!$user || !password_verify($password, $user['password'])) {
             http_response_code(400);
