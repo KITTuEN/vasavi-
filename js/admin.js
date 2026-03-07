@@ -94,26 +94,44 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // 2. Score Distribution (Line/Scatter)
+        // 2. Score Distribution (Bar - Top 3)
         if (scoreCanvas) {
             if (scoreChart) scoreChart.destroy();
-            const top10 = leaderboard.slice(0, 10);
+            const top3 = leaderboard.slice(0, 3);
             scoreChart = new Chart(scoreCanvas.getContext('2d'), {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: top10.map((_, i) => `S${i + 1}`),
+                    labels: top3.map(s => `${s.name} (${s.department})`),
                     datasets: [{
-                        label: 'Top Scores',
-                        data: top10.map(s => s.total_score),
-                        backgroundColor: '#6366f1',
-                        borderColor: '#6366f1',
-                        pointRadius: 6,
-                        showLine: false
+                        label: 'Final Score',
+                        data: top3.map(s => s.score),
+                        backgroundColor: ['#6366f1', '#818cf8', '#a5b4fc'],
+                        borderRadius: 8,
+                        barThickness: 40
                     }]
                 },
                 options: {
-                    scales: { y: { beginAtZero: true, max: 100 }, x: { grid: { display: false } } },
-                    plugins: { legend: { display: false } }
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: { borderDash: [5, 5] }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                font: { size: 10, weight: '600' }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => ` Score: ${context.raw}`
+                            }
+                        }
+                    }
                 }
             });
         }
