@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Global Locked Status
             window.IS_LOCKED = data.academic && data.academic.is_hod_submitted == 1;
+            window.IS_FINAL_LOCKED = data.finalScore && data.finalScore.is_final_submitted == 1;
 
             // Populate Header
             document.getElementById('studentName').innerText = data.user.name || 'Unknown';
@@ -388,11 +389,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function prefillData(data) {
+        const isActuallyLocked = IS_SUPER_ADMIN ? window.IS_FINAL_LOCKED : window.IS_LOCKED;
+
         const setScore = (id, valId, value) => {
-            if (!IS_SUPER_ADMIN) return; // Don't try to set values on hidden inputs if they don't exist (though hidden inputs sort of exist)
+            if (!IS_SUPER_ADMIN) return;
             const val = value || 0;
             const el = document.getElementById(id);
-            if (el) el.value = val;
+            if (el) {
+                el.value = val;
+                if (isActuallyLocked) el.disabled = true;
+            }
             const valEl = document.getElementById(valId);
             if (valEl) valEl.innerText = val;
         };
@@ -436,6 +442,19 @@ document.addEventListener('DOMContentLoaded', () => {
             setScore('scAcademicExams', 'valAcademicExams', acad.exams_score || 0);
             setScore('scCo', 'valCo', scores.co_curricular_score || 0);
             setScore('scExtra', 'valExtra', scores.extracurricular_score || 0);
+
+            if (window.IS_FINAL_LOCKED) {
+                const finalSect = document.getElementById('finalSubmitSection');
+                if (finalSect) finalSect.style.display = 'none';
+                const lockAlert = document.getElementById('superAdminLockAlert');
+                if (lockAlert) lockAlert.classList.remove('hidden');
+
+                const mainBtn = document.getElementById('mainSubmitBtn');
+                if (mainBtn) mainBtn.style.display = 'none';
+
+                // Disable all item scores too
+                document.querySelectorAll('.item-score').forEach(input => input.disabled = true);
+            }
         } else {
             // HOD View: Show Overall Comment and Footer
             const formFooter = document.createElement('div');
@@ -582,7 +601,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 extra_scores: extraScores,
                 hod_name: document.getElementById('txtHodName')?.value || '',
                 hod_evaluation_date: document.getElementById('txtHodDate')?.value || '',
-                hod_overall_comments: document.getElementById('txtHodOverall')?.value || ''
+                hod_overall_comments: document.getElementById('txtHodOverall')?.value || '',
+                is_final_submission: document.getElementById('chkFinalSubmit')?.checked || false
             };
 
             if (IS_SUPER_ADMIN) {

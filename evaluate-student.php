@@ -324,7 +324,25 @@
                             <input type="hidden" id="scExtra" value="0">
                         <?php endif; ?>
 
-                        <button type="submit" class="btn-primary full-width" style="margin-top:1rem;">
+                        <?php if ($isSuperAdmin): ?>
+                        <div id="finalSubmitSection" style="margin-top: 1.5rem; padding: 1rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="chkFinalSubmit" style="cursor: pointer; width: 1.25rem; height: 1.25rem;">
+                                <label class="form-check-label" for="chkFinalSubmit" style="cursor: pointer; font-weight: 600; color: #92400e; margin-left: 0.5rem;">
+                                    Confirm Final Submission (Lock Evaluation)
+                                </label>
+                            </div>
+                            <small style="color: #b45309; display: block; margin-top: 0.5rem; margin-left: 1.75rem;">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Once submitted as final, you will NOT be able to change these marks again.
+                            </small>
+                        </div>
+                        <?php endif; ?>
+
+                        <div id="superAdminLockAlert" class="alert alert-success hidden" style="margin-top: 1.5rem; display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                            <i class="fa-solid fa-lock"></i> This evaluation is finalized and locked.
+                        </div>
+
+                        <button type="submit" id="mainSubmitBtn" class="btn-primary full-width" style="margin-top:1rem;">
                             <i class="fa-solid fa-save"></i> <?php echo $isSuperAdmin ? 'Save Final Evaluation' : 'Save Comments'; ?>
                         </button>
                     </form>

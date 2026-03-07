@@ -268,11 +268,19 @@ if ($method === 'GET') {
             // Scoring (Available ONLY to Super Admin)
             $total_score = 0;
             if ($isSuperAdmin) {
+                // Check if already final submitted
+                $existingFinal = db_get("SELECT is_final_submitted FROM final_scores WHERE user_id = ?", [$user_id]);
+                if ($existingFinal && $existingFinal['is_final_submitted'] == 1) {
+                    echo json_encode(['error' => 'This final evaluation has already been submitted and locked by Super Admin.']);
+                    exit;
+                }
+
                 $academic_cgpa_score = $input['academic_cgpa_score'] ?? 0;
                 $academic_honours_score = $input['academic_honours_score'] ?? 0;
                 $academic_exams_score = $input['academic_exams_score'] ?? 0;
                 $co_curricular_score = $input['co_curricular_score'] ?? 0;
                 $extracurricular_score = $input['extracurricular_score'] ?? 0;
+                $is_final = ($input['is_final_submission'] ?? false) ? 1 : 0;
 
                 // Fetch existing interview score to preserve it
                 $currentScores = db_get("SELECT interview_score FROM final_scores WHERE user_id = ?", [$user_id]);
@@ -302,13 +310,15 @@ if ($method === 'GET') {
                 }
 
                 // Update Final Scores
-                db_run("INSERT INTO final_scores (user_id, academic_score, co_curricular_score, extracurricular_score, interview_score, total_score)
-                        VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE 
+                db_run("INSERT INTO final_scores (user_id, academic_score, co_curricular_score, extracurricular_score, interview_score, total_score, is_final_submitted)
+                        VALUES (?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE 
                         academic_score = VALUES(academic_score), co_curricular_score = VALUES(co_curricular_score), 
-                        extracurricular_score = VALUES(extracurricular_score), interview_score = VALUES(interview_score), total_score = VALUES(total_score)",
-                        [$user_id, $academic_total, $co_score_final, $extra_score_final, $interview_score_preserved, $total_score]);
+                        extracurricular_score = VALUES(extracurricular_score), interview_score = VALUES(interview_score), 
+                        total_score = VALUES(total_score), is_final_submitted = VALUES(is_final_submitted)",
+                        [$user_id, $academic_total, $co_score_final, $extra_score_final, $interview_score_preserved, $total_score, $is_final]);
                 
-                echo json_encode(['message' => 'Evaluation, Comments and Scores saved', 'total_score' => $total_score]);
+                $msg = $is_final ? 'Final Evaluation saved and LOCKED' : 'Evaluation scores and comments saved';
+                echo json_encode(['message' => $msg, 'total_score' => $total_score, 'is_locked' => $is_final]);
             } else {
                 // HOD: Only comments saved
                 echo json_encode(['message' => 'Comments saved successfully (Scoring restricted to Super Admin)']);

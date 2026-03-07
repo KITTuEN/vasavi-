@@ -94,6 +94,14 @@ if ($method === 'GET') {
 
             $panelId = $_SESSION['user']['id'];
 
+            // Strict Lock: Check if already evaluated
+            $existing = db_get("SELECT id FROM interview_marks WHERE user_id = ? AND panel_id = ?", [$userId, $panelId]);
+            if ($existing) {
+                http_response_code(403);
+                echo json_encode(['error' => 'This evaluation has already been submitted and cannot be modified.']);
+                exit;
+            }
+
             // Upsert interview marks
             db_run("INSERT INTO interview_marks (user_id, panel_id, score, comments) 
                     VALUES (?, ?, ?, ?) 
