@@ -155,17 +155,21 @@
 <body class="admin-body">
     <div class="dashboard-container">
         <!-- Sidebar -->
-        <nav class="sidebar" id="sidebar">
+        <nav class="sidebar mobile-mode" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo-icon">📋</div>
                 <h2>Panel View</h2>
             </div>
             <div class="nav-links">
-                <a href="panel-dashboard" class="nav-item"><i class="fa-solid fa-list-check"></i> Assigned Students</a>
+                <a href="panel-dashboard.php" class="nav-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Assigned</span>
+                </a>
             </div>
             <div class="sidebar-footer">
-                <button onclick="window.location.href='auth/logout'" class="logout-btn">
-                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                <button onclick="window.location.href='src/api/auth.php?action=logout'" class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
                 </button>
             </div>
         </nav>

@@ -211,141 +211,182 @@
 
 <body class="admin-body">
     <?php $isSuperAdmin = !isset($_SESSION['user']['department']) || empty($_SESSION['user']['department']); ?>
-    <div class="evaluate-page-container">
-        <header class="evaluate-header">
-            <div class="profile-header-mini">
-                <div class="back-btn" onclick="window.location.href='admin-dashboard.php'">
-                    <i class="fa-solid fa-arrow-left"></i>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar mobile-mode">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-                <div class="avatar-mini" id="studentAvatar"></div>
-                <div>
-                    <h2 id="studentName" style="margin:0; font-size:1.2rem;">Loading...</h2>
-                    <p id="studentMeta" style="margin:0; font-size:0.8rem; color:var(--text-muted);">Roll Number | Dept
-                    </p>
-                </div>
-            </div>
-            <div class="header-actions">
-                <button onclick="window.location.href='admin-dashboard.php'" class="btn-secondary"
-                    style="padding: 0.5rem 1rem;">
-                    Back to Dashboard
-                </button>
-            </div>
-        </header>
-
-        <main class="evaluate-body-split">
-            <!-- Mobile Switcher -->
-            <div class="mobile-eval-tabs">
-                <button class="mobile-tab-btn active" onclick="switchMobileTab('submissions', this)">
-                    <i class="fa-solid fa-file-lines"></i> Submissions
-                </button>
-                <button class="mobile-tab-btn" onclick="switchMobileTab('evaluation', this)">
-                    <i class="fa-solid fa-star-half-stroke"></i> Evaluation
-                </button>
+                <h2>AdminPanel</h2>
             </div>
 
-            <!-- Left: Submissions Details -->
-            <div class="details-col" id="detailsCol">
-                <div class="tabs">
-                    <button class="tab-btn active">Student Submissions</button>
-                </div>
-                <div id="submissionDetails" class="submission-scroll">
-                    <!-- Populated by JS -->
-                    <div style="text-align:center; padding: 2rem;">
-                        <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color:var(--primary-color);"></i>
-                        <p>Loading details...</p>
+            <div class="nav-links">
+                <a href="admin-dashboard.php" class="nav-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="admin-students.php" class="nav-item active">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Students</span>
+                </a>
+                <a href="admin-performance.php" class="nav-item">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Performance</span>
+                </a>
+                <?php if ($isSuperAdmin): ?>
+                <a href="#" class="nav-item" onclick="openTopperModal(); return false;" id="navTopperBtn">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span>Set Topper</span>
+                </a>
+                <?php endif; ?>
+            </div>
+
+            <div class="sidebar-footer">
+                <button onclick="window.location.href='src/api/auth.php?action=logout'" class="logout-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="evaluate-header">
+                <div class="profile-header-mini">
+                    <div class="back-btn" onclick="window.location.href='admin-dashboard.php'">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <div class="avatar-mini" id="studentAvatar"></div>
+                    <div>
+                        <h2 id="studentName" style="margin:0; font-size:1.2rem;">Loading...</h2>
+                        <p id="studentMeta" style="margin:0; font-size:0.8rem; color:var(--text-muted);">Roll Number | Dept
+                        </p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Right: Scoring Form -->
-            <div class="scoring-col mobile-hide" id="scoringCol">
-                <div class="tabs">
-                    <button class="tab-btn active">Evaluation & Scoring</button>
+                <div class="header-actions">
+                    <button onclick="window.location.href='admin-dashboard.php'" class="btn-secondary"
+                        style="padding: 0.5rem 1rem;">
+                        Back to Dashboard
+                    </button>
                 </div>
-                <div id="evaluationTab" class="tab-content active" style="margin-top:1.5rem;">
-                    <form id="scoreForm">
-                        <input type="hidden" id="evalUserId">
+            </header>
 
-                        <!-- Dynamic comments will be rendered in the Left Column -->
-                        <div id="dynamicScoreInputs"></div>
+            <div class="evaluate-body-split">
+                <!-- Mobile Switcher -->
+                <div class="mobile-eval-tabs">
+                    <button class="mobile-tab-btn active" onclick="switchMobileTab('submissions', this)">
+                        <i class="fa-solid fa-file-lines"></i> Submissions
+                    </button>
+                    <button class="mobile-tab-btn" onclick="switchMobileTab('evaluation', this)">
+                        <i class="fa-solid fa-star-half-stroke"></i> Evaluation
+                    </button>
+                </div>
 
-                        <?php if ($isSuperAdmin): ?>
-                        <!-- SCORING SECTIONS (SUPER ADMIN ONLY) -->
-                        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 8px; border: 1px solid #bbf7d0; margin-bottom: 2rem;">
-                             <h4 style="color: #166534; margin-top:0;"><i class="fa-solid fa-star"></i> Scoring (Super Admin Only)</h4>
-                            
-                            <!-- Academic Granular -->
-                            <div class="slider-group" style="background:#fff; padding:15px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:15px;">
-                                <label style="margin-bottom:0.5rem; display:block;">Academic: CGPA Score (Max 55) <span class="score-display"
-                                        id="valAcademicCGPA" style="float:right; margin-top:-10px;">0</span></label>
-                                <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:10px;" id="cgpaFormulaText">
-                                    Formula: (Student CGPA / Dept Topper CGPA) × 55
+                <!-- Left: Submissions Details -->
+                <div class="details-col" id="detailsCol">
+                    <div class="tabs">
+                        <button class="tab-btn active">Student Submissions</button>
+                    </div>
+                    <div id="submissionDetails" class="submission-scroll">
+                        <!-- Populated by JS -->
+                        <div style="text-align:center; padding: 2rem;">
+                            <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color:var(--primary-color);"></i>
+                            <p>Loading details...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Scoring Form -->
+                <div class="scoring-col mobile-hide" id="scoringCol">
+                    <div class="tabs">
+                        <button class="tab-btn active">Evaluation & Scoring</button>
+                    </div>
+                    <div id="evaluationTab" class="tab-content active" style="margin-top:1.5rem;">
+                        <form id="scoreForm">
+                            <input type="hidden" id="evalUserId">
+
+                            <!-- Dynamic comments will be rendered in the Left Column -->
+                            <div id="dynamicScoreInputs"></div>
+
+                            <?php if ($isSuperAdmin): ?>
+                            <!-- SCORING SECTIONS (SUPER ADMIN ONLY) -->
+                            <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 8px; border: 1px solid #bbf7d0; margin-bottom: 2rem;">
+                                 <h4 style="color: #166534; margin-top:0;"><i class="fa-solid fa-star"></i> Scoring (Super Admin Only)</h4>
+                                
+                                <!-- Academic Granular -->
+                                <div class="slider-group" style="background:#fff; padding:15px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:15px;">
+                                    <label style="margin-bottom:0.5rem; display:block;">Academic: CGPA Score (Max 55) <span class="score-display"
+                                            id="valAcademicCGPA" style="float:right; margin-top:-10px;">0</span></label>
+                                    <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:10px;" id="cgpaFormulaText">
+                                        Formula: (Student CGPA / Dept Topper CGPA) × 55
+                                    </div>
+                                    <input type="hidden" id="scAcademicCGPA" value="0">
                                 </div>
+                                <div class="slider-group">
+                                    <label>Academic: Honours/Minors (Max 5) <span class="score-display"
+                                            id="valAcademicHonours">0</span></label>
+                                    <input type="range" id="scAcademicHonours" min="0" max="5" step="0.1" value="0"
+                                        oninput="document.getElementById('valAcademicHonours').innerText = this.value">
+                                </div>
+                                <div class="slider-group">
+                                    <label>Academic: Competitive Exams (Max 5) <span class="score-display"
+                                            id="valAcademicExams">0</span></label>
+                                    <input type="range" id="scAcademicExams" min="0" max="5" step="0.1" value="0"
+                                        oninput="document.getElementById('valAcademicExams').innerText = this.value">
+                                </div>
+
+                                <div class="slider-group">
+                                    <label>Co-Curricular (Max 15) <span class="score-display" id="valCo">0</span></label>
+                                    <input type="range" id="scCo" min="0" max="15" step="0.1" value="0"
+                                        oninput="document.getElementById('valCo').innerText = this.value">
+                                    <small style="color:var(--text-muted);">Sum of individual items: <span
+                                            id="valCoSum">0</span></small>
+                                </div>
+
+                                <div class="slider-group">
+                                    <label>Extracurricular (Max 15) <span class="score-display" id="valExtra">0</span></label>
+                                    <input type="range" id="scExtra" min="0" max="15" step="0.1" value="0"
+                                        oninput="document.getElementById('valExtra').innerText = this.value">
+                                    <small style="color:var(--text-muted);">Sum of individual items: <span
+                                            id="valExtraSum">0</span></small>
+                                </div>
+                            </div>
+                            <?php else: ?>
+                                <div class="alert alert-info">
+                                    <i class="fa-solid fa-info-circle"></i> Only Super Admin can assign scores. You can provide comments for each section.
+                                </div>
+                                <!-- Hidden inputs to prevent JS errors if script tries to access them, or we update script to handle missing elements -->
                                 <input type="hidden" id="scAcademicCGPA" value="0">
+                                <input type="hidden" id="scAcademicHonours" value="0">
+                                <input type="hidden" id="scAcademicExams" value="0">
+                                <input type="hidden" id="scCo" value="0">
+                                <input type="hidden" id="scExtra" value="0">
+                            <?php endif; ?>
+
+                            <?php if ($isSuperAdmin): ?>
+                            <div id="finalSubmitSection" style="margin-top: 1.5rem; padding: 1rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; margin-bottom: 1.5rem;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="chkFinalSubmit" style="cursor: pointer; width: 1.25rem; height: 1.25rem;">
+                                    <label class="form-check-label" for="chkFinalSubmit" style="cursor: pointer; font-weight: 600; color: #92400e; margin-left: 0.5rem;">
+                                        Confirm Final Submission (Lock Evaluation)
+                                    </label>
+                                </div>
+                                <small style="color: #b45309; display: block; margin-top: 0.5rem; margin-left: 1.75rem;">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Once submitted as final, you will NOT be able to change these marks again.
+                                </small>
                             </div>
-                            <div class="slider-group">
-                                <label>Academic: Honours/Minors (Max 5) <span class="score-display"
-                                        id="valAcademicHonours">0</span></label>
-                                <input type="range" id="scAcademicHonours" min="0" max="5" step="0.1" value="0"
-                                    oninput="document.getElementById('valAcademicHonours').innerText = this.value">
-                            </div>
-                            <div class="slider-group">
-                                <label>Academic: Competitive Exams (Max 5) <span class="score-display"
-                                        id="valAcademicExams">0</span></label>
-                                <input type="range" id="scAcademicExams" min="0" max="5" step="0.1" value="0"
-                                    oninput="document.getElementById('valAcademicExams').innerText = this.value">
+                            <?php endif; ?>
+
+                            <div id="superAdminLockAlert" class="alert alert-success hidden" style="margin-top: 1.5rem; display: flex; align-items: center; gap: 10px; font-weight: 600;">
+                                <i class="fa-solid fa-lock"></i> This evaluation is finalized and locked.
                             </div>
 
-                            <div class="slider-group">
-                                <label>Co-Curricular (Max 15) <span class="score-display" id="valCo">0</span></label>
-                                <input type="range" id="scCo" min="0" max="15" step="0.1" value="0"
-                                    oninput="document.getElementById('valCo').innerText = this.value">
-                                <small style="color:var(--text-muted);">Sum of individual items: <span
-                                        id="valCoSum">0</span></small>
-                            </div>
-
-                            <div class="slider-group">
-                                <label>Extracurricular (Max 15) <span class="score-display" id="valExtra">0</span></label>
-                                <input type="range" id="scExtra" min="0" max="15" step="0.1" value="0"
-                                    oninput="document.getElementById('valExtra').innerText = this.value">
-                                <small style="color:var(--text-muted);">Sum of individual items: <span
-                                        id="valExtraSum">0</span></small>
-                            </div>
-                        </div>
-                        <?php else: ?>
-                            <div class="alert alert-info">
-                                <i class="fa-solid fa-info-circle"></i> Only Super Admin can assign scores. You can provide comments for each section.
-                            </div>
-                            <!-- Hidden inputs to prevent JS errors if script tries to access them, or we update script to handle missing elements -->
-                            <input type="hidden" id="scAcademicCGPA" value="0">
-                            <input type="hidden" id="scAcademicHonours" value="0">
-                            <input type="hidden" id="scAcademicExams" value="0">
-                            <input type="hidden" id="scCo" value="0">
-                            <input type="hidden" id="scExtra" value="0">
-                        <?php endif; ?>
-
-                        <?php if ($isSuperAdmin): ?>
-                        <div id="finalSubmitSection" style="margin-top: 1.5rem; padding: 1rem; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; margin-bottom: 1.5rem;">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="chkFinalSubmit" style="cursor: pointer; width: 1.25rem; height: 1.25rem;">
-                                <label class="form-check-label" for="chkFinalSubmit" style="cursor: pointer; font-weight: 600; color: #92400e; margin-left: 0.5rem;">
-                                    Confirm Final Submission (Lock Evaluation)
-                                </label>
-                            </div>
-                            <small style="color: #b45309; display: block; margin-top: 0.5rem; margin-left: 1.75rem;">
-                                <i class="fa-solid fa-triangle-exclamation"></i> Once submitted as final, you will NOT be able to change these marks again.
-                            </small>
-                        </div>
-                        <?php endif; ?>
-
-                        <div id="superAdminLockAlert" class="alert alert-success hidden" style="margin-top: 1.5rem; display: flex; align-items: center; gap: 10px; font-weight: 600;">
-                            <i class="fa-solid fa-lock"></i> This evaluation is finalized and locked.
-                        </div>
-
-                        <button type="submit" id="mainSubmitBtn" class="btn-primary full-width" style="margin-top:1rem;">
-                            <i class="fa-solid fa-save"></i> <?php echo $isSuperAdmin ? 'Save Final Evaluation' : 'Save Comments'; ?>
-                        </button>
-                    </form>
+                            <button type="submit" id="mainSubmitBtn" class="btn-primary full-width" style="margin-top:1rem;">
+                                <i class="fa-solid fa-save"></i> <?php echo $isSuperAdmin ? 'Save Final Evaluation' : 'Save Comments'; ?>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>

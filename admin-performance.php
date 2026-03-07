@@ -91,7 +91,7 @@
 <body class="admin-body">
     <div class="dashboard-container">
         <!-- Sidebar -->
-        <nav class="sidebar">
+        <nav class="sidebar mobile-mode">
             <div class="sidebar-header">
                 <div class="logo-icon">
                     <i class="fa-solid fa-graduation-cap"></i>
