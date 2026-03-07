@@ -72,8 +72,6 @@
             background: #fff;
             border-bottom: 1px solid var(--border-color);
             padding: 0.5rem;
-            position: sticky;
-            top: 0;
             z-index: 20;
         }
 
@@ -98,8 +96,6 @@
                 display: flex;
                 gap: 0.25rem;
                 padding: 0.5rem;
-                position: sticky;
-                top: 0;
                 background: #fff;
                 z-index: 100;
                 border-bottom: 1px solid var(--border-color);

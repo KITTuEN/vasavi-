@@ -73,8 +73,6 @@
                 background: #fff;
                 border-bottom: 1px solid var(--border-color);
                 padding: 0.5rem;
-                position: sticky;
-                top: 0;
                 z-index: 100;
                 gap: 0.25rem;
                 box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
