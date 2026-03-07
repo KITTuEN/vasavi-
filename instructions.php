@@ -61,6 +61,7 @@
             position: relative;
             color: #334155;
             line-height: 1.6;
+            font-size: 0.95rem;
         }
         .instruction-list li::before {
             content: "•";
@@ -69,12 +70,17 @@
             color: #4f46e5;
             font-weight: bold;
         }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
         .marks-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
-            border-radius: 12px;
-            overflow: hidden;
+            min-width: 500px; /* Ensure table doesn't get squashed */
             border: 1px solid #e2e8f0;
         }
         .marks-table th {
@@ -84,11 +90,13 @@
             text-align: left;
             padding: 1rem;
             border-bottom: 2px solid #e2e8f0;
+            white-space: nowrap;
         }
         .marks-table td {
             padding: 1rem;
             border-bottom: 1px solid #e2e8f0;
             color: #1e293b;
+            font-size: 0.9rem;
         }
         .marks-table tr:last-child td {
             border-bottom: none;
@@ -142,6 +150,37 @@
             font-weight: 600;
             border: 1px solid #fde68a;
         }
+
+        /* Mobile Tweaks */
+        @media (max-width: 768px) {
+            .instructions-container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
+            .instruction-card {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+            .instruction-header {
+                margin-bottom: 2rem;
+            }
+            .instruction-header h1 {
+                font-size: 1.5rem;
+            }
+            .instruction-header p {
+                font-size: 1rem;
+            }
+            .instruction-section h2 {
+                font-size: 1.15rem;
+            }
+            .instruction-list li {
+                font-size: 0.9rem;
+            }
+            .btn-back {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body class="landing-page">
@@ -164,45 +203,47 @@
 
             <div class="instruction-section">
                 <h2>Marks Distribution</h2>
-                <table class="marks-table">
-                    <thead>
-                        <tr>
-                            <th>Section</th>
-                            <th>Category</th>
-                            <th>Max Marks</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A</td>
-                            <td>Academics upto 7th Semester (+ Honours/Minors + GATE/CAT/GRE etc.)</td>
-                            <td>65 (55+5+5)</td>
-                        </tr>
-                        <tr>
-                            <td>B</td>
-                            <td>Co-curricular Activities</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>C</td>
-                            <td>Extracurricular Activities</td>
-                            <td>15</td>
-                        </tr>
-                        <tr class="subtotal-row">
-                            <td colspan="2">Sub Total</td>
-                            <td>95</td>
-                        </tr>
-                        <tr>
-                            <td>D</td>
-                            <td>Interview & Committee’s Assessment</td>
-                            <td>05</td>
-                        </tr>
-                        <tr class="total-row">
-                            <td colspan="2">Total</td>
-                            <td>100</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="marks-table">
+                        <thead>
+                            <tr>
+                                <th>Section</th>
+                                <th>Category</th>
+                                <th>Max Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>Academics upto 7th Semester (+ Honours/Minors + GATE/CAT/GRE etc.)</td>
+                                <td>65 (55+5+5)</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>Co-curricular Activities</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>Extracurricular Activities</td>
+                                <td>15</td>
+                            </tr>
+                            <tr class="subtotal-row">
+                                <td colspan="2">Sub Total</td>
+                                <td>95</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>Interview & Committee’s Assessment</td>
+                                <td>05</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2">Total</td>
+                                <td>100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="instruction-section">
