@@ -148,6 +148,7 @@ if ($method === 'GET') {
         $deptFilter = "";
         $params = [];
         
+        /* 
         if (isset($_SESSION['user']['department']) && !empty($_SESSION['user']['department'])) {
             $depts = explode(',', $_SESSION['user']['department']);
             $placeholders = [];
@@ -160,6 +161,7 @@ if ($method === 'GET') {
             }
             $type = 'after'; // HODs always see overall view
         }
+        */
 
         if ($type === 'before') {
             // Before Interview: Sum of academic, co-curricular, and extracurricular
