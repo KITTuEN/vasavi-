@@ -39,8 +39,8 @@ $path = trim($path, '/');
 //     FILE_APPEND
 // );
 
-// Set JSON header by default for API routes
-if (strpos($path, 'auth') === 0 || strpos($path, 'student') === 0 || strpos($path, 'admin') === 0 || strpos($path, 'panel') === 0) {
+// Set JSON header by default for API routes (except logout which redirects)
+if ((strpos($path, 'auth') === 0 && strpos($path, 'logout') === false) || strpos($path, 'student') === 0 || strpos($path, 'admin') === 0 || strpos($path, 'panel') === 0) {
     header('Content-Type: application/json');
     ini_set('display_errors', 0);
     error_reporting(E_ALL); // Log errors, don't display them

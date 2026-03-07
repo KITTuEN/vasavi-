@@ -236,7 +236,7 @@
             </div>
 
             <div class="sidebar-footer">
-                <button onclick="window.location.href='src/api/auth.php?action=logout'" class="logout-btn">
+                <button onclick="window.location.href='auth/logout'" class="logout-btn">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Logout</span>
                 </button>

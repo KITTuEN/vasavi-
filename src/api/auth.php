@@ -2,10 +2,14 @@
 // src/api/auth.php
 require_once __DIR__ . '/../includes/db.php';
 
-$method = $_SERVER['REQUEST_METHOD'];
 $action = $path;
-if (strpos($path, 'auth/') === 0) {
+if (strpos($path ?? '', 'auth/') === 0) {
     $action = substr($path, 5);
+}
+
+// Support direct access via ?action=logout for backward compatibility or direct calls
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    $action = 'logout';
 }
 
 if ($action === 'logout') {
