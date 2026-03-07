@@ -75,6 +75,7 @@ if ($method === 'GET') {
     } elseif ($action === 'stats') {
         $deptFilter = "";
         $params = [];
+        /* 
         if (isset($_SESSION['user']['department']) && !empty($_SESSION['user']['department'])) {
             $depts = explode(',', $_SESSION['user']['department']);
             $placeholders = [];
@@ -86,6 +87,7 @@ if ($method === 'GET') {
                 $deptFilter = " AND (" . implode(' OR ', $placeholders) . ")";
             }
         }
+        */
 
         if (!empty($deptFilter)) {
             $total = db_get("SELECT COUNT(*) as count FROM users WHERE role = 'student' AND is_submitted = 1" . $deptFilter, $params);
