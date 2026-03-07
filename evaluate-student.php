@@ -19,10 +19,9 @@
     </script>
     <style>
         .evaluate-page-container {
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            background: var(--bg-body); /* Restore premium background */
+            background: var(--bg-body);
         }
 
         .evaluate-header {
@@ -40,10 +39,8 @@
         .evaluate-body-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            flex: 1;
-            gap: 1.5rem; /* Add gap for card separation */
-            padding: 1.5rem; /* Padding for the container */
-            overflow: hidden;
+            gap: 1.5rem;
+            padding: 1.5rem;
         }
 
         @media (max-width: 992px) {
@@ -60,13 +57,13 @@
             border-radius: var(--radius-lg);
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow-lg);
-            overflow-y: auto;
         }
 
         .scoring-col {
             padding: 2rem;
-            overflow-y: auto;
             background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Mobile Tab Styles */
