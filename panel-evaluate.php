@@ -172,7 +172,7 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <header class="top-bar" style="background:transparent; box-shadow:none;">
+            <header class="top-bar">
                  <div class="d-flex align-items-center gap-3">
                     <a href="panel-dashboard.php" class="back-link btn btn-light" style="color:var(--text-dark); background:#fff; border:1px solid #e2e8f0; font-weight:600;"><i class="fa-solid fa-arrow-left"></i> <span class="d-none d-sm-inline">Back</span></a>
                 </div>
