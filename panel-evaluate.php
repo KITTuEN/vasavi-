@@ -172,14 +172,14 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div style="padding: 1rem 2rem 0;">
-                <a href="panel-dashboard.php" class="back-link btn btn-light" style="color:var(--text-dark); background:#fff; border:1px solid #e2e8f0; font-weight:600; display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; padding: 0.5rem 1rem; border-radius: 8px;">
-                    <i class="fa-solid fa-arrow-left"></i> <span class="d-none d-sm-inline">Back to Dashboard</span><span class="d-inline d-sm-none">Back</span>
-                </a>
-            </div>
             <header class="top-bar">
                 <div class="welcome-text"></div>
             </header>
+            <div style="padding: 0 2rem 1.5rem;">
+                <a href="panel-dashboard.php" class="back-link btn btn-light" style="color:var(--text-dark); background:#fff; border:1px solid #e2e8f0; font-weight:600; display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; padding: 0.5rem 1rem; border-radius: 8px; box-shadow: var(--shadow-sm);">
+                    <i class="fa-solid fa-arrow-left"></i> <span class="d-none d-sm-inline">Back to Dashboard</span><span class="d-inline d-sm-none">Back</span>
+                </a>
+            </div>
 
             <div id="loadingState" style="text-align:center; padding: 5rem;">
                 <i class="fa-solid fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i>
