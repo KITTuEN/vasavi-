@@ -549,26 +549,26 @@ input::placeholder {
 }
 
 .password-field-container input {
-    padding-right: 3rem !important;
-    /* Ensure space for the icon */
+    padding-right: 3.5rem !important;
+    /* Extra padding for larger toggle */
 }
 
 .password-toggle {
     position: absolute;
-    right: 0.75rem;
+    right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
-    background: none !important;
+    background: transparent !important;
     border: none !important;
-    padding: 8px !important;
+    padding: 10px !important;
+    /* Larger hit area */
     cursor: pointer;
     color: #4f46e5;
-    /* Using primary Indigo for high contrast */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 5;
-    transition: all 0.2s ease;
+    z-index: 10;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 50%;
 }
 
@@ -578,19 +578,43 @@ input::placeholder {
 }
 
 .password-toggle:focus {
-    outline: 2px solid rgba(79, 70, 229, 0.3);
-    outline-offset: -2px;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.password-toggle:active {
+    scale: 0.95;
 }
 
 .password-toggle svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    /* SVG should not interfere with clicks */
 }
 
-/* Floating label specific adjustments */
+/* Multi-SVG Visibility Control */
+.password-toggle .eye-off-icon {
+    display: none;
+}
+
+.password-field-container.is-visible .password-toggle .eye-icon {
+    display: none;
+}
+
+.password-field-container.is-visible .password-toggle .eye-off-icon {
+    display: block;
+}
+
+/* Floating label adjustments */
 .form-floating .password-toggle {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    height: 3.5rem;
+    /* Ensure centering in Bootstrap floating labels */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0 !important;
+    transform: none !important;
 }
 
 .form-actions {
