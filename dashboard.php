@@ -156,21 +156,21 @@
                                 <div class="dashboard-grid">
                                     <!-- SGPA Inputs -->
                                     <div><label>Sem 1</label><input type="number" step="0.01" id="sgpa1"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 2</label><input type="number" step="0.01" id="sgpa2"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 3</label><input type="number" step="0.01" id="sgpa3"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 4</label><input type="number" step="0.01" id="sgpa4"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 5</label><input type="number" step="0.01" id="sgpa5"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 6</label><input type="number" step="0.01" id="sgpa6"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 7</label><input type="number" step="0.01" id="sgpa7"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                     <div><label>Sem 8</label><input type="number" step="0.01" id="sgpa8"
-                                            placeholder="0.00"></div>
+                                            placeholder="0.00" readonly></div>
                                 </div>
                             </div>
 
@@ -179,7 +179,7 @@
                                         style="color: var(--text-muted); font-weight: 400;">(Max 55 Marks in
                                         evaluation)</small></label>
                                 <input type="number" step="0.01" id="cgpa" placeholder="Enter CGPA"
-                                    style="font-size: 1.2rem; font-weight: bold; color: var(--primary-color);">
+                                    style="font-size: 1.2rem; font-weight: bold; color: var(--primary-color);" readonly>
                             </div>
 
                             <div class="dashboard-grid" style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 1.5rem;">
