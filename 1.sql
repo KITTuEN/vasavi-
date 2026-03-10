@@ -17,7 +17,12 @@ INSERT INTO users (name, email, password, role) VALUES
 ('Panel Member 5', 'panel5@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'panel'),
 ('Panel Member 6', 'panel6@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'panel');
 
--- 4. Pre-load HOD details for Departments
+-- 4. Pre-load Super Admin
+INSERT INTO users (name, email, password, role, department) VALUES 
+('Super Admin', 'super_admin@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NULL);
+-- Note: Default password is 'password'
+
+-- 5. Pre-load HOD details for Departments
 INSERT INTO users (name, email, password, role, department) VALUES 
 ('HOD CSE/CST', 'hod_cse@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'CSE,CST'),
 ('HOD CAI/AIM', 'hod_cai@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'CAI,AIM'),
@@ -26,5 +31,5 @@ INSERT INTO users (name, email, password, role, department) VALUES
 ('HOD ME', 'hod_me@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'ME'),
 ('HOD CE', 'hod_ce@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'CE');
 
--- 5. Unlock Students (Run this to restore access to students after import)
+-- 6. Unlock Students (Run this to restore access to students after import)
 UPDATE users SET is_submitted = 0 WHERE role = 'student';
