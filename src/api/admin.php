@@ -179,7 +179,7 @@ if ($method === 'GET') {
             SELECT u.name, u.department, u.roll_number, 
                    $scoreExpr as score
             FROM users u
-            LEFT JOIN final_scores fs ON u.id = fs.user_id
+            JOIN final_scores fs ON u.id = fs.user_id
             WHERE u.role = 'student' AND u.is_submitted = 1 " . $deptFilter . $interviewFilter . "
             ORDER BY score DESC
         ";
