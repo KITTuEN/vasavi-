@@ -160,18 +160,28 @@ if ($method === 'GET') {
 
         // Fetch existing records to protect official data
         $existing = db_get("SELECT * FROM academic_records WHERE user_id = ?", [$userId]);
-        $isStudent = ($_SESSION['user']['role'] === 'student');
+        $role = $_SESSION['user']['role'] ?? '';
+        $isStudent = (strcasecmp($role, 'student') === 0);
 
-        if ($isStudent && $existing) {
-            // Protect official records from being overwritten by students
-            $cgpa = $existing['cgpa'];
-            foreach($sgpas as $i => $val) {
-                $sgpas[$i] = $existing["sgpa_sem" . ($i + 1)];
+        if ($isStudent) {
+            if ($existing) {
+                // Protect official records from being overwritten by students
+                $cgpa = $existing['cgpa'];
+                foreach($sgpas as $i => $val) {
+                    $sgpas[$i] = $existing["sgpa_sem" . ($i + 1)];
+                }
+                $p_backlogs = $existing['present_backlogs'];
+                $h_backlogs = $existing['history_of_backlogs'];
+            } else {
+                // If no existing record, force defaults for student
+                // This shouldn't happen for pre-loaded students
+                $cgpa = 0;
+                $sgpas = array_fill(0, 8, 0);
+                $p_backlogs = 0;
+                $h_backlogs = 0;
             }
-            $p_backlogs = $existing['present_backlogs'];
-            $h_backlogs = $existing['history_of_backlogs'];
         } else {
-            // Admins or first-time entry (though students are pre-loaded)
+            // Admins or other roles can update official data
             $p_backlogs = $_POST['present_backlogs'] ?? ($existing['present_backlogs'] ?? 0);
             $h_backlogs = $_POST['history_of_backlogs'] ?? ($existing['history_of_backlogs'] ?? 0);
         }
