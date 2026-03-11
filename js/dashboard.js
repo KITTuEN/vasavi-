@@ -179,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const bioCount = document.getElementById('bioCharCount');
             if (bioField && bioCount) {
                 bioCount.innerText = bioField.value.length;
-                bioCount.innerText = bioField.value.length;
             }
 
             // Recommendation Letter
