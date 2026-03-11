@@ -213,43 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function disableEditing() {
-        // Disable all inputs, textareas, select
-        // We use requestAnimationFrame to ensure DOM updates from other async functions are caught if called immediately
         requestAnimationFrame(() => {
             document.querySelectorAll('input, textarea, select').forEach(el => el.disabled = true);
-
-            // Hide all "Add", "Save", "Submit" buttons
-            const buttonsToHide = [
-                'saveProfileBtn', 'finalSubmitBtn',
-                'addCourseBtn', 'addExamBtn',
-                'addPaperBtn', 'savePapersBtn',
-                'addInterBtn', 'saveInterBtn',
-                'addIntraDeptBtn', 'saveIntraDeptBtn',
-                'addSeminarBtn', 'saveSeminarsBtn',
-                'addRepBtn', 'saveRepBtn',
-                'addMembershipBtn', 'saveMembershipBtn',
-                'addMoocsBtn', 'saveMoocsBtn',
-                'addInternshipBtn', 'saveInternshipBtn',
-                'addAwardsBtn', 'saveAwardsBtn',
-                'addUniTeamBtn', 'saveUniTeamBtn',
-                'addOutsideBtn', 'saveOutsideBtn',
-                'addWithinBtn', 'saveWithinBtn',
-                'addTechBtn', 'saveTechBtn',
-                'addOtherCoordBtn', 'saveOtherCoordBtn',
-                'addCommitteeBtn', 'saveCommitteeBtn',
-                'addNssBtn', 'saveNssBtn',
-                'addExtAwardsBtn', 'saveExtAwardsBtn',
-                'saveAcademicBtn',
-                'saveCoCurricularMasterBtn', 'saveExtracurricularMasterBtn',
-                'saveRecBtn'
-            ];
-
-            buttonsToHide.forEach(id => {
-                const btn = document.getElementById(id);
-                if (btn) btn.style.display = 'none';
+            document.querySelectorAll('.btn-remove, button[id^="add"], button[id^="save"], #finalSubmitBtn, #saveAcademicBtn, #saveProfileBtn, #saveRecBtn').forEach(btn => {
+                if (btn.id !== 'downloadPdfBtn') btn.style.display = 'none';
             });
 
-            // Show a message if not already shown
             const header = document.querySelector('.main-content h1') || document.querySelector('.main-content');
             if (header && !document.getElementById('submittedMsg')) {
                 const msg = document.createElement('div');
@@ -258,12 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 msg.style.marginBottom = '20px';
                 msg.innerHTML = '<i class="fa-solid fa-check-circle"></i> Application Submitted. View Only Mode.';
                 header.parentNode.insertBefore(msg, header.nextSibling);
-            }
-
-            // Disable final submit button if visible
-            const fsBtn = document.getElementById('finalSubmitBtn');
-            if (fsBtn) {
-                fsBtn.style.display = 'none';
             }
         });
     }
@@ -1009,8 +972,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Call init at end
-    initDashboard();
 
     // --- Honours/Minors UI Logic ---
     const honoursYes = document.getElementById('honoursYes');
@@ -1449,25 +1410,6 @@ document.addEventListener('DOMContentLoaded', () => {
             row.remove();
         }
     });
-
-    const disableEditing = () => {
-        document.querySelectorAll('input, textarea, select').forEach(el => el.disabled = true);
-        document.querySelectorAll('.btn-remove, button[id^="add"], button[id^="save"], #finalSubmitBtn').forEach(btn => {
-            if (btn.id !== 'downloadPdfBtn') btn.style.display = 'none';
-        });
-
-        if (!document.getElementById('submittedMsg')) {
-            const header = document.querySelector('.main-content h1') || document.querySelector('.main-content');
-            if (header) {
-                const msg = document.createElement('div');
-                msg.id = 'submittedMsg';
-                msg.className = 'alert alert-success';
-                msg.style.marginBottom = '20px';
-                msg.innerHTML = '<i class="fa-solid fa-check-circle"></i> Application Submitted. View Only Mode.';
-                header.parentNode.insertBefore(msg, header.nextSibling);
-            }
-        }
-    };
 
 
 
