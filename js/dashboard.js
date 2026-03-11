@@ -434,6 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -455,6 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -475,6 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -489,6 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="seminar-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -505,6 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="rep-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -519,6 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="membership-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -533,6 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="moocs-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -559,6 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="internship-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -577,6 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -614,6 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -642,6 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -670,6 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -698,6 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -726,6 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
                              <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                              ${getCertHtml(item.certificate_path)}
                         </div>
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -740,6 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="committee-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -754,6 +769,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="ext-awards-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -768,6 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="file" class="nss-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                         <input type="hidden" class="existing-path" value="${item.certificate_path || ''}">
                         ${getCertHtml(item.certificate_path)}
+                        <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                     `;
                     return div;
                 });
@@ -951,7 +968,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addCourseBtn.addEventListener('click', () => {
             const div = document.createElement('div');
             div.className = 'nptel-row dynamic-entry-grid';
-            div.style.marginBottom = '0.5rem';
             div.innerHTML = `
                     <input type="text" class="nptel-course input-full" placeholder="Course Name">
                     <input type="file" class="nptel-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
@@ -988,7 +1004,6 @@ document.addEventListener('DOMContentLoaded', () => {
         addExamBtn.addEventListener('click', () => {
             const div = document.createElement('div');
             div.className = 'exam-entry dynamic-entry-grid';
-            div.style.marginBottom = '0.5rem';
             div.innerHTML = `
                     <input type="text" class="exam-name input-full" placeholder="Exam Name (e.g. GATE)">
                     <input type="text" class="exam-score input-full" placeholder="Rank / Score">

@@ -2083,6 +2083,8 @@ input[type=range]::-webkit-slider-thumb:hover {
     margin-bottom: 0.75rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px dashed var(--border-color);
+    position: relative;
+    padding-right: 40px;
 }
 
 .dynamic-entry:last-child {
@@ -2093,6 +2095,9 @@ input[type=range]::-webkit-slider-thumb:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    position: relative;
+    padding-right: 40px;
+    align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -2280,6 +2285,8 @@ body.landing-page .input-group input:focus {
     margin-bottom: 0.75rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px dashed var(--border-color);
+    position: relative;
+    padding-right: 40px;
 }
 
 .dynamic-entry:last-child {
@@ -2290,6 +2297,9 @@ body.landing-page .input-group input:focus {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    position: relative;
+    padding-right: 40px;
+    align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -2743,3 +2753,34 @@ body.landing-page .instruction-card:hover {
 }
 
 /* Added new accent class */
+.btn-remove {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fee2e2;
+    color: #ef4444;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.8rem;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.1);
+}
+
+.btn-remove:hover {
+    background-color: #ef4444;
+    color: white;
+    transform: translateY(-50%) scale(1.1) rotate(90deg);
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.2);
+}
+
+.btn-remove i {
+    pointer-events: none;
+}
