@@ -851,7 +851,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                         div.innerHTML = `<input type="text" class="nptel-course input-full" value="${c.name || ''}" placeholder="Course Name">
                                                            <input type="file" class="nptel-file input-full mt-1" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                                                            <input type="hidden" class="nptel-existing-path" value="${c.certificate_path || ''}">
-                                                           ${certLink}`;
+                                                           ${certLink}
+                                                           <button type="button" class="btn-remove" title="Remove Course"><i class="fas fa-times"></i></button>`;
                                         courseContainer.appendChild(div);
                                     });
                                 }
@@ -871,7 +872,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 const div = document.createElement('div');
                                                 div.className = 'nptel-row dynamic-entry-grid';
                                                 div.style.marginBottom = '0.5rem';
-                                                div.innerHTML = `<input type="text" class="nptel-course input-full" value="${c.trim()}" placeholder="Course Name"><input type="file" class="nptel-file input-full mt-1">`;
+                                                div.innerHTML = `<input type="text" class="nptel-course input-full" value="${c.trim()}" placeholder="Course Name"><input type="file" class="nptel-file input-full mt-1">
+                                                                   <button type="button" class="btn-remove" title="Remove Course"><i class="fas fa-times"></i></button>`;
                                                 courseContainer.appendChild(div);
                                             });
                                         }
@@ -913,7 +915,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                                                 <input type="hidden" class="exam-existing-path" value="${ex.certificate_path || ''}">
                                                 ${certLink}
-                                            </div>`;
+                                            </div>
+                                            <button type="button" class="btn-remove" title="Remove Exam"><i class="fas fa-times"></i></button>`;
                                     examContainer.appendChild(div);
                                 });
                             } else if (data.competitive_exams && data.competitive_exams !== 'No') {
@@ -930,7 +933,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 <input type="text" class="exam-score input-full" value="${parts[1]?.trim() || ''}" placeholder="Rank / Score">
                                                 <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
                                                     <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
-                                                </div>`;
+                                                </div>
+                                                <button type="button" class="btn-remove" title="Remove Exam"><i class="fas fa-times"></i></button>`;
                                         examContainer.appendChild(div);
                                     }
                                 });
@@ -1039,6 +1043,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div.innerHTML = `
                     <input type="text" class="nptel-course input-full" placeholder="Course Name">
                     <input type="file" class="nptel-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                    <button type="button" class="btn-remove" title="Remove Course"><i class="fas fa-times"></i></button>
                 `;
             courseContainer.appendChild(div);
         });
@@ -1078,6 +1083,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
                         <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                     </div>
+                    <button type="button" class="btn-remove" title="Remove Exam"><i class="fas fa-times"></i></button>
                 `;
             examContainer.appendChild(div);
             div.querySelector('input').focus();
@@ -1424,13 +1430,44 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label class="form-label">Title of the paper and Authors</label>
                         <textarea class="paper-title input-full" rows="2" placeholder="Title & Authors"></textarea>
                     </div>
-                     <div style="grid-column: 1 / -1;">
+                    <div style="grid-column: 1 / -1;">
                         <input type="file" class="paper-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                     </div>
+                    <button type="button" class="btn-remove" title="Remove Paper"><i class="fas fa-times"></i></button>
                 `;
             paperContainer.appendChild(div);
         });
     }
+
+    // --- GLOBAL REMOVE HANDLER ---
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-remove');
+        if (!btn) return;
+
+        const row = btn.closest('.dynamic-entry, .dynamic-entry-grid, .nptel-row, .exam-entry');
+        if (row && confirm('Are you sure you want to remove this entry?')) {
+            row.remove();
+        }
+    });
+
+    const disableEditing = () => {
+        document.querySelectorAll('input, textarea, select').forEach(el => el.disabled = true);
+        document.querySelectorAll('.btn-remove, button[id^="add"], button[id^="save"], #finalSubmitBtn').forEach(btn => {
+            if (btn.id !== 'downloadPdfBtn') btn.style.display = 'none';
+        });
+
+        if (!document.getElementById('submittedMsg')) {
+            const header = document.querySelector('.main-content h1') || document.querySelector('.main-content');
+            if (header) {
+                const msg = document.createElement('div');
+                msg.id = 'submittedMsg';
+                msg.className = 'alert alert-success';
+                msg.style.marginBottom = '20px';
+                msg.innerHTML = '<i class="fa-solid fa-check-circle"></i> Application Submitted. View Only Mode.';
+                header.parentNode.insertBefore(msg, header.nextSibling);
+            }
+        }
+    };
 
 
 
@@ -1471,6 +1508,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="text" class="inter-desc input-full" placeholder="Details">
                          <input type="file" class="inter-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                     </div>
+                    <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                 `;
             interContainer.appendChild(div);
         });
@@ -1515,6 +1553,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <input type="text" class="dept-desc input-full" placeholder="Description">
                          <input type="file" class="dept-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                     </div>
+                    <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
                 `;
             intraDeptContainer.appendChild(div);
         });
@@ -1553,6 +1592,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Seminar Topic</label>
                 <input type="text" class="seminar-topic input-full" placeholder="Enter Seminar Topic">
                 <input type="file" class="seminar-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Seminar"><i class="fas fa-times"></i></button>
             `;
             seminarContainer.appendChild(div);
         });
@@ -1591,6 +1631,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Semester (e.g. 3, 4)</label>
                 <input type="number" class="rep-semester input-full" placeholder="Enter Semester" min="1" max="8">
                 <input type="file" class="rep-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             repContainer.appendChild(div);
         });
@@ -1629,6 +1670,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Professional Body Name</label>
                 <input type="text" class="membership-name input-full" placeholder="Enter Body Name">
                 <input type="file" class="membership-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             membershipContainer.appendChild(div);
         });
@@ -1667,6 +1709,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Certification Name</label>
                 <input type="text" class="moocs-name input-full" placeholder="Enter Certification Name">
                 <input type="file" class="moocs-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             moocsContainer.appendChild(div);
         });
@@ -1713,6 +1756,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <input type="file" class="internship-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Internship"><i class="fas fa-times"></i></button>
             `;
             internshipContainer.appendChild(div);
         });
@@ -1751,6 +1795,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Award / Contribution</label>
                 <input type="text" class="awards-name input-full" placeholder="Enter Details">
                 <input type="file" class="awards-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             awardsContainer.appendChild(div);
         });
@@ -1801,6 +1846,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="grid-column: 1 / -1;">
                     <input type="file" class="uni-team-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             uniTeamContainer.appendChild(div);
         });
@@ -1850,6 +1896,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="grid-column: 1 / -1;">
                     <input type="file" class="outside-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             outsideContainer.appendChild(div);
         });
@@ -1899,6 +1946,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="grid-column: 1 / -1;">
                     <input type="file" class="within-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             withinContainer.appendChild(div);
         });
@@ -1948,6 +1996,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="grid-column: 1 / -1;">
                     <input type="file" class="tech-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             techContainer.appendChild(div);
         });
@@ -1997,6 +2046,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="grid-column: 1 / -1;">
                     <input type="file" class="other-coord-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                 </div>
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             otherCoordContainer.appendChild(div);
         });
@@ -2035,6 +2085,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Committee Name</label>
                 <input type="text" class="committee-name input-full" placeholder="Enter Committee Name">
                 <input type="file" class="committee-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             committeeContainer.appendChild(div);
         });
@@ -2073,6 +2124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">About Activity</label>
                 <input type="text" class="nss-name input-full" placeholder="Enter Activity Description">
                 <input type="file" class="nss-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             nssContainer.appendChild(div);
         });
@@ -2111,6 +2163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <label class="form-label">Award/Contribution</label>
                 <input type="text" class="ext-awards-name input-full" placeholder="Enter Details">
                 <input type="file" class="ext-awards-file input-full mt-2" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                <button type="button" class="btn-remove" title="Remove Entry"><i class="fas fa-times"></i></button>
             `;
             extAwardsContainer.appendChild(div);
         });

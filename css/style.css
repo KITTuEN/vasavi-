@@ -1835,6 +1835,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     margin-bottom: 0.75rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px dashed var(--border-color);
+    position: relative;
 }
 
 .dynamic-entry:last-child {
@@ -1845,6 +1846,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    position: relative;
 }
 
 @media (min-width: 768px) {

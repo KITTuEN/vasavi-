@@ -233,6 +233,7 @@
                                                     placeholder="Enter NPTEL Course Name">
                                                 <input type="file" class="nptel-file input-full mt-1"
                                                     accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                                <button type="button" class="btn-remove" title="Remove Course"><i class="fas fa-times"></i></button>
                                             </div>
                                         </div>
                                         <button type="button" id="addCourseBtn" class="btn-secondary"><i
@@ -267,6 +268,7 @@
                                             <div style="grid-column: 1 / -1; margin-top: 0.5rem;">
                                                 <input type="file" class="exam-file input-full" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
                                             </div>
+                                            <button type="button" class="btn-remove" title="Remove Exam"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
                                     <button type="button" id="addExamBtn" class="btn-secondary"><i
