@@ -109,6 +109,10 @@
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Overview</span>
                 </a>
+                <a href="admin-winner.php" class="nav-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>Winner 2026</span>
+                </a>
                 <a href="admin-students.php" class="nav-item">
                     <i class="fa-solid fa-users"></i>
                     <span>Students</span>

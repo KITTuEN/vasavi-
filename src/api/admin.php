@@ -111,6 +111,11 @@ if ($method === 'GET') {
             'topScore' => is_array($top) ? ($top['score'] ?? 0) : 0,
             'branches' => $branches
         ]);
+    } elseif ($action === 'winner-details') {
+        $row = db_get("SELECT name, email, department, roll_number, contact_number, bio, profile_photo 
+                       FROM users 
+                       WHERE is_best_outgoing = 1 LIMIT 1");
+        echo json_encode($row ?: new stdClass());
     } elseif ($action === 'toppers') {
         // Fetch all distinct departments from students and join with existing topper CGPAs
         $query = "

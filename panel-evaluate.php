@@ -163,6 +163,10 @@
                     <i class="fa-solid fa-list-check"></i>
                     <span>Assigned</span>
                 </a>
+                <a href="admin-winner.php" class="nav-item">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>Winner 2026</span>
+                </a>
             </div>
             <div class="sidebar-footer">
                 <button onclick="window.location.href='auth/logout'" class="logout-btn">

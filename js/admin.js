@@ -7,10 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         Chart.defaults.maintainAspectRatio = false;
     }
 
-    const overviewContainer = document.getElementById('overviewSection');
-    const studentsContainer = document.getElementById('studentList');
-    const performanceContainer = document.getElementById('leaderboardBody');
-
     const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
     let allStudents = [];
     console.log('Admin JS Loaded. Super Admin:', window.IS_SUPER_ADMIN, 'Role:', window.userRole);
@@ -160,16 +156,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialization
-    if (overviewContainer) {
+    const overviewSection = document.getElementById('statTotal'); // Unique element for overview
+    const studentsContainer = document.getElementById('studentList');
+    const performanceContainer = document.getElementById('leaderboardBody');
+    const winnerDetailsContainer = document.getElementById('winnerDetails');
+
+    if (overviewSection) {
         refreshDashboard();
     } else if (studentsContainer) {
         loadStudents();
         loadStats();
     } else if (performanceContainer) {
-        // Load Data
         loadStats();
         loadLeaderboardTable();
         loadWinner();
+    } else if (winnerDetailsContainer) {
+        loadFullWinnerDetails();
+    }
+
+    async function loadFullWinnerDetails() {
+        const loading = document.getElementById('loadingWinner');
+        const details = document.getElementById('winnerDetails');
+        const noWinner = document.getElementById('noWinnerView');
+
+        try {
+            const res = await fetch(apiBase + '/admin/winner-details');
+            const data = await res.json();
+
+            if (loading) loading.style.display = 'none';
+
+            if (data && data.name) {
+                if (details) details.style.display = 'block';
+
+                document.getElementById('wName').innerText = data.name;
+                document.getElementById('wRoll').innerText = data.roll_number;
+                document.getElementById('wDept').innerText = data.department;
+                document.getElementById('wEmail').innerText = data.email;
+                document.getElementById('wPhone').innerText = data.contact_number || 'N/A';
+                document.getElementById('wBio').innerText = data.bio || 'No bio available.';
+
+                if (data.profile_photo) {
+                    const photoUrl = data.profile_photo.startsWith('FILE:')
+                        ? `${apiBase}/files/${data.profile_photo.substring(5)}`
+                        : data.profile_photo;
+                    document.getElementById('wPhoto').src = photoUrl;
+                }
+            } else {
+                if (noWinner) noWinner.style.display = 'block';
+            }
+        } catch (err) {
+            console.error('Error loading winner details:', err);
+            if (loading) loading.style.display = 'none';
+            if (noWinner) noWinner.style.display = 'block';
+        }
     }
 
     async function loadWinner() {
