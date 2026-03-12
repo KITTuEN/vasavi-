@@ -137,6 +137,32 @@
             text-align: center;
             padding: 5rem 2rem;
         }
+
+        /* 3D background container */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .winner-card {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+
+        .trophy-container {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -190,6 +216,9 @@
                 <div class="welcome-text"></div>
             </header>
 
+            <!-- 3D Background -->
+            <div id="canvas-container"></div>
+
             <div class="content-wrapper">
                 <div id="loadingWinner" style="text-align: center; padding: 5rem;">
                     <i class="fa-solid fa-spinner fa-spin fa-3x" style="color: var(--primary-color);"></i>
@@ -202,6 +231,8 @@
                             <div class="winner-photo-large">
                                 <img id="wPhoto" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Winner">
                             </div>
+                            <!-- 3D Trophy Holder -->
+                            <div class="trophy-container" id="trophy-canvas"></div>
                         </div>
                         <div class="winner-info">
                             <h1 class="winner-name" id="wName">Student Name</h1>
@@ -259,7 +290,11 @@
         </main>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/responsive.js"></script>
+    <script src="js/background-3d.js"></script>
+    <script src="js/tilt-effect.js"></script>
+    <script src="js/trophy-3d.js"></script>
     <script type="module" src="js/admin.js?v=21"></script>
 </body>
 

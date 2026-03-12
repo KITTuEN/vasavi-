@@ -2,7 +2,7 @@
  * Precise, smooth 3D tilt effect for login and instruction cards.
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.modern-login-card, .instruction-card');
+    const cards = document.querySelectorAll('.modern-login-card, .instruction-card, .winner-card');
 
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
