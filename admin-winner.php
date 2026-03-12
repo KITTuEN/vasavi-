@@ -70,33 +70,60 @@
         }
         .details-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             padding: 2rem;
             background: #f8fafc;
             border-top: 1px solid #e2e8f0;
         }
+
+        @media (max-width: 1200px) {
+            .details-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .details-grid { grid-template-columns: 1fr; }
+        }
+
         .detail-item {
             background: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 12px;
             border: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
+            min-width: 0; /* Important for grid item overflow */
         }
         .detail-icon {
-            width: 50px; height: 50px; border-radius: 12px;
+            flex-shrink: 0;
+            width: 45px; height: 45px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
         .icon-blue { background: #e0e7ff; color: #4338ca; }
         .icon-green { background: #dcfce7; color: #15803d; }
         .icon-orange { background: #ffedd5; color: #c2410c; }
         .icon-purple { background: #f3e8ff; color: #7e22ce; }
         
-        .detail-text h4 { margin:0; font-size: 0.9rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-        .detail-text p { margin:0; font-size: 1.2rem; font-weight: 600; color: #1e293b; }
+        .detail-text {
+            min-width: 0;
+            overflow: hidden;
+        }
+        .detail-text h4 { margin:0; font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .detail-text p { 
+            margin:0; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            color: #1e293b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .detail-item:hover .detail-text p {
+            white-space: normal;
+            word-break: break-all;
+        }
 
         .bio-section {
             padding: 2rem;
