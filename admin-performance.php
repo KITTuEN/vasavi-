@@ -165,6 +165,9 @@
                                     <th>Dept</th>
                                     <th>Roll No</th>
                                     <th>Score</th>
+                                    <?php if ($isSuper): ?>
+                                    <th style="text-align: center;">Action</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody id="leaderboardBody">

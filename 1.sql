@@ -8,6 +8,15 @@ ALTER TABLE users MODIFY COLUMN email VARCHAR(255) UNIQUE DEFAULT NULL;
 ALTER TABLE academic_records ADD COLUMN IF NOT EXISTS present_backlogs INT DEFAULT 0;
 ALTER TABLE academic_records ADD COLUMN IF NOT EXISTS history_of_backlogs INT DEFAULT 0;
 
+-- Update for Best Outgoing Student and Final Submission tracking
+ALTER TABLE users ADD COLUMN is_best_outgoing TINYINT DEFAULT 0 AFTER signature_path;
+
+-- Ensure final_scores has the is_final_submitted column (if not already present)
+-- ALTER TABLE final_scores ADD COLUMN is_final_submitted TINYINT DEFAULT 0;
+
+-- Optional: If you want to track when the announcement was made
+-- ALTER TABLE users ADD COLUMN best_outgoing_date DATETIME DEFAULT NULL AFTER is_best_outgoing;
+
 -- 3. Pre-load 6 Panel Members
 INSERT INTO users (name, email, password, role) VALUES 
 ('Panel Member 1', 'panel1@sves.org.in', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'panel'),

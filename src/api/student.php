@@ -46,6 +46,9 @@ if ($method === 'GET') {
     } elseif ($action === 'extracurricular') {
         $rows = db_all("SELECT * FROM extracurricular WHERE user_id = ?", [$_SESSION['user']['id']]);
         echo json_encode($rows);
+    } elseif ($action === 'winner') {
+        $row = db_get("SELECT name, department, roll_number, profile_photo FROM users WHERE is_best_outgoing = 1 LIMIT 1");
+        echo json_encode($row ?: new stdClass());
     }
 
 } elseif ($method === 'POST') {

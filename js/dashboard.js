@@ -119,10 +119,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function initDashboard() {
         await loadProfile();
-        await Promise.all([loadAllData(), loadAcademic()]);
+        await Promise.all([loadAllData(), loadAcademic(), loadWinner()]);
 
         if (isAppSubmitted) {
             disableEditing();
+        }
+    }
+
+    async function loadWinner() {
+        try {
+            const res = await fetch(apiBase + '/student/winner');
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.name) {
+                    const banner = document.getElementById('winnerAnnouncement');
+                    if (banner) {
+                        document.getElementById('winnerName').innerText = data.name;
+                        document.getElementById('winnerDept').innerText = `${data.department} | ${data.roll_number}`;
+                        const photoImg = document.getElementById('winnerPhoto');
+                        const placeholder = document.getElementById('winnerPhotoPlaceholder');
+                        if (data.profile_photo) {
+                            photoImg.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
+                            photoImg.style.display = 'block';
+                            if (placeholder) placeholder.style.display = 'none';
+                        }
+                        banner.style.display = 'block';
+                    }
+                }
+            }
+        } catch (e) {
+            console.error('Error loading winner', e);
         }
     }
 

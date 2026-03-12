@@ -69,16 +69,30 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Top Bar -->
-            <header class="top-bar">
-                <button id="hamburgerBtn" class="hamburger-menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="welcome-text" style="display: none;">
-                    <h1>Welcome Back, Student</h1>
-                    <p>Manage your application for the Best Outgoing Student Award.</p>
-                </div>
-
             </header>
+
+            <!-- Winner Announcement Banner -->
+            <div id="winnerAnnouncement" class="glass-card" style="display: none; margin: 1rem 2rem 2rem 2rem; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); border: none; overflow: hidden; position: relative;">
+                <div style="position: absolute; top: -20px; right: -20px; font-size: 8rem; color: rgba(255,255,255,0.1); transform: rotate(15deg);">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem; color: white;">
+                    <div style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.3); overflow: hidden; background: white; flex-shrink: 0;">
+                        <img id="winnerPhoto" src="" alt="Winner" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <div id="winnerPhotoPlaceholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #e2e8f0; color: #94a3b8;">
+                            <i class="fa-solid fa-user fa-3x"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 style="margin: 0; font-size: 1.8rem; font-weight: 700; color: white;">Congratulations!</h2>
+                        <p style="margin: 5px 0 0 0; font-size: 1.1rem; opacity: 0.9;">
+                            <span id="winnerName" style="font-weight: 700;">Student Name</span> has been awarded the 
+                            <b>Best Outgoing Student of the Year!</b>
+                        </p>
+                        <small id="winnerDept" style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-weight: 600; margin-top: 10px; display: inline-block;">Department | Roll No</small>
+                    </div>
+                </div>
+            </div>
 
             <!-- Profile Tab -->
             <div id="profile" class="tab-content active">

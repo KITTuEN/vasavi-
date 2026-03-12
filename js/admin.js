@@ -170,7 +170,36 @@ document.addEventListener('DOMContentLoaded', () => {
         loadStudents();
         loadStats();
     } else if (performanceContainer) {
+        // Load Data
+        loadStats();
         loadLeaderboardTable();
+        loadWinner();
+    }
+
+    async function loadWinner() {
+        try {
+            const res = await fetch(apiBase + '/student/winner');
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.name) {
+                    const banner = document.getElementById('winnerAnnouncement');
+                    if (banner) {
+                        document.getElementById('winnerName').innerText = data.name;
+                        document.getElementById('winnerDept').innerText = `${data.department} | ${data.roll_number}`;
+                        const photoImg = document.getElementById('winnerPhoto');
+                        const placeholder = document.getElementById('winnerPhotoPlaceholder');
+                        if (data.profile_photo) {
+                            photoImg.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
+                            photoImg.style.display = 'block';
+                            if (placeholder) placeholder.style.display = 'none';
+                        }
+                        banner.style.display = 'block';
+                    }
+                }
+            }
+        } catch (e) {
+            console.error('Error loading winner', e);
+        }
     }
 
     // List initialization handlers
@@ -325,16 +354,54 @@ document.addEventListener('DOMContentLoaded', () => {
         const tbody = document.getElementById('leaderboardBody');
         if (!tbody) return;
 
-        tbody.innerHTML = data.map((s, i) => `
+        tbody.innerHTML = data.map((s, i) => {
+            let actionHtml = '';
+            if (window.IS_SUPER_ADMIN) {
+                if (s.is_best_outgoing == 1) {
+                    actionHtml = `<td style="text-align:center;"><span style="color:#f59e0b; font-weight:bold;"><i class="fa-solid fa-crown"></i> Winner</span></td>`;
+                } else {
+                    actionHtml = `<td style="text-align:center;">
+                        <button class="btn-primary" style="padding: 2px 8px; font-size: 0.75rem;" onclick="announceWinner(${s.id}, '${s.name.replace(/'/g, "\\'")}', event)">
+                            <i class="fa-solid fa-bullhorn"></i> Announce
+                        </button>
+                    </td>`;
+                }
+            }
+
+            return `
             <tr>
                 <td data-label="Rank">${i + 1}</td>
                 <td data-label="Student">${s.name}</td>
                 <td data-label="Dept">${s.department}</td>
                 <td data-label="Roll No">${s.roll_number}</td>
                 <td data-label="Score"><strong>${parseFloat(s.score || 0).toFixed(2)}</strong></td>
+                ${actionHtml}
             </tr>
-        `).join('');
+        `}).join('');
     }
+
+    window.announceWinner = async (id, name, event) => {
+        event.stopPropagation();
+        if (!confirm(`Are you sure you want to announce ${name} as the Best Outgoing Student of the Year?`)) return;
+
+        try {
+            const res = await fetch(apiBase + '/admin/announce-winner', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: id })
+            });
+            const data = await res.json();
+            if (res.ok) {
+                alert(data.message);
+                loadLeaderboardTable(document.querySelector('.l-tab.active')?.dataset.type);
+            } else {
+                alert('Error: ' + data.error);
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Failed to announce winner');
+        }
+    };
 
     // PDF Export
     const downloadPdfBtn = document.getElementById('downloadPdfBtn');

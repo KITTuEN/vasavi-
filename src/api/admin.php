@@ -181,7 +181,7 @@ if ($method === 'GET') {
         }
  
         $query = "
-            SELECT u.name, u.department, u.roll_number, 
+            SELECT u.id, u.name, u.department, u.roll_number, u.is_best_outgoing,
                    $scoreExpr as score
             FROM users u
             JOIN final_scores fs ON u.id = fs.user_id
@@ -356,6 +356,34 @@ if ($method === 'GET') {
 
             db_run("UPDATE users SET is_sent_to_panel = 1 WHERE id = ?", [$user_id]);
             echo json_encode(['message' => 'Student sent to panel successfully']);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Database Error: ' . $e->getMessage()]);
+        }
+        exit;
+    } elseif ($action === 'announce-winner') {
+        try {
+            // Only Super Admin
+            if (!empty($_SESSION['user']['department'])) {
+                http_response_code(403);
+                echo json_encode(['error' => 'Unauthorized: Only Super Admin can announce the winner']);
+                exit;
+            }
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            $user_id = $input['user_id'] ?? null;
+
+            if (!$user_id) {
+                http_response_code(400);
+                echo json_encode(['error' => 'User ID required']);
+                exit;
+            }
+
+            // Transaction-like behavior: Reset all, then set one
+            db_run("UPDATE users SET is_best_outgoing = 0 WHERE role = 'student'");
+            db_run("UPDATE users SET is_best_outgoing = 1 WHERE id = ?", [$user_id]);
+
+            echo json_encode(['message' => 'Best Outgoing Student announced successfully!']);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode(['error' => 'Database Error: ' . $e->getMessage()]);
