@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const performanceContainer = document.getElementById('leaderboardBody');
 
     const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+    let allStudents = [];
     console.log('Admin JS Loaded. Super Admin:', window.IS_SUPER_ADMIN, 'Role:', window.userRole);
 
     // Logout
