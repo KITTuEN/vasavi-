@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const studentsContainer = document.getElementById('studentList');
     const performanceContainer = document.getElementById('leaderboardBody');
 
-    // API Config - defined early to avoid ReferenceError
-    let allStudents = [];
     const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
+    console.log('Admin JS Loaded. Super Admin:', window.IS_SUPER_ADMIN, 'Role:', window.userRole);
 
     // Logout
     const logoutBtn = document.getElementById('logoutBtn');
@@ -42,19 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Data Loaders
     async function refreshDashboard() {
         try {
+            console.log('Refreshing Dashboard...');
             const [statsRes, leaderboardRes] = await Promise.all([
-                fetch(apiBase + '/admin/stats'),
-                fetch(apiBase + '/admin/leaderboard')
+                fetch(apiBase + '/admin/stats').then(r => r.json()),
+                fetch(apiBase + '/admin/leaderboard').then(r => r.json())
             ]);
 
-            const statsText = await statsRes.text();
-            const leaderboardText = await leaderboardRes.text();
-
-            if (!statsRes.ok) throw new Error(statsText);
-            if (!leaderboardRes.ok) throw new Error(leaderboardText);
-
-            const stats = JSON.parse(statsText);
-            const leaderboard = JSON.parse(leaderboardText);
+            const stats = statsRes;
+            const leaderboard = leaderboardRes;
+            console.log('Dashboard Data loaded:', { stats, leaderboard });
 
             // Update Stat Cards
             const statTotal = document.getElementById('statTotal');
@@ -356,16 +351,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tbody.innerHTML = data.map((s, i) => {
             let actionHtml = '';
-            if (window.IS_SUPER_ADMIN) {
+            console.log('Rendering student:', s.name, 'isSuper:', window.IS_SUPER_ADMIN);
+            if (window.IS_SUPER_ADMIN === true) {
                 if (s.is_best_outgoing == 1) {
-                    actionHtml = `<td style="text-align:center;"><span style="color:#f59e0b; font-weight:bold;"><i class="fa-solid fa-crown"></i> Winner</span></td>`;
+                    actionHtml = `<td data-label="Action" style="text-align:center;"><span style="color:#f59e0b; font-weight:bold;"><i class="fa-solid fa-crown"></i> Winner</span></td>`;
                 } else {
-                    actionHtml = `<td style="text-align:center;">
+                    actionHtml = `<td data-label="Action" style="text-align:center;">
                         <button class="btn-primary" style="padding: 2px 8px; font-size: 0.75rem;" onclick="announceWinner(${s.id}, '${s.name.replace(/'/g, "\\'")}', event)">
                             <i class="fa-solid fa-bullhorn"></i> Announce
                         </button>
                     </td>`;
                 }
+            } else if (window.IS_SUPER_ADMIN) {
+                // Fallback for truthy values if it's not strictly true
+                actionHtml = `<td data-label="Action" style="text-align:center; color: #64748b; font-size:0.8rem;">N/A</td>`;
+            } else {
+                actionHtml = `<td data-label="Action" style="text-align:center; color: #64748b; font-size:0.8rem;">-</td>`;
             }
 
             return `

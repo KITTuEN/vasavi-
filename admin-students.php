@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
+        window.IS_SUPER_ADMIN = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
+    </script>
     <style>
         .nav-item {
             cursor: pointer;
@@ -98,13 +103,8 @@
         </main>
     </div>
 
-    <script>
-        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
-        window.IS_SUPER_ADMIN = <?php echo (empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
-        window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
-    </script>
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/admin.js?v=9"></script>
+    <script type="module" src="js/admin.js?v=20"></script>
 </body>
 
 </html>

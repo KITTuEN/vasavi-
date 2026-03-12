@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script>
+        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
+        window.IS_SUPER_ADMIN = <?php echo (!isset($_SESSION['user']['department']) || empty($_SESSION['user']['department'])) ? 'true' : 'false'; ?>;
+        window.userRole = "<?php echo $_SESSION['user']['role']; ?>";
+    </script>
     <style>
         .nav-item {
             cursor: pointer;
@@ -140,10 +145,6 @@
                         <?php endif; ?>
                     </div>
 
-                    <script>
-                        window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
-                        window.IS_SUPER_ADMIN = <?php echo $isSuper ? 'true' : 'false'; ?>;
-                    </script>
 
                     <?php if ($isSuper): ?>
                     <div class="leaderboard-tabs" style="margin-top: 1.5rem;">
@@ -181,7 +182,7 @@
     </div>
 
     <script src="js/responsive.js"></script>
-    <script type="module" src="js/admin.js?v=9"></script>
+    <script type="module" src="js/admin.js?v=20"></script>
 </body>
 
 </html>
