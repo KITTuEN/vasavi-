@@ -160,10 +160,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="top-bar">
-                <div class="welcome-text">
-                    <h1>Best Outgoing Student</h1>
-                    <p>Details of the student of the year</p>
-                </div>
+                <div class="welcome-text"></div>
             </header>
 
             <div class="content-wrapper">
