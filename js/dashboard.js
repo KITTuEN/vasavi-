@@ -119,38 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function initDashboard() {
         await loadProfile();
-        await Promise.all([loadAllData(), loadAcademic(), loadWinner()]);
+        await Promise.all([loadAllData(), loadAcademic()]);
 
         if (isAppSubmitted) {
             disableEditing();
         }
     }
 
-    async function loadWinner() {
-        try {
-            const res = await fetch(apiBase + '/student/winner');
-            if (res.ok) {
-                const data = await res.json();
-                if (data && data.name) {
-                    const banner = document.getElementById('winnerAnnouncement');
-                    if (banner) {
-                        document.getElementById('winnerName').innerText = data.name;
-                        document.getElementById('winnerDept').innerText = `${data.department} | ${data.roll_number}`;
-                        const photoImg = document.getElementById('winnerPhoto');
-                        const placeholder = document.getElementById('winnerPhotoPlaceholder');
-                        if (data.profile_photo) {
-                            photoImg.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
-                            photoImg.style.display = 'block';
-                            if (placeholder) placeholder.style.display = 'none';
-                        }
-                        banner.style.display = 'block';
-                    }
-                }
-            }
-        } catch (e) {
-            console.error('Error loading winner', e);
-        }
-    }
 
     // --- PROFILE HANDLING ---
     async function loadProfile() {
@@ -248,16 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.btn-remove, button[id^="add"], button[id^="save"], #finalSubmitBtn, #saveAcademicBtn, #saveProfileBtn, #saveRecBtn').forEach(btn => {
                 if (btn.id !== 'downloadPdfBtn') btn.style.display = 'none';
             });
-
-            const header = document.querySelector('.main-content h1') || document.querySelector('.main-content');
-            if (header && !document.getElementById('submittedMsg')) {
-                const msg = document.createElement('div');
-                msg.id = 'submittedMsg';
-                msg.className = 'alert alert-success';
-                msg.style.marginBottom = '20px';
-                msg.innerHTML = '<i class="fa-solid fa-check-circle"></i> Application Submitted. View Only Mode.';
-                header.parentNode.insertBefore(msg, header.nextSibling);
-            }
         });
     }
 
