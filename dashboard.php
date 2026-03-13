@@ -79,9 +79,6 @@
                     <div class="card-header">
                         <h2><i class="fas fa-id-card" style="color: var(--primary-color);"></i> Personal Information
                         </h2>
-                        <button id="saveProfileBtn" class="btn-primary">
-                            <i class="fas fa-save"></i> Save Profile
-                        </button>
                     </div>
                     <div style="padding: 2rem;">
                         <div id="debug-info"></div>
@@ -128,6 +125,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <button id="saveProfileBtn" class="btn-primary" style="margin-top: 2rem; width: 100%; font-size: 1.1rem; padding: 1rem;">
+                                <i class="fas fa-save"></i> Save Profile
+                            </button>
                         </form>
                     </div>
                 </div>
