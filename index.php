@@ -1,4 +1,12 @@
-<?php require_once __DIR__ . '/src/includes/auth_check.php'; require_guest(); ?>
+<?php 
+require_once __DIR__ . '/src/includes/auth_check.php'; 
+require_guest(); 
+
+// Prevent browser caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 <!DOCTYPE html>
 <html lang="en">
 

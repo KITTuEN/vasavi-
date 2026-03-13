@@ -260,7 +260,7 @@
                         <div class="info-card"><label>Sem 5</label><div class="value" id="acS5">--</div></div>
                         <div class="info-card"><label>Sem 6</label><div class="value" id="acS6">--</div></div>
                         <div class="info-card"><label>Sem 7</label><div class="value" id="acS7">--</div></div>
-                        <div class="info-card"><label>Sem 8</label><div class="value" id="acS8">--</div></div>
+                        <!-- Removed Sem 8 -->
                     </div>
                     
                     <div style="margin-top: 1.5rem; display: grid; gap: 1rem;">

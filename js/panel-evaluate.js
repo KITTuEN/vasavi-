@@ -97,7 +97,7 @@ function renderProfile(data, userId) {
     document.getElementById('acS5').innerText = ac.sgpa_sem5 || '-';
     document.getElementById('acS6').innerText = ac.sgpa_sem6 || '-';
     document.getElementById('acS7').innerText = ac.sgpa_sem7 || '-';
-    document.getElementById('acS8').innerText = ac.sgpa_sem8 || '-';
+    // Removed Sem 8
 
     // 3.1 Honours/Minors Parsing
     const renderHonours = () => {

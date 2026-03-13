@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', async () => {
             await fetch(apiBase + '/auth/logout', { method: 'POST' });
-            window.location.href = apiBase + '/index.php';
+            window.location.replace(apiBase + '/index.php');
         });
     }
 
@@ -796,8 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data) {
                     safeSet('cgpa', data.cgpa);
                     for (let i = 1; i <= 8; i++) safeSet(`sgpa${i}`, data[`sgpa_sem${i}`]);
-                    safeSet('present_backlogs', data.present_backlogs);
-                    safeSet('history_of_backlogs', data.history_of_backlogs);
+                    // Removed backlogs
 
                     // Honours/Minors Fetching
                     if (data.honours_minors && data.honours_minors !== 'No') {
@@ -2266,7 +2265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const fd = new FormData();
             fd.append('cgpa', safeGet('cgpa'));
-            for (let i = 1; i <= 8; i++) fd.append(`sgpa_sem${i}`, safeGet(`sgpa${i}`));
+            for (let i = 1; i <= 7; i++) fd.append(`sgpa_sem${i}`, safeGet(`sgpa${i}`));
 
             // Honours
             const pursuingEl = document.querySelector('input[name="pursuingHonours"]:checked');

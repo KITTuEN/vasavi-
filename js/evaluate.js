@@ -128,10 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
         content += `<div class="list-item-card" style="margin-bottom: 1rem;">
             <p style="margin:0; font-weight:bold; margin-bottom:10px;">Semester Performance (SGPA)</p>
             <div class="responsive-sgpa-grid" style="margin-bottom: 15px;">
-                ${[1, 2, 3, 4, 5, 6, 7, 8].map(i => `
+                ${[1, 2, 3, 4, 5, 6, 7].map(i => `
                     <div style="background:#f8fafc; padding:8px 4px; border-radius:6px; text-align:center; border: 1px solid #f1f5f9;">
-                        <small style="color:#64748b; font-size:0.7rem; display:block; margin-bottom:2px;">Sem ${i}</small>
-                        <span style="font-weight:bold; color:#334155; font-size:0.9rem;">${getSGPA(i)}</span>
+                        <small style="color:#64748b; font-size:0.75rem; display:block; margin-bottom:2px;">Sem ${i}</small>
+                        <span style="font-weight:bold; color:#334155; font-size:1rem;">${getSGPA(i)}</span>
                     </div>
                 `).join('')}
             </div>

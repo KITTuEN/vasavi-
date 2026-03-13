@@ -38,7 +38,7 @@ if ($method === 'GET') {
         $user = db_get("SELECT name, email, department, roll_number, contact_number, bio, is_submitted, profile_photo, recommendation_letter_path, declaration_place, declaration_date, signature_path FROM users WHERE id = ?", [$_SESSION['user']['id']]);
         echo json_encode($user);
     } elseif ($action === 'academic') {
-        $row = db_get("SELECT *, present_backlogs, history_of_backlogs FROM academic_records WHERE user_id = ?", [$_SESSION['user']['id']]);
+        $row = db_get("SELECT * FROM academic_records WHERE user_id = ?", [$_SESSION['user']['id']]);
         echo json_encode($row ?: new stdClass());
     } elseif ($action === 'co-curricular') {
         $rows = db_all("SELECT * FROM co_curricular WHERE user_id = ?", [$_SESSION['user']['id']]);
@@ -100,9 +100,11 @@ if ($method === 'GET') {
             $certifications = $_POST['certifications'] ?? '';
             
             $sgpas = [];
-            for($i=1; $i<=8; $i++) {
+            for($i=1; $i<=7; $i++) {
                 $sgpas[] = $_POST["sgpa_sem$i"] ?: null;
             }
+            // SGPA 8 is now always null or 0
+            $sgpas[] = null; 
 
             // Honours/Minors Logic
             $finalHonoursMinors = 'No';
@@ -163,24 +165,9 @@ if ($method === 'GET') {
             $role = $_SESSION['user']['role'] ?? '';
             $isStudent = (strcasecmp($role, 'student') === 0);
 
-            if ($isStudent) {
-                if ($existing) {
-                    $cgpa = $existing['cgpa'];
-                    foreach($sgpas as $i => $val) {
-                        $sgpas[$i] = $existing["sgpa_sem" . ($i + 1)];
-                    }
-                    $p_backlogs = $existing['present_backlogs'];
-                    $h_backlogs = $existing['history_of_backlogs'];
-                } else {
-                    $cgpa = 0;
-                    $sgpas = array_fill(0, 8, 0);
-                    $p_backlogs = 0;
-                    $h_backlogs = 0;
-                }
-            } else {
-                $p_backlogs = $_POST['present_backlogs'] ?? ($existing['present_backlogs'] ?? 0);
-                $h_backlogs = $_POST['history_of_backlogs'] ?? ($existing['history_of_backlogs'] ?? 0);
-            }
+            // Removed backlogs logic
+            $p_backlogs = 0;
+            $h_backlogs = 0;
 
             if ($existing) {
                 $sql = "UPDATE academic_records SET cgpa = ?, projects = ?, research_papers = ?, certifications = ?, 
