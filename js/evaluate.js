@@ -139,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span style="font-weight:bold; color:#3730a3;">Overall CGPA</span>
                 <span style="font-weight:bold; font-size:1.1rem; color:#312e81;">${academic.cgpa || 'N/A'}</span>
             </div>
-            <!-- Projects Removed -->
         </div>`;
 
         // 2. Honours/Minors
