@@ -95,7 +95,6 @@ if ($method === 'GET') {
         }
  elseif ($action === 'academic') {
             $cgpa = $_POST['cgpa'] ?: null;
-            $projects = $_POST['projects'] ?? '';
             $research_papers = $_POST['research_papers'] ?? '';
             $certifications = $_POST['certifications'] ?? '';
             
@@ -170,20 +169,20 @@ if ($method === 'GET') {
             $h_backlogs = 0;
 
             if ($existing) {
-                $sql = "UPDATE academic_records SET cgpa = ?, projects = ?, research_papers = ?, certifications = ?, 
+                $sql = "UPDATE academic_records SET cgpa = ?, research_papers = ?, certifications = ?, 
                         sgpa_sem1 = ?, sgpa_sem2 = ?, sgpa_sem3 = ?, sgpa_sem4 = ?, 
                         sgpa_sem5 = ?, sgpa_sem6 = ?, sgpa_sem7 = ?, sgpa_sem8 = ?, 
                         honours_minors = ?, competitive_exams = ?, 
                         present_backlogs = ?, history_of_backlogs = ? WHERE user_id = ?";
-                $params = array_merge([$cgpa, $projects, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $p_backlogs, $h_backlogs, $userId]);
+                $params = array_merge([$cgpa, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $p_backlogs, $h_backlogs, $userId]);
                 db_run($sql, $params);
                 echo json_encode(['message' => 'Academic records updated']);
             } else {
-                $sql = "INSERT INTO academic_records (user_id, cgpa, projects, research_papers, certifications, 
+                $sql = "INSERT INTO academic_records (user_id, cgpa, research_papers, certifications, 
                         sgpa_sem1, sgpa_sem2, sgpa_sem3, sgpa_sem4, 
                         sgpa_sem5, sgpa_sem6, sgpa_sem7, sgpa_sem8, 
-                        honours_minors, competitive_exams, present_backlogs, history_of_backlogs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $params = array_merge([$userId, $cgpa, $projects, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $p_backlogs, $h_backlogs]);
+                        honours_minors, competitive_exams, present_backlogs, history_of_backlogs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $params = array_merge([$userId, $cgpa, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $p_backlogs, $h_backlogs]);
                 db_run($sql, $params);
                 echo json_encode(['message' => 'Academic records saved']);
             }

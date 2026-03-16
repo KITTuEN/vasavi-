@@ -268,14 +268,10 @@
                             <label style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem; display: block;">HONOURS / MINORS</label>
                             <div id="acHonours" style="font-size: 0.95rem; line-height: 1.5;">--</div>
                         </div>
-                        <div class="info-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="info-grid" style="grid-template-columns: 1fr;">
                             <div class="info-card">
                                 <label>COMPETITIVE EXAMS</label>
                                 <div class="value" id="acExams" style="font-weight: 500;">--</div>
-                            </div>
-                            <div class="info-card">
-                                <label>PROJECTS</label>
-                                <div class="value" id="acProjects" style="font-weight: 500;">--</div>
                             </div>
                         </div>
                     </div>

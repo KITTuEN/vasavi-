@@ -171,8 +171,6 @@ function renderProfile(data, userId) {
     };
     document.getElementById('acExams').innerHTML = renderExams();
 
-    document.getElementById('acProjects').innerText = ac.projects || 'None';
-
     const fileLink = (path, label) => {
         if (!path) return '<span style="color:#aaa; font-style:italic;">Not uploaded</span>';
         const url = `${apiBase}/files/${path.replace('FILE:', '')}`;

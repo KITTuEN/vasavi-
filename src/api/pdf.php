@@ -256,12 +256,12 @@ for($i=1; $i<=8; $i++) {
 }
 $pdf->Ln(10);
 
-// Projects/Research
+// Research Details
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(0, 6, 'Projects / Research Details:', 0, 1);
+$pdf->Cell(0, 6, 'Research Details:', 0, 1);
 $pdf->SetFont('Arial', '', 10);
-if (!empty($academic['projects']) || !empty($academic['research_papers'])) {
-    $pdf->MultiCell(0, 5, "Projects: " . ($academic['projects'] ?? 'N/A') . "\n\nResearch Papers: " . ($academic['research_papers'] ?? 'N/A'), 1);
+if (!empty($academic['research_papers'])) {
+    $pdf->MultiCell(0, 5, "Research Papers: " . ($academic['research_papers'] ?? 'N/A'), 1);
 } else {
     $pdf->Cell(0, 8, 'N/A', 1, 1);
 }

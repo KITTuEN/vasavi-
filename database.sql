@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS academic_records (
     exams_score FLOAT DEFAULT 0,
     sgpa_sem1 FLOAT, sgpa_sem2 FLOAT, sgpa_sem3 FLOAT, sgpa_sem4 FLOAT,
     sgpa_sem5 FLOAT, sgpa_sem6 FLOAT, sgpa_sem7 FLOAT, sgpa_sem8 FLOAT,
-    projects TEXT,
     research_papers TEXT,
     certifications TEXT,
     honours_minors TEXT,
