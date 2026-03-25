@@ -342,28 +342,27 @@ if (!empty($user['signature_path'])) {
 
 // Left side: Student
 $pdf->SetXY(10, $currentY);
-$pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(95, 8, 'Signature of the Student', 0, 0, 'L');
 if ($tempSig) {
-    $pdf->Image($tempSig, 15, $currentY + 8, 30);
+    $pdf->Image($tempSig, 15, $currentY, 30);
+    $pdf->SetXY(10, $currentY + 23);
 } else {
-    $pdf->SetXY(15, $currentY + 12);
+    $pdf->SetXY(10, $currentY + 10);
     $pdf->SetFont('Arial', 'I', 9);
-    $pdf->Cell(30, 5, '(Not Signed)', 0, 0, 'L');
+    $pdf->Cell(95, 13, '(No Signature Uploaded)', 0, 1, 'L');
+    $pdf->SetXY(10, $currentY + 23);
 }
-$pdf->SetXY(10, $currentY + 36);
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->Cell(95, 8, 'Signature of the Student', 0, 1, 'L');
 $pdf->SetFont('Arial', '', 9);
 $pdf->Cell(95, 5, 'Date: ' . ($user['declaration_date'] ?: 'N/A'), 0, 1, 'L');
 $pdf->Cell(95, 5, 'Place: ' . ($user['declaration_place'] ?: 'N/A'), 0, 0, 'L');
 
 // Right side: HOD
-$pdf->SetXY(110, $currentY);
+$pdf->SetXY(110, $currentY + 23);
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(90, 8, 'Signature of the HOD / Evaluator', 0, 0, 'R');
-$pdf->SetXY(110, $currentY + 12);
+$pdf->Cell(90, 8, 'Signature of the HOD / Evaluator', 0, 1, 'R');
 $pdf->SetFont('Arial', 'B', 10);
-$pdf->Cell(90, 8, ($academic['hod_name'] ?: 'Pending Evaluation'), 0, 0, 'R');
-$pdf->SetXY(110, $currentY + 36);
+$pdf->Cell(90, 5, ($academic['hod_name'] ?: 'Pending Evaluation'), 0, 1, 'R');
 $pdf->SetFont('Arial', '', 9);
 $pdf->Cell(90, 5, 'Evaluated On: ' . ($academic['hod_evaluation_date'] ?: 'N/A'), 0, 0, 'R');
 $pdf->Ln(10);
