@@ -346,9 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div style="display:flex; align-items:center; gap: 0.5rem;">
                     <small>${s.department}</small>
-                    <button class="btn" style="background:#ef4444; color:white; border:none; border-radius:4px; padding:4px 8px; cursor:pointer;" onclick="downloadStudentPdf(${s.id}, event)" title="Download Portfolio PDF">
-                        <i class="fa-solid fa-file-pdf"></i>
-                    </button>
                     ${window.IS_SUPER_ADMIN ? (
                     s.is_sent_to_panel == 1
                         ? `<span style="color: #6366f1; font-size: 0.8rem; font-weight: 500;"><i class="fa-solid fa-circle-check"></i> Sent to Panel</span>`
@@ -394,11 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tbody.innerHTML = data.map((s, i) => {
             let actionHtml = '';
-            console.log('Rendering student:', s.name, 'isSuper:', window.IS_SUPER_ADMIN);
-            // Portfolio PDF Download Button
-            const pdfBtn = `<button class="btn-pdf-mini" onclick="downloadStudentPdf(${s.id}, event)" title="Download Portfolio PDF" style="background:#ef4444; color:white; border:none; border-radius:4px; padding:4px 8px; cursor:pointer; margin-right:5px;">
+            // Portfolio PDF Download Button (Super Admin Only)
+            const pdfBtn = (window.IS_SUPER_ADMIN === true) ? `<button class="btn-pdf-mini" onclick="downloadStudentPdf(${s.id}, event)" title="Download Portfolio PDF" style="background:#ef4444; color:white; border:none; border-radius:4px; padding:4px 8px; cursor:pointer; margin-right:5px;">
                 <i class="fa-solid fa-file-pdf"></i>
-            </button>`;
+            </button>` : '';
 
             if (window.IS_SUPER_ADMIN === true) {
                 if (s.is_best_outgoing == 1) {
@@ -414,10 +410,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </button>
                     </td>`;
                 }
-            } else if (window.IS_SUPER_ADMIN) {
-                actionHtml = `<td data-label="Action" style="text-align:center;">${pdfBtn}</td>`;
             } else {
-                actionHtml = `<td data-label="Action" style="text-align:center;">${pdfBtn}</td>`;
+                actionHtml = `<td data-label="Action" style="text-align:center;">-</td>`;
             }
 
             return `
