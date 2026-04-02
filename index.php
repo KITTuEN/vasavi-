@@ -124,10 +124,10 @@ header("Pragma: no-cache");
         </p>
     </footer>
 
+    <script src="js/main.js?v=4"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/background-3d.js"></script>
     <script src="js/tilt-effect.js"></script>
-    <script src="js/main.js?v=3"></script>
 </body>
 
 </html>
