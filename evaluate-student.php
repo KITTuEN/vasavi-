@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20">
     <script>
         window.APP_BASE_URL = "<?php echo get_base_url(); ?>";
         window.USER_ROLE = "admin";
@@ -394,7 +394,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/responsive.js"></script>
-    <script src="js/evaluate.js?v=14"></script>
+    <script src="js/evaluate.js?v=20"></script>
     <script>
         function switchMobileTab(tab, btn) {
             const details = document.getElementById('detailsCol');

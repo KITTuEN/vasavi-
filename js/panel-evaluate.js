@@ -9,6 +9,16 @@ const getCertHtml = (path) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Sanity Check: Remove any legacy individual comment fields that might be cached or injected
+    const legacyIds = ['txtAcademicComments', 'txtHonoursComments', 'txtExamsComments', 'txtCoComments', 'txtExtraComments'];
+    legacyIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            console.warn(`Removing legacy element found in DOM: ${id}`);
+            el.closest('.form-group')?.remove() || el.remove();
+        }
+    });
+
     const params = new URLSearchParams(window.location.search);
     const userId = params.get('id');
 
