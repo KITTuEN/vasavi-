@@ -30,6 +30,41 @@ function isNotSubmitted() {
 
 isAuthenticated();
 
+/**
+ * Robust file upload helper with detailed error reporting.
+ */
+function handleFileUpload($fileArray, $userId) {
+    if (!isset($fileArray) || $fileArray['error'] === UPLOAD_ERR_NO_FILE) {
+        return null;
+    }
+
+    if ($fileArray['error'] !== UPLOAD_ERR_OK) {
+        $errorMsgs = [
+            UPLOAD_ERR_INI_SIZE   => "File exceeds server's maximum allowed size (post_max_size/upload_max_filesize).",
+            UPLOAD_ERR_FORM_SIZE  => "File exceeds the maximum size specified in the form.",
+            UPLOAD_ERR_PARTIAL    => "The file was only partially uploaded.",
+            UPLOAD_ERR_NO_TMP_DIR => "Missing a temporary folder on the server.",
+            UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk.",
+            UPLOAD_ERR_EXTENSION  => "A server-side extension stopped the file upload.",
+        ];
+        $msg = $errorMsgs[$fileArray['error']] ?? "Unknown upload error ({$fileArray['error']}).";
+        throw new Exception($msg);
+    }
+
+    $fileData = file_get_contents($fileArray['tmp_name']);
+    if ($fileData === false) {
+        throw new Exception("Failed to read uploaded file data.");
+    }
+    
+    $encrypted = encrypt_data($fileData);
+    
+    db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
+        $userId, $fileArray['name'], $fileArray['type'], $encrypted['encrypted'], $encrypted['iv']
+    ]);
+    
+    return "FILE:" . db_last_id();
+}
+
 if ($method === 'GET') {
     // Release session lock early for read operations to improve performance
     session_write_close();
@@ -65,23 +100,7 @@ if ($method === 'GET') {
 
         if ($action === 'profile') {
             $bio = $_POST['bio'] ?? null;
-            
-            $photoId = null;
-            if (isset($_FILES['profile_photo'])) {
-                if ($_FILES['profile_photo']['error'] === UPLOAD_ERR_OK) {
-                    $fileData = file_get_contents($_FILES['profile_photo']['tmp_name']);
-                    $encrypted = encrypt_data($fileData);
-                    
-                    db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                        $userId, $_FILES['profile_photo']['name'], $_FILES['profile_photo']['type'], $encrypted['encrypted'], $encrypted['iv']
-                    ]);
-                    $photoId = "FILE:" . db_last_id();
-                } elseif ($_FILES['profile_photo']['error'] !== UPLOAD_ERR_NO_FILE) {
-                    http_response_code(400);
-                    echo json_encode(['error' => 'Profile photo upload failed with error code: ' . $_FILES['profile_photo']['error']]);
-                    exit;
-                }
-            }
+            $photoId = handleFileUpload($_FILES['profile_photo'] ?? null, $userId);
 
             if ($photoId) {
                 db_run("UPDATE users SET bio = ?, profile_photo = ? WHERE id = ?",
@@ -92,8 +111,8 @@ if ($method === 'GET') {
                     [$bio, $userId]);
                 echo json_encode(['message' => 'Profile updated successfully']);
             }
-        }
- elseif ($action === 'academic') {
+
+        } elseif ($action === 'academic') {
             $cgpa = $_POST['cgpa'] ?: null;
             $research_papers = $_POST['research_papers'] ?? '';
             $certifications = $_POST['certifications'] ?? '';
@@ -102,8 +121,7 @@ if ($method === 'GET') {
             for($i=1; $i<=7; $i++) {
                 $sgpas[] = $_POST["sgpa_sem$i"] ?: null;
             }
-            // SGPA 8 is now always null or 0
-            $sgpas[] = null; 
+            $sgpas[] = null; // Sem 8
 
             // Honours/Minors Logic
             $finalHonoursMinors = 'No';
@@ -112,21 +130,9 @@ if ($method === 'GET') {
                 $updatedCourses = [];
                 foreach($courses as $index => $course) {
                     $certPath = $course['existing_path'] ?? null;
-                    $fileKey = "nptel_file_$index";
-                    if (isset($_FILES[$fileKey])) {
-                        if ($_FILES[$fileKey]['error'] === UPLOAD_ERR_OK) {
-                            $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
-                            $encrypted = encrypt_data($fileData);
-                            db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                                $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
-                            ]);
-                            $certPath = "FILE:" . db_last_id();
-                        } elseif ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_NO_FILE) {
-                            http_response_code(400);
-                            echo json_encode(['error' => "NPTEL file upload failed for course '$index' with error code: " . $_FILES[$fileKey]['error']]);
-                            exit;
-                        }
-                    }
+                    $newFileId = handleFileUpload($_FILES["nptel_file_$index"] ?? null, $userId);
+                    if ($newFileId) $certPath = $newFileId;
+                    
                     $updatedCourses[] = ['name' => $course['name'], 'certificate_path' => $certPath];
                 }
                 $finalHonoursMinors = json_encode(['type' => $_POST['honours_minors_type'], 'courses' => $updatedCourses]);
@@ -139,34 +145,16 @@ if ($method === 'GET') {
                 $updatedExams = [];
                 foreach($exams as $index => $exam) {
                     $certPath = $exam['certificate_path'] ?? null;
-                    $fileKey = "exam_file_$index";
-                    if (isset($_FILES[$fileKey])) {
-                        if ($_FILES[$fileKey]['error'] === UPLOAD_ERR_OK) {
-                            $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
-                            $encrypted = encrypt_data($fileData);
-                            db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                                $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
-                            ]);
-                            $certPath = "FILE:" . db_last_id();
-                        } elseif ($_FILES[$fileKey]['error'] !== UPLOAD_ERR_NO_FILE) {
-                            http_response_code(400);
-                            echo json_encode(['error' => "Exam file upload failed for '$index' with error code: " . $_FILES[$fileKey]['error']]);
-                            exit;
-                        }
-                    }
+                    $newFileId = handleFileUpload($_FILES["exam_file_$index"] ?? null, $userId);
+                    if ($newFileId) $certPath = $newFileId;
+                    
                     $updatedExams[] = ['name' => $exam['name'], 'score' => $exam['score'], 'certificate_path' => $certPath];
                 }
                 $finalCompetitiveExams = json_encode($updatedExams);
             }
 
-            // Fetch existing records to protect official data
             $existing = db_get("SELECT * FROM academic_records WHERE user_id = ?", [$userId]);
-            $role = $_SESSION['user']['role'] ?? '';
-            $isStudent = (strcasecmp($role, 'student') === 0);
-
-            // Removed backlogs logic
-            $p_backlogs = 0;
-            $h_backlogs = 0;
+            $p_backlogs = 0; $h_backlogs = 0;
 
             if ($existing) {
                 $sql = "UPDATE academic_records SET cgpa = ?, research_papers = ?, certifications = ?, 
@@ -176,7 +164,6 @@ if ($method === 'GET') {
                         present_backlogs = ?, history_of_backlogs = ? WHERE user_id = ?";
                 $params = array_merge([$cgpa, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $p_backlogs, $h_backlogs, $userId]);
                 db_run($sql, $params);
-                echo json_encode(['message' => 'Academic records updated']);
             } else {
                 $sql = "INSERT INTO academic_records (user_id, cgpa, research_papers, certifications, 
                         sgpa_sem1, sgpa_sem2, sgpa_sem3, sgpa_sem4, 
@@ -184,31 +171,21 @@ if ($method === 'GET') {
                         honours_minors, competitive_exams, present_backlogs, history_of_backlogs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $params = array_merge([$userId, $cgpa, $research_papers, $certifications], $sgpas, [$finalHonoursMinors, $finalCompetitiveExams, $p_backlogs, $h_backlogs]);
                 db_run($sql, $params);
-                echo json_encode(['message' => 'Academic records saved']);
             }
+            echo json_encode(['message' => 'Academic records updated']);
+
         } elseif ($action === 'activities/save-all') {
-            // New Consolidate endpoint for co-curricular/extracurricular activities
-            $type = $_POST['type'] ?? 'co_curricular'; // 'co_curricular' or 'extracurricular'
+            $type = $_POST['type'] ?? 'co_curricular';
             $activityMap = json_decode($_POST['data'] ?? '[]', true);
             $tableName = ($type === 'co_curricular') ? 'co_curricular' : 'extracurricular';
 
             foreach ($activityMap as $activity_type => $items) {
-                // Delete existing for this specific activity type
                 db_run("DELETE FROM $tableName WHERE user_id = ? AND activity_type = ?", [$userId, $activity_type]);
-                
                 foreach ($items as $index => $item) {
                     $certPath = $item['existing_path'] ?? null;
-                    // File keys are structured as file_ACTIVITYTYPE_INDEX
                     $fileKey = "file_" . str_replace(' ', '_', $activity_type) . "_" . $index;
-                    
-                    if (isset($_FILES[$fileKey]) && $_FILES[$fileKey]['error'] === UPLOAD_ERR_OK) {
-                        $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
-                        $encrypted = encrypt_data($fileData);
-                        db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                            $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
-                        ]);
-                        $certPath = "FILE:" . db_last_id();
-                    }
+                    $newFileId = handleFileUpload($_FILES[$fileKey] ?? null, $userId);
+                    if ($newFileId) $certPath = $newFileId;
 
                     if ($type === 'co_curricular') {
                         db_run("INSERT INTO co_curricular (user_id, activity_type, title, description, date, certificate_path, score) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -220,75 +197,23 @@ if ($method === 'GET') {
                 }
             }
             echo json_encode(['message' => 'All activities updated successfully']);
-        } elseif ($action === 'co-curricular/bulk' || $action === 'extracurricular/bulk') {
-            $type = ($action === 'co-curricular/bulk') ? 'co_curricular' : 'extracurricular';
-            $activity_type = $_POST['activity_type'] ?? null;
-            $items = json_decode($_POST['items'] ?? '[]', true);
 
-            if (!$activity_type) {
-                http_response_code(400);
-                echo json_encode(['error' => 'Activity type required']);
-                exit;
-            }
-
-            db_run("DELETE FROM $type WHERE user_id = ? AND activity_type = ?", [$userId, $activity_type]);
-
-            foreach ($items as $index => $item) {
-                $certPath = $item['existing_path'] ?? null;
-                $fileKey = "file_$index";
-                if (isset($_FILES[$fileKey]) && $_FILES[$fileKey]['error'] === UPLOAD_ERR_OK) {
-                    $fileData = file_get_contents($_FILES[$fileKey]['tmp_name']);
-                    $encrypted = encrypt_data($fileData);
-                    db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                        $userId, $_FILES[$fileKey]['name'], $_FILES[$fileKey]['type'], $encrypted['encrypted'], $encrypted['iv']
-                    ]);
-                    $certPath = "FILE:" . db_last_id();
-                }
-
-                if ($type === 'co_curricular') {
-                    db_run("INSERT INTO co_curricular (user_id, activity_type, title, description, date, certificate_path, score) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                        [$userId, $activity_type, $item['name'], $item['description'] ?? '', date('Y-m-d H:i:s'), $certPath, $item['score'] ?? 0]);
-                } else {
-                    db_run("INSERT INTO extracurricular (user_id, activity_type, title, description, level, certificate_path, score) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                        [$userId, $activity_type, $item['name'], $item['description'] ?? '', $item['level'] ?? 'District', $certPath, $item['score'] ?? 0]);
-                }
-            }
-            echo json_encode(['message' => 'Bulk update successful']);
         } elseif ($action === 'recommendation') {
-            if (!isset($_FILES['recommendation_letter']) || $_FILES['recommendation_letter']['error'] !== UPLOAD_ERR_OK) {
-                http_response_code(400);
-                echo json_encode(['error' => 'File upload failed']);
-                exit;
-            }
-
-            $fileData = file_get_contents($_FILES['recommendation_letter']['tmp_name']);
-            $encrypted = encrypt_data($fileData);
-            db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                $userId, $_FILES['recommendation_letter']['name'], $_FILES['recommendation_letter']['type'], $encrypted['encrypted'], $encrypted['iv']
-            ]);
-            $recId = "FILE:" . db_last_id();
+            $recId = handleFileUpload($_FILES['recommendation_letter'] ?? null, $userId);
+            if (!$recId) throw new Exception("Please select a file to upload.");
 
             db_run("UPDATE users SET recommendation_letter_path = ? WHERE id = ?", [$recId, $userId]);
-            echo json_encode(['message' => 'Recommendation letter uploaded']);
+            echo json_encode(['message' => 'Recommendation letter uploaded', 'file_id' => $recId]);
 
         } elseif ($action === 'submit') {
             $place = $_POST['declaration_place'] ?? null;
             $date = $_POST['declaration_date'] ?? null;
-            $sigId = null;
+            $sigId = handleFileUpload($_FILES['signature'] ?? null, $userId);
 
-            if (isset($_FILES['signature'])) {
-                if ($_FILES['signature']['error'] === UPLOAD_ERR_OK) {
-                    $fileData = file_get_contents($_FILES['signature']['tmp_name']);
-                    $encrypted = encrypt_data($fileData);
-                    db_run("INSERT INTO file_uploads (user_id, filename, mime_type, data, iv) VALUES (?, ?, ?, ?, ?)", [
-                        $userId, $_FILES['signature']['name'], $_FILES['signature']['type'], $encrypted['encrypted'], $encrypted['iv']
-                    ]);
-                    $sigId = "FILE:" . db_last_id();
-                } else {
-                    http_response_code(400);
-                    echo json_encode(['error' => 'Signature upload failed.']);
-                    exit;
-                }
+            if (!$sigId) {
+                // If not uploading new, check if existing signature exists
+                $user = db_get("SELECT signature_path FROM users WHERE id = ?", [$userId]);
+                $sigId = $user['signature_path'] ?? null;
             }
 
             if (!$place || !$date || !$sigId) {
@@ -303,9 +228,7 @@ if ($method === 'GET') {
         }
 
     } catch (Exception $e) {
-        http_response_code(500);
-        echo json_encode(['error' => 'Server Error: ' . $e->getMessage()]);
+        http_response_code(400);
+        echo json_encode(['error' => $e->getMessage()]);
     }
 }
-
-

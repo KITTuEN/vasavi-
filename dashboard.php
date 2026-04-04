@@ -91,9 +91,9 @@
                                             src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
                                             alt="Profile Photo">
                                     </div>
-                                    <input type="file" id="pPhoto" accept="image/*"
+                                    <input type="file" id="pPhoto" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
                                         style="margin-top: 0.5rem; max-width: 250px;">
-                                    <small style="color: var(--text-muted);">Recommended: Square Image (JPG/PNG)</small>
+                                    <small style="color: var(--text-muted);">Recommended: Square Image (JPG/PNG) or Document (PDF/DOC)</small>
                                 </div>
                                 <div class="form-group">
                                     <label>Full Name</label>
@@ -663,8 +663,8 @@
                             <div class="form-group" style="margin-bottom: 2rem;">
                                 <label for="declSignature" style="font-weight: 600;">Signature of the Student</label>
                                 <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                                    <input type="file" id="declSignature" accept=".jpg,.jpeg,.png" style="flex: 1; min-width: 250px;">
-                                    <span style="font-size: 0.85rem; color: var(--text-muted);">Upload a clear image of your signature (JPG/PNG)</span>
+                                    <input type="file" id="declSignature" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="flex: 1; min-width: 250px;">
+                                    <span style="font-size: 0.85rem; color: var(--text-muted);">Upload a clear image of your signature or a scanned document (JPG/PNG/PDF)</span>
                                 </div>
                                 <div id="signaturePreview" style="margin-top: 1rem; display: none;">
                                     <img src="" alt="Signature Preview" style="max-height: 80px; border: 1px solid #ddd; padding: 5px; border-radius: 4px; background: white;">

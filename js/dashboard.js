@@ -1,10 +1,20 @@
 const apiBase = (window.APP_BASE_URL || "").replace(/\/$/, "");
 
-const getCertHtml = (path) => {
+const getFileIcon = (filename) => {
+    if (!filename) return 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
+    const ext = filename.split('.').pop().toLowerCase();
+    if (['jpg', 'jpeg', 'png', 'gif', 'svg'].includes(ext)) return null; // Use actual image
+    if (ext === 'pdf') return 'https://cdn-icons-png.flaticon.com/512/337/337946.png';
+    if (['doc', 'docx'].includes(ext)) return 'https://cdn-icons-png.flaticon.com/512/337/337950.png';
+    return 'https://cdn-icons-png.flaticon.com/512/337/337949.png'; // Generic doc icon
+};
+
+const getCertHtml = (path, filename) => {
     if (!path) return '<span class="status-badge" style="background:#f1f5f9; color:#94a3b8; font-size:0.75rem; border:1px solid #e2e8f0; padding: 2px 8px; border-radius: 4px;">No certificate</span>';
     const url = `${apiBase}/files/${path.replace('FILE:', '')}`;
+    const icon = filename ? (getFileIcon(filename) ? '<i class="fa-solid fa-file-pdf"></i>' : '<i class="fa-solid fa-image"></i>') : '<i class="fa-solid fa-eye"></i>';
     return `<a href="${url}" target="_blank" class="status-badge" style="background:#eff6ff; color:#2563eb; text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; border:1px solid #dbeafe; padding: 2px 8px; border-radius: 4px;">
-        <i class="fa-solid fa-eye"></i> View
+        ${icon} View
     </a>`;
 };
 
@@ -121,7 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set Photo
             const photoPrev = document.getElementById('pPhotoPreview');
             if (photoPrev && data.profile_photo) {
-                photoPrev.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
+                const icon = getFileIcon(data.profile_photo_filename); // Assuming we might add filename later, or just check extension if path has it
+                if (icon) {
+                    photoPrev.src = icon;
+                } else {
+                    photoPrev.src = apiBase + '/files/' + data.profile_photo.replace('FILE:', '');
+                }
             }
 
             // Update char count on load
@@ -154,7 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sigPreview = document.getElementById('signaturePreview');
                 const sigImg = sigPreview.querySelector('img');
                 if (sigPreview && sigImg) {
-                    sigImg.src = apiBase + '/files/' + data.signature_path.replace('FILE:', '');
+                    const icon = getFileIcon(data.signature_filename);
+                    if (icon) {
+                        sigImg.src = icon;
+                    } else {
+                        sigImg.src = apiBase + '/files/' + data.signature_path.replace('FILE:', '');
+                    }
                     sigPreview.style.display = 'block';
                 }
             }
@@ -245,13 +265,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pPhoto) {
         pPhoto.addEventListener('change', (e) => {
             const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (ev) => {
-                    const img = document.getElementById('pPhotoPreview');
-                    if (img) img.src = ev.target.result;
+            const img = document.getElementById('pPhotoPreview');
+            if (file && img) {
+                const icon = getFileIcon(file.name);
+                if (icon) {
+                    img.src = icon;
+                } else {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        img.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
                 }
-                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Signature Preview Listener
+    const declSig = document.getElementById('declSignature');
+    if (declSig) {
+        declSig.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            const previewDiv = document.getElementById('signaturePreview');
+            const previewImg = previewDiv?.querySelector('img');
+            if (file && previewDiv && previewImg) {
+                const icon = getFileIcon(file.name);
+                if (icon) {
+                    previewImg.src = icon;
+                } else {
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        previewImg.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+                previewDiv.style.display = 'block';
             }
         });
     }
@@ -2255,15 +2303,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const res = await fetch('student/academic', { method: 'POST', body: fd });
+                const res = await fetch(apiBase + '/student/academic', { method: 'POST', body: fd });
+                const data = await res.json();
                 if (res.ok) alert('Academic Details Saved');
                 else {
-                    const d = await res.json();
-                    alert('Error: ' + (d.error || 'Unknown'));
+                    alert('Error: ' + (data.error || 'Server error saving academic details'));
                 }
             } catch (err) {
                 console.error(err);
-                alert('Network Error');
+                alert('Network error: ' + err.message);
             } finally {
                 if (btn) {
                     btn.innerHTML = originalText;
